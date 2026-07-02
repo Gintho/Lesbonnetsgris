@@ -47,7 +47,7 @@ Dans une session Claude Code sur ce dépôt :
 
 ## Déploiement automatique GitHub → WordPress (staging)
 
-Le code du thème vit dans `wp-content/themes/bonnets-gris/`, à la racine du dépôt, pour correspondre à la structure attendue par la fonctionnalité **GitHub Deployments** de WordPress.com (disponible sur les plans Business/Commerce, ce qui est le cas de ce site).
+Le code du thème vit **à la racine du dépôt** (`style.css`, `functions.php`, `header.php`, `footer.php`, `index.php`). Ce n'est pas la structure `wp-content/themes/<nom>/` habituelle : le connecteur GitHub Deployments de ce site n'a pas de champ "répertoire source" séparé — il copie tout le contenu du dépôt tel quel vers le répertoire de destination configuré côté WordPress. La racine du repo doit donc *être* le dossier du thème.
 
 Cette connexion s'établit via une autorisation OAuth/GitHub App déclenchée depuis l'admin WordPress — je ne peux pas la faire à votre place, voici les étapes :
 
@@ -55,7 +55,7 @@ Cette connexion s'établit via une autorisation OAuth/GitHub App déclenchée de
 2. Cliquer sur **Connecter un dépôt** / *Connect repository*, autoriser l'app GitHub de WordPress.com sur `Gintho/Lesbonnetsgris` (installation à approuver côté GitHub).
 3. Choisir :
    - Branche à suivre : `main`
-   - Mode : *Simple* si le contenu du dépôt correspond tel quel à `/wp-content` (c'est le cas ici — le dossier `wp-content/themes/bonnets-gris/` du repo se mappe directement sur `/wp-content/themes/bonnets-gris/` du site).
+   - **Répertoire de destination : `/wp-content/themes/bonnets-gris`** (⚠️ pas `/wp-content/plugins/...` — notre code est un thème, pas un plugin)
    - Déploiement automatique : activé, pour que chaque push sur `main` déclenche un déploiement sur le site.
 4. Ne connecter **que le site de staging** pour l'instant — pas de site de production tant qu'il n'existe pas.
 
