@@ -1,0 +1,36 @@
+<!-- @dsCard group="Composants" -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Transition ICM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="_demo.css">
+</head>
+<body>
+<main class="demo-page">
+  <span class="demo-kicker">Composants · 07 — priorité Notion, critique</span>
+  <h1 class="demo-title">Transition de sortie ICM</h1>
+  <p class="demo-intro">
+    Le site redirige vers un formulaire ICM/HelloAsso hors-domaine pour le don. Ce composant habille
+    cette transition pour qu'elle rassure plutôt que surprenne (ADR-001, point de vigilance H2 du PRD).
+  </p>
+
+  <div class="lbg-icm-transition" style="max-width:520px;">
+    <svg class="lbg-icm-transition__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <rect x="4" y="10" width="16" height="10" rx="2"/>
+      <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+    </svg>
+    <div>
+      <p class="lbg-icm-transition__title">Vous allez être redirigé·e vers le paiement sécurisé HelloAsso / ICM</p>
+      <p class="lbg-icm-transition__body">100% des fonds sont reversés à l'Institut du Cerveau. Aucune donnée bancaire ne transite par le site des Bonnets Gris.</p>
+    </div>
+  </div>
+
+  <p class="demo-note">Icône en blanc et non en Orange Pop : sur fond institutionnel, l'Orange Pop tombe à 2.9:1, sous le seuil AA non-texte (3:1).</p>
+</main>
+</body>
+</html>

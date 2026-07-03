@@ -1,0 +1,259 @@
+/**
+ * Les Bonnets Gris — Fondations
+ * Reset léger + polices auto-hébergées + styles de base.
+ * Dépend de tokens.css (charger tokens.css avant ce fichier).
+ *
+ * Note sur les points de rupture : ce fichier est du CSS statique (pas de
+ * préprocesseur dans la stack V1), les media queries ci-dessous répètent
+ * donc en dur les valeurs de --bp-* définies dans tokens.css. Si un jour on
+ * introduit un build step, factoriser via des variables Sass/PostCSS.
+ */
+
+/* -----------------------------------------------------------------------
+ * Polices auto-hébergées — RGPD : zéro requête tierce vers Google Fonts.
+ * -------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/fraunces-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/fraunces-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/fraunces-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/fraunces-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  /* Accent manuscrit — réservé aux témoignages, jamais en titre de page */
+  font-family: 'Fraunces';
+  src: url('../fonts/fraunces-italic-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* -----------------------------------------------------------------------
+ * Reset
+ * -------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* -----------------------------------------------------------------------
+ * Typographie de base
+ * Règle non négociable (Notion 03) : la serif éditoriale ne sert QUE le
+ * wordmark et les titres H1/H2. Jamais de serif sur un CTA, un label de
+ * formulaire ou une donnée chiffrée.
+ * -------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--space-4);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+}
+
+h1, h2 {
+  font-family: var(--font-serif);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+h2 {
+  font-size: var(--text-2xl);
+}
+h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+}
+h4 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+@media (min-width: 768px) {
+  h1 { font-size: clamp(var(--text-3xl), 2.4vw + 2rem, var(--text-4xl)); }
+  h2 { font-size: clamp(var(--text-2xl), 1.6vw + 1.6rem, var(--text-3xl)); }
+}
+
+p {
+  margin: 0 0 var(--space-4);
+  max-width: 68ch; /* confort de lecture */
+}
+
+.text-lead {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+small, .text-sm {
+  font-size: var(--text-sm);
+}
+
+/* Accent manuscrit — témoignages uniquement */
+.text-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: var(--weight-medium);
+}
+
+a {
+  color: var(--color-institutional);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.15em;
+}
+a:hover {
+  color: var(--color-action);
+}
+
+/* -----------------------------------------------------------------------
+ * Accessibilité — WCAG 2.1 AA (non négociable, cf. Notion 07 · Critères
+ * d'excellence + ADR-006). Ne jamais retirer l'outline sans le remplacer.
+ * -------------------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--color-institutional);
+  color: var(--color-on-institutional);
+  padding: var(--space-3) var(--space-5);
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+::selection {
+  background: var(--color-action-tint);
+  color: var(--color-text);
+}
+
+/* -----------------------------------------------------------------------
+ * Grille / conteneur
+ * -------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-mobile);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--container-padding-desktop);
+  }
+}
+
+.stack > * + * {
+  margin-top: var(--stack-space, var(--space-5));
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

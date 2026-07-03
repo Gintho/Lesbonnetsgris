@@ -1,0 +1,96 @@
+<!-- @dsCard group="Patterns" -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Pattern — Home assemblée</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<style>
+  body { background: var(--color-surface-alt); }
+  .assembly-frame { max-width: 1100px; margin-inline: auto; box-shadow: var(--shadow-lg); border-radius: var(--radius-lg); overflow: hidden; margin-block: var(--space-8); }
+  .assembly-section { padding: var(--space-8) var(--space-6); }
+</style>
+</head>
+<body>
+  <div class="assembly-frame">
+    <header class="site-header">
+      <div class="container">
+        <nav class="lbg-nav">
+          <a class="lbg-nav__logo" href="#"><img src="../../assets/logo/logo-lockup-horizontal.svg" alt="Les Bonnets Gris" style="height:2.5rem;"></a>
+          <ul class="lbg-nav__links" style="display:flex;">
+            <li><a href="#">Qui sommes-nous</a></li>
+            <li><a href="#">La maladie</a></li>
+            <li><a href="#">Événements</a></li>
+          </ul>
+          <a class="lbg-btn lbg-btn--primary" href="#">Faire un don</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="assembly-section container">
+      <div class="lbg-hero">
+        <div class="lbg-hero__eyebrow">
+          <span class="lbg-hero__stat">11</span>
+          <span class="text-sm" style="color:var(--color-text-muted)">personnes meurent chaque jour d'une tumeur cérébrale en France</span>
+        </div>
+        <h1 class="lbg-hero__title">Ce soir, rejoins ceux qui refusent que ça continue.</h1>
+        <p class="lbg-hero__lead">L'énergie collective, les défis sportifs et la générosité transformés en recherche à l'Institut du Cerveau — 100% des fonds reversés.</p>
+        <div class="lbg-hero__actions">
+          <a class="lbg-btn lbg-btn--primary lbg-btn--lg" href="#">Faire un don</a>
+          <a class="lbg-btn lbg-btn--secondary lbg-btn--lg" href="#">Devenir membre</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="assembly-section lbg-section--impact">
+      <div class="container">
+        <div class="lbg-impact-counter">
+          <div class="lbg-impact-counter__item"><span class="lbg-impact-counter__value">216M</span><span class="lbg-impact-counter__label">Portée Mai en Gris 2026</span></div>
+          <div class="lbg-impact-counter__item"><span class="lbg-impact-counter__value">1 284</span><span class="lbg-impact-counter__label">Donateurs récurrents</span></div>
+          <div class="lbg-impact-counter__item"><span class="lbg-impact-counter__value">100%</span><span class="lbg-impact-counter__label">Reversés à l'ICM</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="assembly-section container">
+      <div class="lbg-section-header">
+        <span class="lbg-section-header__eyebrow">Ils témoignent</span>
+        <h2 class="lbg-section-header__title">Se battre, avec amour</h2>
+      </div>
+      <div class="lbg-testimonial" style="max-width:640px;">
+        <span class="lbg-testimonial__quote-mark">"</span>
+        <p class="lbg-testimonial__quote">Depuis que j'ai rejoint les Bonnets Gris, je ne me sens plus seule face à la maladie de mon fils.</p>
+        <div class="lbg-testimonial__footer">
+          <div class="lbg-testimonial__avatar" aria-hidden="true"></div>
+          <div><span class="lbg-testimonial__credit">Sophie M.</span><span class="lbg-testimonial__role">Maman adhérente depuis 2024</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="assembly-section container" style="padding-top:0;">
+      <div class="lbg-icm-transition" style="max-width:640px;">
+        <svg class="lbg-icm-transition__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <div>
+          <p class="lbg-icm-transition__title">Paiement sécurisé HelloAsso / ICM</p>
+          <p class="lbg-icm-transition__body">100% des fonds sont reversés à l'Institut du Cerveau.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="lbg-footer">
+      <div class="container">
+        <div class="lbg-footer__grid">
+          <div><img src="../../assets/logo/logo-mark.svg" alt="" style="width:56px;"></div>
+          <div><h2 class="lbg-footer__heading">Agir</h2><ul class="lbg-footer__links"><li><a href="#">Faire un don</a></li><li><a href="#">Devenir membre</a></li></ul></div>
+          <div><h2 class="lbg-footer__heading">Ressources</h2><ul class="lbg-footer__links"><li><a href="#">Qui sommes-nous</a></li><li><a href="#">La maladie</a></li></ul></div>
+          <div><h2 class="lbg-footer__heading">Restons en lien</h2><form class="lbg-footer__newsletter"><input class="lbg-input" type="email" placeholder="Votre e-mail"><button class="lbg-btn lbg-btn--primary" type="button">S'inscrire</button></form></div>
+        </div>
+        <div class="lbg-footer__bottom"><p>© 2026 Les Bonnets Gris</p></div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

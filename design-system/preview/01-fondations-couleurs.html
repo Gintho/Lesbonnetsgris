@@ -1,0 +1,106 @@
+<!-- @dsCard group="Fondations" -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Couleurs — nuancier fonctionnel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="_demo.css">
+</head>
+<body>
+<main class="demo-page">
+  <span class="demo-kicker">Fondations · 01</span>
+  <h1 class="demo-title">Couleurs — un nuancier fonctionnel, pas décoratif</h1>
+  <p class="demo-intro">
+    Chaque teinte est codée par ce qu'elle <strong>signifie</strong> pour le visiteur, jamais par goût
+    esthétique. L'Orange Pop est la seule couleur qui « bouge » le visiteur : si elle apparaît ailleurs
+    que sur un CTA, elle perd sa valeur de signal au moment du don — c'est l'erreur la plus fréquente des
+    sites associatifs qui « aiment » trop leur palette.
+  </p>
+
+  <div class="demo-block">
+    <h2>Nuancier sémantique</h2>
+    <div class="demo-grid demo-grid--3">
+      <div class="swatch">
+        <div class="swatch__fill" style="background:var(--color-action)"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Action</span>
+          <span class="swatch__hex">#CB420D</span>
+          <span class="swatch__usage">CTA, don, adhésion, créer une cagnotte — <span class="contrast-pass">4.86:1 avec blanc ✓ AA</span></span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__fill" style="background:var(--color-brand-accent)"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Orange Pop (brut)</span>
+          <span class="swatch__hex">#F2642D</span>
+          <span class="swatch__usage">Décoratif uniquement (logo, icônes, illustrations) — <span class="contrast-fail">3.16:1 avec blanc, jamais de texte</span></span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__fill" style="background:var(--color-institutional)"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Institutionnel</span>
+          <span class="swatch__hex">#1C2B45</span>
+          <span class="swatch__usage">Contenu ICM, recherche, crédibilité — <span class="contrast-pass">14.2:1 ✓ AA</span></span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__fill" style="background:var(--color-testimonial)"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Témoignage</span>
+          <span class="swatch__hex">#AC4729</span>
+          <span class="swatch__usage">Témoignages, portraits, jamais un CTA — <span class="contrast-pass">5.7:1 sur blanc ✓ AA</span></span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__fill" style="background:var(--color-impact-dark)"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Impact</span>
+          <span class="swatch__hex">#5D6B51</span>
+          <span class="swatch__usage">Compteurs, résultats — <span class="contrast-pass">5.7:1 sur blanc ✓ AA</span></span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__fill" style="background:var(--color-surface-neutral); border-bottom:1px solid var(--color-border)"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Lin (neutre)</span>
+          <span class="swatch__hex">#F1E9DC</span>
+          <span class="swatch__usage">Fond de section, respiration, UI non-fonctionnelle</span>
+        </div>
+      </div>
+    </div>
+    <p class="demo-note">
+      ⚠️ Correction d'accessibilité appliquée : l'Orange Pop brut de la planche de marque (#F2642D) ne
+      passe pas le contraste AA avec du texte blanc (3.16:1, seuil requis 4.5:1). Le token
+      <code>--color-action</code> pointe donc vers une version assombrie de 25% en luminosité
+      (même teinte, même saturation) — <code>#CB420D</code> — utilisée pour tout CTA. L'Orange Pop pur
+      reste la couleur de reconnaissance de marque pour tout usage décoratif non textuel.
+    </p>
+  </div>
+
+  <div class="demo-block">
+    <h2>Teintes tint (fonds de section)</h2>
+    <div class="demo-grid demo-grid--4">
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-action-tint)"></div><div class="swatch__meta"><span class="swatch__name">Action tint</span><span class="swatch__hex">#FBD9C4</span></div></div>
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-institutional-tint)"></div><div class="swatch__meta"><span class="swatch__name">Institutionnel tint</span><span class="swatch__hex">#DCE2EA</span></div></div>
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-testimonial-tint)"></div><div class="swatch__meta"><span class="swatch__name">Témoignage tint</span><span class="swatch__hex">#F6E4DA</span></div></div>
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-impact-tint)"></div><div class="swatch__meta"><span class="swatch__name">Impact tint</span><span class="swatch__hex">#E4EADD</span></div></div>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h2>Neutres &amp; texte</h2>
+    <div class="demo-grid demo-grid--4">
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-text)"></div><div class="swatch__meta"><span class="swatch__name">Encre (texte)</span><span class="swatch__hex">#211D1A</span></div></div>
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-text-muted)"></div><div class="swatch__meta"><span class="swatch__name">Texte atténué</span><span class="swatch__hex">#6B655C</span></div></div>
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-surface-alt); border-bottom:1px solid var(--color-border)"></div><div class="swatch__meta"><span class="swatch__name">Crème (fond page)</span><span class="swatch__hex">#FBF7F0</span></div></div>
+      <div class="swatch"><div class="swatch__fill" style="background:var(--color-surface); border-bottom:1px solid var(--color-border)"></div><div class="swatch__meta"><span class="swatch__name">Blanc (surface)</span><span class="swatch__hex">#FFFFFF</span></div></div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

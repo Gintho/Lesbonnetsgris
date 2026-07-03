@@ -1,0 +1,53 @@
+<!-- @dsCard group="Composants" -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Formulaires</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="_demo.css">
+</head>
+<body>
+<main class="demo-page">
+  <span class="demo-kicker">Composants · 08</span>
+  <h1 class="demo-title">Formulaires</h1>
+  <p class="demo-intro">Toujours en Inter (jamais en serif). Opt-in RGPD explicite, non pré-coché.</p>
+
+  <div class="demo-grid demo-grid--2">
+    <div class="lbg-card">
+      <h3>Montants prédéfinis</h3>
+      <div class="lbg-amount-group" style="margin-bottom:var(--space-5)">
+        <label class="lbg-amount-option"><input type="radio" name="amount" checked>10€</label>
+        <label class="lbg-amount-option"><input type="radio" name="amount">30€</label>
+        <label class="lbg-amount-option"><input type="radio" name="amount">100€</label>
+      </div>
+      <label class="lbg-checkbox">
+        <input type="checkbox">
+        <span>Faire de ce don un don mensuel récurrent</span>
+      </label>
+    </div>
+
+    <div class="lbg-card">
+      <h3>Champ de formulaire</h3>
+      <div class="lbg-field">
+        <label class="lbg-field__label" for="demo-email">Adresse e-mail</label>
+        <input class="lbg-input" type="email" id="demo-email" placeholder="prenom@exemple.fr">
+        <span class="lbg-field__hint">Utilisée uniquement pour votre reçu fiscal.</span>
+      </div>
+      <div class="lbg-field lbg-field--error">
+        <label class="lbg-field__label" for="demo-email-error">Adresse e-mail</label>
+        <input class="lbg-input" type="email" id="demo-email-error" value="pas-un-email">
+        <span class="lbg-field__error">Merci de saisir une adresse e-mail valide.</span>
+      </div>
+      <label class="lbg-checkbox">
+        <input type="checkbox" required>
+        <span>J'accepte de recevoir les actualités des Bonnets Gris (désinscription possible à tout moment) — opt-in RGPD explicite.</span>
+      </label>
+    </div>
+  </div>
+</main>
+</body>
+</html>

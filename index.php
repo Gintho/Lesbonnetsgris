@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="site-main container" style="padding-block: var(--space-8);">
 	<?php
 	if ( have_posts() ) :
 		while ( have_posts() ) :

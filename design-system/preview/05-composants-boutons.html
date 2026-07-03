@@ -1,0 +1,58 @@
+<!-- @dsCard group="Composants" -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Boutons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="_demo.css">
+</head>
+<body>
+<main class="demo-page">
+  <span class="demo-kicker">Composants · 01</span>
+  <h1 class="demo-title">Boutons</h1>
+  <p class="demo-intro">Un seul bouton primaire visible par écran — c'est la règle qui protège le signal d'action de l'Orange Pop.</p>
+
+  <div class="demo-block">
+    <h2>Variantes</h2>
+    <div class="demo-component-frame" style="display:flex; flex-wrap:wrap; gap:var(--space-4); align-items:center;">
+      <a class="lbg-btn lbg-btn--primary" href="#">Faire un don</a>
+      <a class="lbg-btn lbg-btn--secondary" href="#">Devenir membre</a>
+      <a class="lbg-btn lbg-btn--ghost" href="#">En savoir plus →</a>
+      <button class="lbg-btn lbg-btn--primary" disabled>Indisponible</button>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h2>Sur fond sombre</h2>
+    <div class="demo-component-frame demo-component-frame--dark" style="display:flex; gap:var(--space-4); align-items:center;">
+      <a class="lbg-btn lbg-btn--primary" href="#">Faire un don</a>
+      <a class="lbg-btn lbg-btn--on-dark" href="#">S'inscrire à la newsletter</a>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h2>Tailles</h2>
+    <div class="demo-component-frame" style="display:flex; gap:var(--space-4); align-items:center; flex-wrap:wrap;">
+      <a class="lbg-btn lbg-btn--primary lbg-btn--sm" href="#">Petit</a>
+      <a class="lbg-btn lbg-btn--primary" href="#">Par défaut</a>
+      <a class="lbg-btn lbg-btn--primary lbg-btn--lg" href="#">Grand</a>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h2>CTA sticky mobile</h2>
+    <p class="demo-intro" style="margin-bottom:var(--space-4)">Toujours visible sans scroll sur mobile (Notion Planning, Phase 3).</p>
+    <div class="demo-component-frame" style="max-width:375px; position:relative; padding:0; overflow:hidden;">
+      <div style="height:180px; background:var(--color-surface-neutral);"></div>
+      <div class="lbg-sticky-cta" style="position:static; box-shadow:none; border-top:1px solid var(--color-border);">
+        <a class="lbg-btn lbg-btn--primary lbg-btn--block" href="#">Faire un don</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

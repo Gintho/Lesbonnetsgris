@@ -1,0 +1,119 @@
+/* Styles internes aux pages de démonstration du Design System.
+   Ne sont PAS chargés dans le thème WordPress — usage documentation uniquement. */
+.demo-page {
+  max-width: 1040px;
+  margin-inline: auto;
+  padding: var(--space-7) var(--space-5) var(--space-9);
+}
+.demo-kicker {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-action);
+  background: var(--color-action-tint);
+  padding: 0.3em 0.8em;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+.demo-title {
+  margin-bottom: var(--space-3);
+}
+.demo-intro {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+.demo-block {
+  margin-bottom: var(--space-9);
+}
+.demo-block h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+.demo-note {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  background: var(--color-surface-neutral);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin-top: var(--space-4);
+}
+.demo-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+.demo-grid--2 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.demo-grid--3 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.demo-grid--4 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+.swatch {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+.swatch__fill {
+  height: 5.5rem;
+}
+.swatch__meta {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+}
+.swatch__name {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  display: block;
+}
+.swatch__hex {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+.swatch__usage {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 6px;
+}
+.contrast-pass {
+  color: var(--lbg-sauge-dark);
+  font-weight: var(--weight-semibold);
+}
+.contrast-fail {
+  color: var(--color-error);
+  font-weight: var(--weight-semibold);
+}
+
+.type-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.type-row__label {
+  flex: 0 0 8rem;
+  font-family: ui-monospace, monospace;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+.type-row__sample {
+  margin: 0;
+}
+
+.demo-component-frame {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+.demo-component-frame--dark {
+  background: var(--color-institutional);
+}

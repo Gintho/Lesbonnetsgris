@@ -1,0 +1,64 @@
+<!-- @dsCard group="Fondations" -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Espacement, rayons, grille</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="_demo.css">
+</head>
+<body>
+<main class="demo-page">
+  <span class="demo-kicker">Fondations · 03</span>
+  <h1 class="demo-title">Espacement, rayons &amp; grille</h1>
+  <p class="demo-intro">Base 4px. Conteneur 1280px max. Mobile-first — le persona n°1 (le curieux touché) est sur mobile.</p>
+
+  <div class="demo-block">
+    <h2>Échelle d'espacement</h2>
+    <div style="display:grid; gap:12px;">
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-1</code><div style="height:16px; width:var(--space-1); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">4px</span></div>
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-2</code><div style="height:16px; width:var(--space-2); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">8px</span></div>
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-3</code><div style="height:16px; width:var(--space-3); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">12px</span></div>
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-4</code><div style="height:16px; width:var(--space-4); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">16px</span></div>
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-5</code><div style="height:16px; width:var(--space-5); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">24px</span></div>
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-6</code><div style="height:16px; width:var(--space-6); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">32px</span></div>
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-7</code><div style="height:16px; width:var(--space-7); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">48px</span></div>
+      <div style="display:flex; align-items:center; gap:16px;"><code style="width:5rem">space-8</code><div style="height:16px; width:var(--space-8); background:var(--color-action)"></div><span class="text-sm" style="color:var(--color-text-muted)">64px</span></div>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h2>Rayons</h2>
+    <div class="demo-grid demo-grid--4">
+      <div style="text-align:center"><div style="height:80px; background:var(--color-institutional); border-radius:var(--radius-sm); margin-bottom:8px;"></div><code>radius-sm — 8px</code></div>
+      <div style="text-align:center"><div style="height:80px; background:var(--color-institutional); border-radius:var(--radius-md); margin-bottom:8px;"></div><code>radius-md — 16px</code></div>
+      <div style="text-align:center"><div style="height:80px; background:var(--color-institutional); border-radius:var(--radius-lg); margin-bottom:8px;"></div><code>radius-lg — 28px</code></div>
+      <div style="text-align:center"><div style="height:80px; background:var(--color-institutional); border-radius:var(--radius-pill); margin-bottom:8px;"></div><code>radius-pill</code></div>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h2>Ombres</h2>
+    <div class="demo-grid demo-grid--3">
+      <div style="text-align:center"><div style="height:80px; background:var(--color-surface); box-shadow:var(--shadow-sm); border-radius:var(--radius-md); margin-bottom:8px;"></div><code>shadow-sm</code></div>
+      <div style="text-align:center"><div style="height:80px; background:var(--color-surface); box-shadow:var(--shadow-md); border-radius:var(--radius-md); margin-bottom:8px;"></div><code>shadow-md</code></div>
+      <div style="text-align:center"><div style="height:80px; background:var(--color-surface); box-shadow:var(--shadow-lg); border-radius:var(--radius-md); margin-bottom:8px;"></div><code>shadow-lg</code></div>
+    </div>
+  </div>
+
+  <div class="demo-block">
+    <h2>Points de rupture (mobile-first)</h2>
+    <div class="demo-grid demo-grid--4">
+      <div class="demo-component-frame"><strong>sm</strong><br>480px</div>
+      <div class="demo-component-frame"><strong>md</strong><br>768px</div>
+      <div class="demo-component-frame"><strong>lg</strong><br>1024px</div>
+      <div class="demo-component-frame"><strong>xl</strong><br>1280px</div>
+    </div>
+    <p class="demo-note">Tests obligatoires (checklist dev, Notion 05) : 375px, 768px, 1280px.</p>
+  </div>
+</main>
+</body>
+</html>

@@ -63,6 +63,14 @@ Référence officielle : [Deploy from GitHub to WordPress.com](https://wordpress
 
 ⚠️ Cette branche de travail (`claude/bonnets-gris-tech-stack-rd5g9w`) n'est pas encore fusionnée dans `main`. Le déploiement automatique ne prendra effet qu'une fois `main` mis à jour — dites-moi si vous voulez que j'ouvre la pull request.
 
+## Design System
+
+Fondations et composants du thème (couleurs, typographie, espacements, logo,
+composants UI) : voir [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md) et le
+style-guide vivant `design-system/preview/00-apercu.html` (à ouvrir dans un
+navigateur). Statut actuel : brouillon v0.1 soumis à validation avant la
+phase maquettes Figma.
+
 ## Liens
 
 - Dépôt GitHub : https://github.com/Gintho/Lesbonnetsgris

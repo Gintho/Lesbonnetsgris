@@ -1,0 +1,134 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "title": "Les Bonnets Gris",
+  "settings": {
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "defaultDuotone": false,
+      "palette": [
+        { "slug": "action", "name": "Action (Orange Pop)", "color": "#F2642D" },
+        { "slug": "action-hover", "name": "Action — survol", "color": "#D6491A" },
+        { "slug": "action-tint", "name": "Action — fond clair", "color": "#FBD9C4" },
+        { "slug": "institutional", "name": "Institutionnel (Bleu marine)", "color": "#1C2B45" },
+        { "slug": "institutional-tint", "name": "Institutionnel — fond clair", "color": "#DCE2EA" },
+        { "slug": "testimonial", "name": "Témoignage (Terracotta)", "color": "#C1502E" },
+        { "slug": "testimonial-tint", "name": "Témoignage — fond clair", "color": "#F6E4DA" },
+        { "slug": "impact", "name": "Impact (Sauge)", "color": "#7C8E6C" },
+        { "slug": "impact-dark", "name": "Impact — texte", "color": "#5F7052" },
+        { "slug": "impact-tint", "name": "Impact — fond clair", "color": "#E4EADD" },
+        { "slug": "surface", "name": "Surface — blanc", "color": "#FFFFFF" },
+        { "slug": "surface-alt", "name": "Surface — crème", "color": "#FBF7F0" },
+        { "slug": "surface-neutral", "name": "Surface — lin", "color": "#F1E9DC" },
+        { "slug": "ink", "name": "Texte (Encre)", "color": "#211D1A" },
+        { "slug": "text-muted", "name": "Texte atténué", "color": "#6B655C" }
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "fontFamilies": [
+        {
+          "slug": "serif",
+          "name": "Fraunces (titres H1/H2, wordmark)",
+          "fontFamily": "'Fraunces', 'Iowan Old Style', Georgia, serif",
+          "fontFace": [
+            { "fontFamily": "Fraunces", "fontWeight": "400", "fontStyle": "normal", "src": [ "file:./assets/fonts/fraunces-400.woff2" ] },
+            { "fontFamily": "Fraunces", "fontWeight": "500", "fontStyle": "normal", "src": [ "file:./assets/fonts/fraunces-500.woff2" ] },
+            { "fontFamily": "Fraunces", "fontWeight": "600", "fontStyle": "normal", "src": [ "file:./assets/fonts/fraunces-600.woff2" ] },
+            { "fontFamily": "Fraunces", "fontWeight": "700", "fontStyle": "normal", "src": [ "file:./assets/fonts/fraunces-700.woff2" ] },
+            { "fontFamily": "Fraunces", "fontWeight": "500", "fontStyle": "italic", "src": [ "file:./assets/fonts/fraunces-italic-500.woff2" ] }
+          ]
+        },
+        {
+          "slug": "sans",
+          "name": "Inter (contenu, UI, formulaires, chiffres)",
+          "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          "fontFace": [
+            { "fontFamily": "Inter", "fontWeight": "400", "fontStyle": "normal", "src": [ "file:./assets/fonts/inter-400.woff2" ] },
+            { "fontFamily": "Inter", "fontWeight": "500", "fontStyle": "normal", "src": [ "file:./assets/fonts/inter-500.woff2" ] },
+            { "fontFamily": "Inter", "fontWeight": "600", "fontStyle": "normal", "src": [ "file:./assets/fonts/inter-600.woff2" ] },
+            { "fontFamily": "Inter", "fontWeight": "700", "fontStyle": "normal", "src": [ "file:./assets/fonts/inter-700.woff2" ] }
+          ]
+        }
+      ],
+      "fontSizes": [
+        { "slug": "xs", "name": "XS — mentions légales", "size": "0.75rem" },
+        { "slug": "sm", "name": "SM — méta", "size": "0.875rem" },
+        { "slug": "base", "name": "Base — corps de texte", "size": "1rem" },
+        { "slug": "md", "name": "MD — intro", "size": "1.125rem" },
+        { "slug": "lg", "name": "LG — H4", "size": "1.375rem" },
+        { "slug": "xl", "name": "XL — H3", "size": "1.75rem" },
+        { "slug": "2xl", "name": "2XL — H2", "size": "2.25rem" },
+        { "slug": "3xl", "name": "3XL — H1 mobile", "size": "2.75rem" },
+        { "slug": "4xl", "name": "4XL — H1 desktop", "size": "3.5rem" },
+        { "slug": "5xl", "name": "5XL — Hero display", "size": "4.5rem" }
+      ],
+      "lineHeight": true
+    },
+    "spacing": {
+      "units": [ "px", "rem", "%", "vh" ],
+      "customSpacingSize": false,
+      "spacingSizes": [
+        { "slug": "1", "name": "4px", "size": "0.25rem" },
+        { "slug": "2", "name": "8px", "size": "0.5rem" },
+        { "slug": "3", "name": "12px", "size": "0.75rem" },
+        { "slug": "4", "name": "16px", "size": "1rem" },
+        { "slug": "5", "name": "24px", "size": "1.5rem" },
+        { "slug": "6", "name": "32px", "size": "2rem" },
+        { "slug": "7", "name": "48px", "size": "3rem" },
+        { "slug": "8", "name": "64px", "size": "4rem" },
+        { "slug": "9", "name": "96px", "size": "6rem" }
+      ]
+    },
+    "layout": {
+      "contentSize": "768px",
+      "wideSize": "1280px"
+    },
+    "border": {
+      "radius": true
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--surface-alt)",
+      "text": "var(--wp--preset--color--ink)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--sans)",
+      "fontSize": "var(--wp--preset--font-size--base)",
+      "lineHeight": "1.5"
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--serif)",
+          "fontWeight": "600"
+        }
+      },
+      "h3": { "typography": { "fontFamily": "var(--wp--preset--font-family--sans)" } },
+      "h4": { "typography": { "fontFamily": "var(--wp--preset--font-family--sans)" } },
+      "h5": { "typography": { "fontFamily": "var(--wp--preset--font-family--sans)" } },
+      "h6": { "typography": { "fontFamily": "var(--wp--preset--font-family--sans)" } },
+      "link": {
+        "color": { "text": "var(--wp--preset--color--institutional)" },
+        ":hover": { "color": { "text": "var(--wp--preset--color--action)" } }
+      },
+      "button": {
+        "color": {
+          "background": "var(--wp--preset--color--action)",
+          "text": "var(--wp--preset--color--surface)"
+        },
+        "border": { "radius": "999px" },
+        "spacing": { "padding": { "top": "0.95em", "bottom": "0.95em", "left": "1.6em", "right": "1.6em" } },
+        ":hover": {
+          "color": { "background": "var(--wp--preset--color--action-hover)" }
+        }
+      }
+    }
+  },
+  "customTemplates": [],
+  "templateParts": []
+}

@@ -1,0 +1,212 @@
+/**
+ * Les Bonnets Gris — Design Tokens
+ * Source de vérité du système visuel. Toute couleur, taille ou espacement
+ * utilisé ailleurs dans le thème doit référencer une variable définie ici —
+ * jamais une valeur brute recopiée à la main.
+ *
+ * Logique de nuancier : voir Notion "03 · Design & Système de marque" —
+ * chaque couleur est codée par FONCTION (ce qu'elle signifie pour le
+ * visiteur), pas par décoration. L'orange ne doit apparaître que pour une
+ * action ; le réutiliser ailleurs dilue le signal au moment du don.
+ */
+
+:root {
+  /* ---------------------------------------------------------------------
+   * Couleurs de marque — brutes (ne pas consommer directement dans les
+   * composants : passer par les tokens sémantiques ci-dessous)
+   * ------------------------------------------------------------------- */
+  /* Orange Pop pur — SIGNATURE DE MARQUE, usage décoratif uniquement (logo,
+     icônes, illustrations, accents graphiques, larges aplats non textuels).
+     Contraste avec blanc = 3.16:1 : ne satisfait PAS le seuil AA texte
+     (4.5:1) ni même le seuil "large texte"/UI graphique (3:1, tout juste
+     en dessous). Ne jamais poser de texte ni d'icône porteuse de sens
+     dessus sans revalider le contraste. */
+  --lbg-orange-pop: #F2642D;
+  /* Orange Pop — Action : même teinte assombrie de ~25% en luminosité
+     (HSL, teinte/saturation identiques) pour porter du texte blanc en
+     toute sécurité AA. C'est CETTE valeur que les CTA doivent utiliser —
+     jamais le Orange Pop pur. Contraste blanc/fond = 4.86:1. */
+  --lbg-orange-pop-action: #CB420D;
+  --lbg-orange-pop-action-hover: #B0390B; /* 6.11:1 avec blanc */
+  --lbg-orange-pop-light: #FBD9C4;
+
+  --lbg-bleu-marine: #1C2B45;
+  --lbg-bleu-marine-light: #2E4468;
+  --lbg-bleu-marine-tint: #DCE2EA;
+
+  --lbg-terracotta: #C1502E;       /* décoratif : bordures, aplats, portraits */
+  --lbg-terracotta-dark: #AC4729;  /* texte AA-safe sur blanc, crème ET sur son propre tint (5.7 / 4.6:1) */
+  --lbg-terracotta-light: #E3A98C;
+  --lbg-terracotta-tint: #F6E4DA;
+
+  --lbg-sauge: #7C8E6C;            /* décoratif : aplats, fonds */
+  --lbg-sauge-dark: #5D6B51;       /* texte AA-safe sur blanc, crème ET sur son propre tint (5.7 / 4.6:1) */
+  --lbg-sauge-tint: #E4EADD;
+
+  --lbg-lin: #F1E9DC;
+  --lbg-cream: #FBF7F0;
+  --lbg-gris-bonnet: #6E6A63;
+  --lbg-ink: #211D1A;
+  --lbg-white: #FFFFFF;
+
+  /* Échelle neutre — UI, bordures, textes secondaires */
+  --lbg-neutral-100: #FBF7F0;
+  --lbg-neutral-200: #F1E9DC;
+  --lbg-neutral-300: #E3DACB;
+  --lbg-neutral-400: #C9BEAC;
+  --lbg-neutral-500: #A79C8A;
+  --lbg-neutral-600: #8C8479;
+  --lbg-neutral-700: #6B655C;
+  --lbg-neutral-800: #4A443C;
+  --lbg-neutral-900: #211D1A;
+
+  /* États système (formulaires, feedback) */
+  --lbg-success: #4C7A52;
+  --lbg-success-tint: #E3ECE1;
+  --lbg-error: #B23B2E;
+  --lbg-error-tint: #F5E2DE;
+
+  /* -----------------------------------------------------------------------
+   * Tokens sémantiques — FONCTION avant décoration.
+   * C'est CE NIVEAU que les composants doivent consommer.
+   * --------------------------------------------------------------------- */
+
+  /* Action / conversion — Don, Adhésion, Créer une cagnotte.
+     La seule couleur qui "bouge" le visiteur : ne jamais l'utiliser en dehors
+     d'un CTA ou d'un état actif/sélectionné. Valeur AA-safe (voir plus haut) —
+     ne jamais réassigner à --lbg-orange-pop brut. */
+  --color-action: var(--lbg-orange-pop-action);
+  --color-action-hover: var(--lbg-orange-pop-action-hover);
+  --color-action-tint: var(--lbg-orange-pop-light);
+  --color-on-action: var(--lbg-white);
+  /* Orange Pop pur — réservé à la décoration non textuelle (logo, icônes,
+     illustrations). Ne jamais l'utiliser comme couleur de texte ou de fond
+     sous du texte. */
+  --color-brand-accent: var(--lbg-orange-pop);
+
+  /* Institutionnel — contenu ICM, recherche, crédibilité scientifique */
+  --color-institutional: var(--lbg-bleu-marine);
+  --color-institutional-light: var(--lbg-bleu-marine-light);
+  --color-institutional-tint: var(--lbg-bleu-marine-tint);
+  --color-on-institutional: var(--lbg-white);
+
+  /* Témoignages / portraits — jamais utilisé pour un CTA.
+     --color-testimonial sert de couleur de TEXTE/accent (AA-safe partout) ;
+     --color-brand-testimonial est la teinte décorative pure (bordures,
+     aplats) sans garantie de contraste. */
+  --color-testimonial: var(--lbg-terracotta-dark);
+  --color-brand-testimonial: var(--lbg-terracotta);
+  --color-testimonial-tint: var(--lbg-terracotta-tint);
+  --color-on-testimonial: var(--lbg-white);
+
+  /* Impact / résultats / compteurs */
+  --color-impact: var(--lbg-sauge);
+  --color-impact-dark: var(--lbg-sauge-dark);
+  --color-impact-tint: var(--lbg-sauge-tint);
+  --color-on-impact: var(--lbg-white);
+
+  /* Surfaces neutres — fond, respiration, UI non-fonctionnelle */
+  --color-surface: var(--lbg-white);
+  --color-surface-alt: var(--lbg-cream);
+  --color-surface-neutral: var(--lbg-lin);
+  --color-border: var(--lbg-neutral-300);
+  --color-border-strong: var(--lbg-neutral-400);
+
+  /* Texte */
+  --color-text: var(--lbg-ink);
+  --color-text-muted: var(--lbg-neutral-700);
+  --color-text-on-dark: var(--lbg-cream);
+  --color-text-on-dark-muted: var(--lbg-bleu-marine-tint);
+
+  /* Feedback formulaires */
+  --color-success: var(--lbg-success);
+  --color-success-tint: var(--lbg-success-tint);
+  --color-error: var(--lbg-error);
+  --color-error-tint: var(--lbg-error-tint);
+
+  --color-focus-ring: var(--lbg-orange-pop);
+
+  /* ---------------------------------------------------------------------
+   * Typographie
+   * Serif éditoriale = wordmark + titres H1/H2 uniquement, jamais de texte
+   * fonctionnel. Sans-serif = tout le reste (CTA, formulaires, données).
+   * Manuscrite (italique Fraunces) = accent réservé aux témoignages.
+   * ------------------------------------------------------------------- */
+  --font-serif: 'Fraunces', 'Iowan Old Style', 'Georgia', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: 'Fraunces', 'Georgia', serif; /* utilisé en italique uniquement */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Échelle type — base 16px, ratio ~1.25, mobile-first (voir clamp() dans
+     base.css pour la fluidité desktop) */
+  --text-xs: 0.75rem;    /* 12px — mentions légales, labels */
+  --text-sm: 0.875rem;   /* 14px — méta, captions */
+  --text-base: 1rem;     /* 16px — corps de texte */
+  --text-md: 1.125rem;   /* 18px — intro, lead paragraph */
+  --text-lg: 1.375rem;   /* 22px — H4 */
+  --text-xl: 1.75rem;    /* 28px — H3 */
+  --text-2xl: 2.25rem;   /* 36px — H2 */
+  --text-3xl: 2.75rem;   /* 44px — H1 (mobile) */
+  --text-4xl: 3.5rem;    /* 56px — H1 (desktop) */
+  --text-5xl: 4.5rem;    /* 72px — Hero display (desktop large) */
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;   /* tagline / labels capitales */
+  --tracking-wider: 0.12em;  /* petites capitales, badges */
+
+  /* ---------------------------------------------------------------------
+   * Espacement — base 4px
+   * ------------------------------------------------------------------- */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+  --space-9: 6rem;     /* 96px */
+  --space-10: 8rem;    /* 128px */
+
+  /* Grille */
+  --container-max: 1280px;
+  --container-padding-mobile: 1.25rem;
+  --container-padding-desktop: 2.5rem;
+  --grid-columns: 12;
+  --grid-gutter: 1.5rem;
+
+  /* ---------------------------------------------------------------------
+   * Rayons, ombres, mouvement
+   * ------------------------------------------------------------------- */
+  --radius-sm: 0.5rem;    /* 8px — inputs, badges rectangulaires */
+  --radius-md: 1rem;      /* 16px — cards */
+  --radius-lg: 1.75rem;   /* 28px — sections, blocs hero */
+  --radius-pill: 999px;   /* boutons, barres de progression, tags */
+
+  --shadow-sm: 0 1px 2px rgba(33, 29, 26, 0.06);
+  --shadow-md: 0 8px 24px rgba(33, 29, 26, 0.10);
+  --shadow-lg: 0 16px 48px rgba(33, 29, 26, 0.16);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  /* Points de rupture — mobile-first (référence uniquement : les media
+     queries CSS ne peuvent pas consommer de custom property, voir
+     commentaire en tête de base.css) */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}

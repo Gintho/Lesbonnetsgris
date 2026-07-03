@@ -1,0 +1,68 @@
+<!-- @dsCard group="Aperçu" -->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Les Bonnets Gris — Design System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="_demo.css">
+<style>
+  .cover-hero { text-align:center; padding-block: var(--space-9) var(--space-7); }
+  .cover-links { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--space-4); margin-top: var(--space-6); }
+  .cover-links a { display:block; padding: var(--space-5); background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-decoration:none; color: var(--color-text); }
+  .cover-links a:hover { box-shadow: var(--shadow-md); }
+  .cover-links strong { display:block; font-family: var(--font-serif); font-size: var(--text-lg); margin-bottom: var(--space-1); color: var(--color-text); }
+  .cover-links span { font-size: var(--text-sm); color: var(--color-text-muted); }
+</style>
+</head>
+<body>
+<main class="demo-page" style="max-width:1100px;">
+  <div class="cover-hero">
+    <img src="../../assets/logo/logo-lockup-stacked.svg" alt="Les Bonnets Gris" style="width:280px; margin-inline:auto; margin-bottom: var(--space-6);">
+    <span class="demo-kicker">Design System · v0.1 · Draft pour validation</span>
+    <h1 style="max-width:32ch; margin-inline:auto;">Une love brand, pas une charité de la compassion</h1>
+    <p class="demo-intro" style="margin-inline:auto;">
+      Fondations et composants du futur site lesbonnetsgris.fr — dérivés de la planche de marque validée
+      et des décisions actées dans Notion (03 · Design &amp; Système de marque). Ce document est un
+      brouillon de travail soumis à validation avant la phase maquettes Figma (15–31/07).
+    </p>
+  </div>
+
+  <h2 style="font-family:var(--font-sans); font-size:var(--text-sm); text-transform:uppercase; letter-spacing:var(--tracking-wide); color:var(--color-text-muted);">Fondations</h2>
+  <div class="cover-links">
+    <a href="01-fondations-couleurs.html"><strong>Couleurs</strong><span>Nuancier fonctionnel, correction AA appliquée</span></a>
+    <a href="02-fondations-typographie.html"><strong>Typographie</strong><span>Fraunces + Inter, auto-hébergées</span></a>
+    <a href="03-fondations-espacement.html"><strong>Espacement &amp; grille</strong><span>Échelle 4px, rayons, ombres, breakpoints</span></a>
+    <a href="04-fondations-logo.html"><strong>Logo</strong><span>Symbole, lockups, favicon, règles d'usage</span></a>
+  </div>
+
+  <h2 style="font-family:var(--font-sans); font-size:var(--text-sm); text-transform:uppercase; letter-spacing:var(--tracking-wide); color:var(--color-text-muted); margin-top:var(--space-8);">Composants</h2>
+  <div class="cover-links">
+    <a href="05-composants-boutons.html"><strong>Boutons</strong><span>Primaire, secondaire, ghost, sticky mobile</span></a>
+    <a href="06-composants-badges.html"><strong>Badges &amp; tags</strong><span>Étiquettes de sens, argument fiscal</span></a>
+    <a href="07-composants-cards.html"><strong>Cards</strong><span>Standard, élevée, neutre</span></a>
+    <a href="08-composants-temoignage.html"><strong>Carte témoignage</strong><span>★ Priorité Notion</span></a>
+    <a href="09-composants-compteur-impact.html"><strong>Compteur d'impact</strong><span>★ Priorité Notion</span></a>
+    <a href="10-composants-cagnotte.html"><strong>Barre de progression cagnotte</strong><span>★ Priorité Notion</span></a>
+    <a href="11-composants-transition-icm.html"><strong>Transition ICM</strong><span>★ Priorité Notion, critique</span></a>
+    <a href="12-composants-formulaires.html"><strong>Formulaires</strong><span>Montants, opt-in RGPD, erreurs</span></a>
+    <a href="13-composants-navigation.html"><strong>Navigation</strong><span>Header, menu mobile</span></a>
+    <a href="14-composants-footer.html"><strong>Footer</strong><span>Newsletter, réseaux, mentions légales</span></a>
+  </div>
+
+  <h2 style="font-family:var(--font-sans); font-size:var(--text-sm); text-transform:uppercase; letter-spacing:var(--tracking-wide); color:var(--color-text-muted); margin-top:var(--space-8);">Patterns</h2>
+  <div class="cover-links">
+    <a href="15-patterns-hero.html"><strong>Hero</strong><span>Espoir actif, chiffre choc above the fold</span></a>
+    <a href="16-patterns-home-assemblee.html"><strong>Home assemblée</strong><span>Tous les composants en situation</span></a>
+  </div>
+
+  <p class="demo-note" style="margin-top:var(--space-9);">
+    Prochaine étape : validation par Christelle Arrighi avant le 28/07 (jalon « Charte graphique
+    validée », Notion Planning Phase 3), puis transmission à la phase maquettes Figma.
+  </p>
+</main>
+</body>
+</html>
