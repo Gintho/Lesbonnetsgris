@@ -280,6 +280,9 @@
 .ds-section--cream {
 	background: var(--cream);
 }
+.ds-section--sky {
+	background: var(--blue-sky);
+}
 .ds-section--primary {
 	background: var(--brand-primary);
 	color: var(--white);

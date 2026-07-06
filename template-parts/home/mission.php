@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<section class="ds-section ds-section--white">
+<section class="ds-section ds-section--sky">
 	<div class="ds-section__inner ds-mission__grid">
 		<div>
 			<span class="ds-badge ds-badge--secondary"><?php esc_html_e( 'Notre mission', 'bonnets-gris' ); ?></span>
