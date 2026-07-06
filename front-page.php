@@ -52,6 +52,7 @@ get_template_part( 'template-parts/home/testimonials' );
 get_template_part( 'template-parts/home/community' );
 get_template_part( 'template-parts/home/partners' );
 get_template_part( 'template-parts/home/faq' );
+get_template_part( 'template-parts/home/support-ways' );
 get_template_part( 'template-parts/marketing/newsletter' );
 
 get_footer();
