@@ -20,6 +20,8 @@ get_template_part(
 	)
 );
 
+get_template_part( 'template-parts/home/menu-highlights' );
+
 get_template_part( 'template-parts/home/news-teaser' );
 
 get_template_part( 'template-parts/home/mission' );

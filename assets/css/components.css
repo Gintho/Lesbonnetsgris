@@ -142,6 +142,9 @@
 
 /* ---- Navbar ---- */
 .ds-navbar {
+	position: sticky;
+	top: 0;
+	z-index: 100;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -1163,4 +1166,11 @@
 .ds-support-card__cta {
 	align-self: flex-start;
 	margin-top: 8px;
+}
+
+/* ---- Menu highlights (hero-area shortcuts, reuses mission-block visuals) ---- */
+.ds-menu-highlight-link {
+	display: block;
+	color: inherit;
+	text-decoration: none;
 }
