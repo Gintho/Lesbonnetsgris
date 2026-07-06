@@ -271,6 +271,9 @@
 	max-width: var(--container-max);
 	margin: 0 auto;
 }
+.ds-section__inner--narrow {
+	max-width: 760px;
+}
 .ds-section--white {
 	background: var(--white);
 }
@@ -495,4 +498,154 @@
 .ds-testimonial-card__role {
 	font-size: 13px;
 	opacity: 0.7;
+}
+
+/* ---- Section variant used by the Community band ---- */
+.ds-section--orange {
+	background: var(--orange-pop);
+	color: var(--white);
+}
+
+/* ---- Community card ("mur des Bonnets Gris") ---- */
+.ds-community-grid {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	gap: 10px;
+}
+@media (max-width: 900px) {
+	.ds-community-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+@media (max-width: 520px) {
+	.ds-community-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.ds-community-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	padding: 20px;
+	text-align: center;
+	background: var(--white);
+	border-radius: var(--radius-md);
+	font-family: var(--font-body);
+}
+.ds-community-card__heart {
+	fill: currentColor;
+}
+.ds-community-card__name {
+	font-weight: 700;
+	font-size: 14px;
+}
+.ds-community-card--heart-1 {
+	color: var(--heart-1);
+}
+.ds-community-card--heart-2 {
+	color: var(--heart-2);
+}
+.ds-community-card--heart-3 {
+	color: var(--heart-3);
+}
+.ds-community-card--heart-4 {
+	color: var(--heart-4);
+}
+.ds-community-card--heart-5 {
+	color: var(--heart-5);
+}
+
+/* ---- Partner card ---- */
+.ds-partners-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1px;
+	background: var(--border-default);
+}
+@media (max-width: 640px) {
+	.ds-partners-grid {
+		grid-template-columns: 1fr;
+	}
+}
+.ds-partner-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 96px;
+	background: var(--white);
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--text-muted);
+}
+
+/* ---- FAQ accordion (native <details>/<summary>, no JS needed) ---- */
+.ds-accordion__item {
+	border-bottom: 1px solid var(--border-default);
+}
+.ds-accordion__trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 20px 4px;
+	cursor: pointer;
+	list-style: none;
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 18px;
+	color: var(--gray-500);
+}
+.ds-accordion__trigger::-webkit-details-marker {
+	display: none;
+}
+.ds-accordion__icon {
+	flex-shrink: 0;
+	font-size: 20px;
+	color: var(--brand-primary);
+	transition: transform 0.2s ease;
+}
+.ds-accordion__item[open] .ds-accordion__icon {
+	transform: rotate(45deg);
+}
+.ds-accordion__panel {
+	margin: 0 4px 20px;
+	font-size: var(--text-body);
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+}
+
+/* ---- Newsletter ---- */
+.ds-newsletter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	padding: 64px 48px;
+	text-align: center;
+	background: var(--nude-salmon);
+	font-family: var(--font-body);
+}
+.ds-newsletter__title {
+	max-width: 480px;
+}
+.ds-newsletter__form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	width: 100%;
+	max-width: 420px;
+}
+.ds-newsletter__input {
+	flex: 1;
+	min-width: 200px;
+	padding: 14px 18px;
+	border-radius: var(--radius-pill);
+	border: 2px solid var(--gray-500);
+	background: var(--white);
+	color: var(--gray-500);
+	font-family: var(--font-body);
+	font-size: 15px;
+	outline: none;
 }
