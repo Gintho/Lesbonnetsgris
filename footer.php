@@ -3,9 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-	<footer class="site-footer">
-		<p>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?></p>
-	</footer>
+	<?php get_template_part( 'template-parts/navigation/footer' ); ?>
 	<?php wp_footer(); ?>
 </body>
 </html>

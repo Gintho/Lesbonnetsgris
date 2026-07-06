@@ -12,6 +12,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header class="site-header">
-	<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-</header>
+<?php get_template_part( 'template-parts/navigation/navbar' ); ?>

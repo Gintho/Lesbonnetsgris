@@ -1,0 +1,23 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+get_header();
+
+get_template_part(
+	'template-parts/marketing/hero',
+	null,
+	array(
+		'tone'            => 'secondary',
+		'eyebrow'         => __( 'Ensemble contre les tumeurs cérébrales', 'bonnets-gris' ),
+		'title'           => __( 'Le bonnet gris est un symbole.', 'bonnets-gris' ),
+		'subtitle'        => __( 'On le porte pour ceux qui se battent. Rejoignez le mouvement, pas juste une cause.', 'bonnets-gris' ),
+		'primary_label'   => __( 'Faire un don', 'bonnets-gris' ),
+		'primary_url'     => '#don',
+		'secondary_label' => __( 'Devenir Bonnet Gris', 'bonnets-gris' ),
+		'secondary_url'   => '#mouvement',
+	)
+);
+
+get_footer();
