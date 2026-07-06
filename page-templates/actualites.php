@@ -56,45 +56,62 @@ else :
 endif;
 ?>
 
-<section class="ds-section ds-section--white">
+
+<?php
+// Category slug -> visual tone for the mosaic tiles below.
+$category_tones = array(
+	'actualites-cat' => 'orange',
+	'evenements-cat' => 'blue',
+	'presse-cat'     => 'terracotta',
+);
+?>
+
+<section class="ds-section ds-section--cream">
 	<div class="ds-section__inner">
-		<h2 class="ds-h1 ds-section__title"><?php esc_html_e( 'Voir toutes nos actualités', 'bonnets-gris' ); ?></h2>
+		<h2 class="ds-h1 ds-section__title"><?php esc_html_e( 'Tout ce qui fait le mouvement', 'bonnets-gris' ); ?></h2>
 		<?php
-		$list_query = new WP_Query(
+		$mosaic_query = new WP_Query(
 			array(
 				'post_type'           => 'post',
 				'post_status'         => 'publish',
-				'posts_per_page'      => 9,
+				'posts_per_page'      => 24,
 				'post__not_in'        => $featured_id ? array( $featured_id ) : array(),
 				'ignore_sticky_posts' => true,
 			)
 		);
 
-		if ( $list_query->have_posts() ) :
+		if ( $mosaic_query->have_posts() ) :
 			?>
-			<div class="ds-cards-grid ds-cards-grid--news">
+			<div class="ds-mosaic">
 				<?php
-				while ( $list_query->have_posts() ) :
-					$list_query->the_post();
+				$index = 0;
+				while ( $mosaic_query->have_posts() ) :
+					$mosaic_query->the_post();
+					$post_categories = get_the_category();
+					$category_name   = $post_categories ? $post_categories[0]->name : '';
+					$category_slug   = $post_categories ? $post_categories[0]->slug : '';
 					get_template_part(
-						'template-parts/cards/news-card',
+						'template-parts/cards/mosaic-tile',
 						null,
 						array(
-							'title'   => get_the_title(),
-							'excerpt' => wp_trim_words( get_the_excerpt(), 20 ),
-							'image'   => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
-							'date'    => get_the_date(),
-							'url'     => get_permalink(),
+							'title'    => get_the_title(),
+							'image'    => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
+							'date'     => get_the_date(),
+							'url'      => get_permalink(),
+							'tone'     => $category_tones[ $category_slug ] ?? 'orange',
+							'category' => $category_name,
+							'large'    => 0 === $index % 5,
 						)
 					);
+					++$index;
 				endwhile;
+				wp_reset_postdata();
 				?>
 			</div>
 			<?php
-			wp_reset_postdata();
 		else :
 			?>
-			<p><?php esc_html_e( 'Aucune autre actualité pour le moment.', 'bonnets-gris' ); ?></p>
+			<p><?php esc_html_e( 'Aucun autre contenu pour le moment.', 'bonnets-gris' ); ?></p>
 			<?php
 		endif;
 		?>

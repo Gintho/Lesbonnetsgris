@@ -22,6 +22,9 @@ get_template_part(
 
 get_template_part( 'template-parts/home/news-teaser' );
 
+get_template_part( 'template-parts/home/mission' );
+get_template_part( 'template-parts/home/missions' );
+
 get_template_part(
 	'template-parts/marketing/stats',
 	null,
@@ -44,8 +47,6 @@ get_template_part(
 	)
 );
 
-get_template_part( 'template-parts/home/mission' );
-get_template_part( 'template-parts/home/missions' );
 get_template_part( 'template-parts/home/events' );
 get_template_part( 'template-parts/home/testimonials' );
 get_template_part( 'template-parts/home/community' );
