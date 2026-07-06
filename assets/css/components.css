@@ -1168,9 +1168,27 @@
 	margin-top: 8px;
 }
 
-/* ---- Menu highlights (hero-area shortcuts, reuses mission-block visuals) ---- */
+/* ---- Menu highlights (hero-area shortcuts, reuses mission-block visuals) ----
+   Single-column cascade: each block overlaps the previous one and
+   alternates left/right, echoing the overlapping collage reference. */
+.ds-menu-stack {
+	display: flex;
+	flex-direction: column;
+	max-width: 320px;
+	margin: 0 auto;
+}
 .ds-menu-highlight-link {
 	display: block;
+	width: 78%;
 	color: inherit;
 	text-decoration: none;
+}
+.ds-menu-highlight-link:not(:first-child) {
+	margin-top: -72px;
+}
+.ds-menu-highlight-link:nth-child(odd) {
+	align-self: flex-start;
+}
+.ds-menu-highlight-link:nth-child(even) {
+	align-self: flex-end;
 }

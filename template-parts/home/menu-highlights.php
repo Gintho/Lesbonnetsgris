@@ -32,7 +32,7 @@ $entries = array(
 ?>
 <section class="ds-section ds-section--white">
 	<div class="ds-section__inner">
-		<div class="ds-missions-grid">
+		<div class="ds-menu-stack">
 			<?php foreach ( $entries as $entry ) : ?>
 				<a class="ds-menu-highlight-link" href="<?php echo esc_url( $entry['url'] ); ?>">
 					<?php
