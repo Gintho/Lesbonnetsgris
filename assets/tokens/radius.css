@@ -1,0 +1,12 @@
+/* The brand language is graphic aplats — big square/rectangular blocks —
+   so structural surfaces stay sharp (radius-0/xs). Roundness is reserved
+   for warm, human touchpoints: buttons, pills, avatars, hearts. */
+:root {
+  --radius-0: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+}

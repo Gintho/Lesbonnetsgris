@@ -1,0 +1,99 @@
+/* Les Bonnets Gris — Color tokens
+   Base palette extracted directly from the brand charter's approved
+   "utilisations sur fonds" swatch (the 7 official background colors),
+   extended with tints/shades and semantic aliases for product use. */
+
+:root {
+  /* ---- Base palette (from charter) ---- */
+  --blue-electric: #2323fd;
+  --blue-electric-600: #1b1bd6;
+  --blue-electric-700: #1616a8;
+  --blue-sky: #c8e0ec;
+  --blue-sky-600: #a3c9dc;
+
+  --orange-pop: #ff4e1c;
+  --orange-pop-600: #e04010;
+  --orange-pop-700: #b8340d;
+  --terracotta: #c8492e;
+  --terracotta-600: #a83b24;
+  --terracotta-700: #8a2e1a;
+
+  --nude-salmon: #fdd9cd;
+  --nude-salmon-600: #f5b9a6;
+  --nude-salmon-700: #ec9c85;
+  --cream: #f2eae0;
+  --cream-600: #e8dbc9;
+
+  /* Neutral ramp — restricted to exactly 4 stops on client request: no black
+     or near-black anywhere in the system. White + Cream are the two page
+     surfaces; Gray 500 is the single dark neutral used for ALL text/borders
+     (deliberately darkened past a "true" 500-step so it clears AA contrast
+     on every brand surface: white, cream, nude salmon, sky blue); Gray 300
+     is reserved for decorative dividers/disabled states, never for text. */
+  --white: #ffffff;
+  --gray-300: #d3ccc0;
+  --gray-500: #57524a;
+
+  /* Functional (invented — not in charter; needed for UI states) */
+  --green-success: #2f8f5b;
+  --red-error: #d63b2f;
+  --amber-warning: #e8a93a;
+
+  /* ---- Semantic aliases ----
+     Nude Salmon / Sky Blue / Orange Pop are the PRIMARY brand colors.
+     Electric Blue and Terracotta are dedicated POP/ACCENT colors for
+     full-bleed color-block inserts (aplats) — hero bands, stat strips,
+     event cards — not for everyday UI chrome. */
+  --surface-page: var(--white);
+  --surface-card: var(--white);
+  --surface-inverse: var(--gray-500);
+  --surface-sunken: var(--cream);
+
+  --text-primary: var(--gray-500);
+  --text-secondary: var(--gray-500);
+  --text-muted: var(--gray-500);
+  --text-inverse: var(--white);
+  --text-on-brand: var(--white);
+
+  --border-default: var(--gray-300);
+  --border-strong: var(--gray-500);
+
+  --brand-primary: var(--blue-electric);
+  --brand-primary-hover: var(--blue-electric-600);
+  --brand-primary-active: var(--blue-electric-700);
+  --brand-secondary: var(--nude-salmon);
+  --brand-secondary-hover: var(--nude-salmon-600);
+  --brand-secondary-active: var(--nude-salmon-700);
+  /* Text color to pair with --brand-secondary — it's a light pastel, so it
+     takes gray-500 text/icons, never white. */
+  --brand-secondary-text: var(--gray-500);
+
+  --header-surface: var(--blue-sky);
+  --footer-surface: var(--blue-sky);
+  --footer-text: var(--gray-500);
+
+  /* Pop / accent colors — reserved for large color-block inserts (aplats),
+     not for buttons or everyday chrome. brand-primary now shares the same
+     blue as pop-blue — that's intentional, CTAs are blue site-wide. */
+  --pop-blue: var(--blue-electric);
+  --pop-terracotta: var(--terracotta);
+
+  --accent-1: var(--orange-pop);   /* pop / CTA / donate */
+  --accent-2: var(--blue-electric); /* movement / community */
+  --accent-3: var(--terracotta);    /* warm / deep */
+  --accent-4: var(--blue-sky);      /* soft / calm */
+  --accent-5: var(--nude-salmon);   /* soft / warm */
+
+  --focus-ring: var(--blue-electric);
+
+  --success: var(--green-success);
+  --error: var(--red-error);
+  --warning: var(--amber-warning);
+
+  /* Community "heart" colors — assignable per member/chapter, see README */
+  --heart-1: var(--orange-pop);
+  --heart-2: var(--blue-electric);
+  --heart-3: var(--blue-sky);
+  --heart-4: var(--nude-salmon);
+  --heart-5: var(--terracotta);
+}

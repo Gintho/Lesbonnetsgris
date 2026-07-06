@@ -1,0 +1,33 @@
+/* Les Bonnets Gris — Webfonts
+   No font files were supplied with the brand charter (the PDF export
+   contained only embedded images, no type specimens or licensed font
+   binaries). Substituted with the nearest Google Fonts matches for the
+   brand's "premium editorial, warm community movement" direction:
+     - Display: Bricolage Grotesque (variable) — a characterful, slightly
+       quirky geometric grotesque with real personality for big headline
+       moments, without tipping into the overused Fraunces/Inter territory.
+     - Body/UI: Manrope (variable) — clean, humanist, highly legible at
+       small UI sizes, warm rather than clinical.
+   FLAG TO DESIGNER: please supply the studio's real licensed font files
+   (or confirm these substitutes) so this file can be updated. */
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../fonts/bricolage-grotesque-variable.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/manrope-variable.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
