@@ -1,0 +1,187 @@
+/* Les Bonnets Gris — Design tokens
+   Source: Claude Design handoff (les-bonnets-gris-design-system).
+   Fonts are Google Fonts substitutes (Bricolage Grotesque + Manrope) —
+   no licensed studio fonts were supplied; confirm or replace. */
+
+@font-face {
+	font-family: 'Bricolage Grotesque';
+	src: url('../fonts/bricolage-grotesque-variable.woff2') format('woff2-variations');
+	font-weight: 200 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Manrope';
+	src: url('../fonts/manrope-variable.woff2') format('woff2-variations');
+	font-weight: 200 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+	--font-body: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+
+	/* ---- Base palette (from charter) ---- */
+	--blue-electric: #2323fd;
+	--blue-electric-600: #1b1bd6;
+	--blue-electric-700: #1616a8;
+	--blue-sky: #c8e0ec;
+	--blue-sky-600: #a3c9dc;
+
+	--orange-pop: #ff4e1c;
+	--orange-pop-600: #e04010;
+	--orange-pop-700: #b8340d;
+	--terracotta: #c8492e;
+	--terracotta-600: #a83b24;
+	--terracotta-700: #8a2e1a;
+
+	--nude-salmon: #fdd9cd;
+	--nude-salmon-600: #f5b9a6;
+	--nude-salmon-700: #ec9c85;
+	--cream: #f2eae0;
+	--cream-600: #e8dbc9;
+
+	--white: #ffffff;
+	--gray-300: #d3ccc0;
+	--gray-500: #57524a;
+
+	--green-success: #2f8f5b;
+	--red-error: #d63b2f;
+	--amber-warning: #e8a93a;
+
+	/* ---- Semantic aliases ---- */
+	--surface-page: var(--white);
+	--surface-card: var(--white);
+	--surface-inverse: var(--gray-500);
+	--surface-sunken: var(--cream);
+
+	--text-primary: var(--gray-500);
+	--text-secondary: var(--gray-500);
+	--text-muted: var(--gray-500);
+	--text-inverse: var(--white);
+	--text-on-brand: var(--white);
+
+	--border-default: var(--gray-300);
+	--border-strong: var(--gray-500);
+
+	--brand-primary: var(--blue-electric);
+	--brand-primary-hover: var(--blue-electric-600);
+	--brand-primary-active: var(--blue-electric-700);
+	--brand-secondary: var(--nude-salmon);
+	--brand-secondary-hover: var(--nude-salmon-600);
+	--brand-secondary-active: var(--nude-salmon-700);
+	--brand-secondary-text: var(--gray-500);
+
+	--header-surface: var(--blue-sky);
+	--footer-surface: var(--blue-sky);
+	--footer-text: var(--gray-500);
+
+	--pop-blue: var(--blue-electric);
+	--pop-terracotta: var(--terracotta);
+
+	--focus-ring: var(--blue-electric);
+
+	--success: var(--green-success);
+	--error: var(--red-error);
+	--warning: var(--amber-warning);
+
+	--heart-1: var(--orange-pop);
+	--heart-2: var(--blue-electric);
+	--heart-3: var(--blue-sky);
+	--heart-4: var(--nude-salmon);
+	--heart-5: var(--terracotta);
+
+	/* ---- Type scale ---- */
+	--text-display-xxl: clamp(3.5rem, 8vw, 8rem);
+	--text-hero: clamp(2.75rem, 6vw, 5.5rem);
+	--text-h1: clamp(2.25rem, 4vw, 3.5rem);
+	--text-h2: clamp(1.75rem, 3vw, 2.5rem);
+	--text-h3: clamp(1.375rem, 2vw, 1.75rem);
+	--text-body-xl: 1.25rem;
+	--text-body: 1.0625rem;
+	--text-caption: 0.875rem;
+	--text-button: 1rem;
+	--text-eyebrow: 0.8125rem;
+
+	--leading-tight: 1.02;
+	--leading-snug: 1.15;
+	--leading-normal: 1.45;
+	--leading-relaxed: 1.6;
+
+	--tracking-tight: -0.02em;
+	--tracking-normal: 0;
+	--tracking-wide: 0.08em;
+
+	--weight-regular: 400;
+	--weight-medium: 500;
+	--weight-semibold: 600;
+	--weight-bold: 700;
+	--weight-display: 800;
+
+	/* ---- Spacing ---- */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+	--space-7: 48px;
+	--space-8: 64px;
+	--space-9: 96px;
+	--space-10: 128px;
+	--space-11: 160px;
+
+	--container-max: 1280px;
+	--container-pad: clamp(20px, 5vw, 80px);
+
+	/* ---- Radius ---- */
+	--radius-0: 0px;
+	--radius-xs: 2px;
+	--radius-sm: 6px;
+	--radius-md: 12px;
+	--radius-lg: 20px;
+	--radius-pill: 999px;
+	--radius-circle: 50%;
+
+	/* ---- Shadow ---- */
+	--shadow-sm: 0 1px 2px rgba(35, 38, 43, 0.06), 0 1px 1px rgba(35, 38, 43, 0.04);
+	--shadow-md: 0 8px 24px rgba(35, 38, 43, 0.08);
+	--shadow-lg: 0 24px 48px rgba(35, 38, 43, 0.14);
+	--shadow-focus: 0 0 0 3px rgba(35, 35, 253, 0.35);
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-body);
+	color: var(--text-primary);
+	font-size: var(--text-body);
+	line-height: var(--leading-normal);
+	background: var(--surface-page);
+}
+
+.ds-display-xxl, .ds-hero, .ds-h1, .ds-h2, .ds-h3 {
+	font-family: var(--font-display);
+	font-weight: var(--weight-display);
+	letter-spacing: var(--tracking-tight);
+	line-height: var(--leading-tight);
+	margin: 0;
+}
+.ds-display-xxl { font-size: var(--text-display-xxl); }
+.ds-hero { font-size: var(--text-hero); }
+.ds-h1 { font-size: var(--text-h1); }
+.ds-h2 { font-size: var(--text-h2); line-height: var(--leading-snug); }
+.ds-h3 { font-size: var(--text-h3); line-height: var(--leading-snug); font-weight: var(--weight-bold); }
+
+.ds-eyebrow {
+	font-family: var(--font-body);
+	font-size: var(--text-eyebrow);
+	font-weight: var(--weight-semibold);
+	letter-spacing: var(--tracking-wide);
+	text-transform: uppercase;
+}
