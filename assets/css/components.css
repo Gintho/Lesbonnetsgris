@@ -571,8 +571,7 @@
 .ds-partners-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 1px;
-	background: var(--border-default);
+	gap: 16px;
 }
 @media (max-width: 640px) {
 	.ds-partners-grid {
@@ -583,12 +582,32 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 96px;
+	min-height: 120px;
+	padding: 16px;
+	border-radius: var(--radius-sm);
+}
+.ds-partner-card--rose {
+	background: var(--nude-salmon);
+}
+.ds-partner-card--sky {
+	background: var(--blue-sky);
+}
+.ds-partner-card--orange {
+	background: var(--orange-pop);
+}
+.ds-partner-card--terracotta {
+	background: var(--terracotta);
+}
+.ds-partner-card__name {
 	background: var(--white);
+	padding: 14px 22px;
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow-sm);
 	font-family: var(--font-display);
 	font-weight: 700;
 	font-size: 16px;
-	color: var(--text-muted);
+	color: var(--gray-500);
+	text-align: center;
 }
 
 /* ---- FAQ accordion (native <details>/<summary>, no JS needed) ---- */
