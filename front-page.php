@@ -5,8 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-get_template_part( 'template-parts/home/news-teaser' );
-
 get_template_part(
 	'template-parts/marketing/hero',
 	null,
@@ -21,6 +19,8 @@ get_template_part(
 		'secondary_url'   => '#mouvement',
 	)
 );
+
+get_template_part( 'template-parts/home/news-teaser' );
 
 get_template_part(
 	'template-parts/marketing/stats',

@@ -19,11 +19,11 @@ $cta_url     = $args['cta_url'] ?? '#';
 		<span class="ds-news-hero__block ds-news-hero__block--3"></span>
 		<span class="ds-news-hero__block ds-news-hero__block--4"></span>
 	</div>
-	<?php if ( $image ) : ?>
-		<div class="ds-news-hero__image">
+	<div class="ds-news-hero__image<?php echo $image ? '' : ' is-placeholder'; ?>">
+		<?php if ( $image ) : ?>
 			<img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $image_alt ); ?>" />
-		</div>
-	<?php endif; ?>
+		<?php endif; ?>
+	</div>
 	<div class="ds-news-hero__card">
 		<?php if ( $eyebrow ) : ?>
 			<span class="ds-badge ds-badge--secondary"><?php echo esc_html( $eyebrow ); ?></span>

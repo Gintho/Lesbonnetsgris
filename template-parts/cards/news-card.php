@@ -10,11 +10,11 @@ $date    = $args['date'] ?? '';
 $url     = $args['url'] ?? '#';
 ?>
 <article class="ds-news-card">
-	<?php if ( $image ) : ?>
-		<div class="ds-news-card__image">
+	<div class="ds-news-card__image<?php echo $image ? '' : ' is-placeholder'; ?>">
+		<?php if ( $image ) : ?>
 			<img src="<?php echo esc_url( $image ); ?>" alt="" />
-		</div>
-	<?php endif; ?>
+		<?php endif; ?>
+	</div>
 	<div class="ds-news-card__body">
 		<?php if ( $date ) : ?>
 			<span class="ds-news-card__date"><?php echo esc_html( $date ); ?></span>
