@@ -379,3 +379,120 @@
 		grid-template-columns: 1fr;
 	}
 }
+
+/* ---- Section header row (title + optional link, used by cards sections) ---- */
+.ds-section__header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 16px;
+	margin-bottom: 40px;
+}
+.ds-section__title {
+	margin-bottom: 40px;
+}
+
+/* ---- Cards grid ---- */
+.ds-cards-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 4px;
+}
+@media (max-width: 900px) {
+	.ds-cards-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ---- Event card ---- */
+.ds-event-card {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	min-height: 220px;
+	padding: 28px;
+	font-family: var(--font-body);
+}
+.ds-event-card--primary {
+	background: var(--brand-primary);
+	color: var(--white);
+}
+.ds-event-card--secondary {
+	background: var(--brand-secondary);
+	color: var(--gray-500);
+}
+.ds-event-card--pop-blue {
+	background: var(--pop-blue);
+	color: var(--white);
+}
+.ds-event-card--pop-terracotta {
+	background: var(--pop-terracotta);
+	color: var(--white);
+}
+.ds-event-card__date-row {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+}
+.ds-event-card__date {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 40px;
+	line-height: 1;
+}
+.ds-event-card__month {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-wide);
+	font-size: 13px;
+}
+.ds-event-card__body {
+	flex: 1;
+}
+.ds-event-card__title {
+	font-size: 20px;
+	color: inherit;
+	margin-bottom: 6px;
+}
+.ds-event-card__location {
+	font-size: 14px;
+	opacity: 0.85;
+}
+
+/* ---- Testimonial card ---- */
+.ds-testimonial-card {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	min-height: 220px;
+	padding: 32px;
+	color: var(--gray-500);
+	font-family: var(--font-body);
+}
+.ds-testimonial-card--nude {
+	background: var(--nude-salmon);
+}
+.ds-testimonial-card--sky {
+	background: var(--blue-sky);
+}
+.ds-testimonial-card--cream {
+	background: var(--cream);
+}
+.ds-testimonial-card__mark {
+	opacity: 0.25;
+}
+.ds-testimonial-card__quote {
+	margin: 0;
+	font-size: 19px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+.ds-testimonial-card__name {
+	font-weight: 700;
+	font-size: 15px;
+}
+.ds-testimonial-card__role {
+	font-size: 13px;
+	opacity: 0.7;
+}
