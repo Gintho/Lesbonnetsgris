@@ -5,6 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
+get_template_part( 'template-parts/home/news-teaser' );
+
 get_template_part(
 	'template-parts/marketing/hero',
 	null,
