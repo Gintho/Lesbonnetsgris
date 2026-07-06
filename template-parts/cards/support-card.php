@@ -21,7 +21,7 @@ $cta_url     = $args['cta_url'] ?? '#';
 			<p class="ds-support-card__description"><?php echo esc_html( $description ); ?></p>
 		<?php endif; ?>
 		<?php if ( $cta_label ) : ?>
-			<a class="ds-button ds-button--primary ds-support-card__cta" href="<?php echo esc_url( $cta_url ); ?>">
+			<a class="ds-button ds-button--pop-orange ds-support-card__cta" href="<?php echo esc_url( $cta_url ); ?>">
 				<?php echo esc_html( $cta_label ); ?>
 			</a>
 		<?php endif; ?>

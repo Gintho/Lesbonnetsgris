@@ -90,6 +90,14 @@
 .ds-button--pop-terracotta:hover {
 	background: var(--terracotta-600);
 }
+.ds-button--pop-orange {
+	background: var(--orange-pop);
+	color: var(--white);
+	border-color: var(--orange-pop);
+}
+.ds-button--pop-orange:hover {
+	background: var(--orange-pop-600);
+}
 
 /* ---- Badge ---- */
 .ds-badge {
@@ -1088,7 +1096,9 @@
 }
 .ds-support-card__panel {
 	position: relative;
-	margin: -48px 24px 0;
+	/* Color block is aspect-ratio 4/3, so -37.5% (half of 75%) pulls the
+	   panel up to exactly half the block's height, responsively. */
+	margin: -37.5% 24px 0;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
