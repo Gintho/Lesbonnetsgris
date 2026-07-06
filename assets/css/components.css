@@ -262,3 +262,120 @@
 	font-size: 13px;
 	opacity: 0.6;
 }
+
+/* ---- Section layout (generic full-bleed band + centered content) ---- */
+.ds-section {
+	padding: 80px 48px;
+}
+.ds-section__inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+}
+.ds-section--white {
+	background: var(--white);
+}
+.ds-section--cream {
+	background: var(--cream);
+}
+.ds-section--primary {
+	background: var(--brand-primary);
+	color: var(--white);
+}
+.ds-section--pop-blue {
+	background: var(--pop-blue);
+	color: var(--white);
+}
+.ds-section--pop-terracotta {
+	background: var(--pop-terracotta);
+	color: var(--white);
+}
+
+/* ---- Stats ---- */
+.ds-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	padding: 56px 32px;
+	font-family: var(--font-body);
+}
+.ds-stats--primary {
+	background: var(--brand-primary);
+	color: var(--white);
+}
+.ds-stats--secondary {
+	background: var(--brand-secondary);
+	color: var(--gray-500);
+}
+.ds-stats--dark {
+	background: var(--gray-500);
+	color: var(--white);
+}
+.ds-stats--pop-blue {
+	background: var(--pop-blue);
+	color: var(--white);
+}
+.ds-stats--pop-terracotta {
+	background: var(--pop-terracotta);
+	color: var(--white);
+}
+.ds-stats__item {
+	flex: 1;
+	min-width: 140px;
+	text-align: center;
+}
+.ds-stats__value {
+	font-family: var(--font-display);
+	font-weight: 800;
+	letter-spacing: var(--tracking-tight);
+	line-height: var(--leading-tight);
+	font-size: clamp(2.5rem, 5vw, 4rem);
+	color: inherit;
+}
+.ds-stats__label {
+	margin-top: 8px;
+	font-size: 14px;
+	opacity: 0.8;
+	text-transform: uppercase;
+	letter-spacing: var(--tracking-wide);
+}
+
+/* ---- Mission (homepage split narrative block) ---- */
+.ds-mission__grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 64px;
+	align-items: center;
+}
+.ds-mission__title {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.ds-mission__text {
+	max-width: 480px;
+	font-size: var(--text-body-xl);
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+}
+.ds-mission__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+	margin-top: 28px;
+}
+.ds-mission__visual {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 4 / 3;
+	background: var(--white);
+	border: 1px solid var(--border-default);
+}
+.ds-mission__visual img {
+	width: 55%;
+	height: auto;
+}
+@media (max-width: 780px) {
+	.ds-mission__grid {
+		grid-template-columns: 1fr;
+	}
+}

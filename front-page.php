@@ -20,4 +20,28 @@ get_template_part(
 	)
 );
 
+get_template_part(
+	'template-parts/marketing/stats',
+	null,
+	array(
+		'tone'  => 'primary',
+		'items' => array(
+			array(
+				'value' => '2,4M€',
+				'label' => __( 'Collectés depuis 2019', 'bonnets-gris' ),
+			),
+			array(
+				'value' => '312',
+				'label' => __( 'Familles accompagnées', 'bonnets-gris' ),
+			),
+			array(
+				'value' => '9',
+				'label' => __( 'Programmes de recherche financés', 'bonnets-gris' ),
+			),
+		),
+	)
+);
+
+get_template_part( 'template-parts/home/mission' );
+
 get_footer();
