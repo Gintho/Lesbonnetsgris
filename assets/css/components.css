@@ -1121,6 +1121,9 @@
 	background: var(--cream);
 	border: 1px solid var(--border-default);
 }
+.ds-support-card--terracotta .ds-support-card__color {
+	background: var(--terracotta);
+}
 .ds-support-card__panel {
 	position: relative;
 	/* Color block is aspect-ratio 4/3, so -37.5% (half of 75%) pulls the

@@ -21,7 +21,7 @@ $ways = array(
 		'cta_url'     => '#mouvement',
 	),
 	array(
-		'tone'        => 'cream',
+		'tone'        => 'terracotta',
 		'title'       => __( 'Mécénat', 'bonnets-gris' ),
 		'subtitle'    => __( 'Pour les entreprises', 'bonnets-gris' ),
 		'description' => __( 'Associez votre entreprise à un mouvement qui rassemble familles, chercheurs et bénévoles.', 'bonnets-gris' ),
