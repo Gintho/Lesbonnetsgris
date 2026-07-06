@@ -951,17 +951,25 @@
 }
 .ds-mission-block__logo {
 	position: absolute;
-	bottom: 0;
+	/* Color block spans top:0 to 82% height, so its vertical midpoint is
+	   at 41%; offsetting by half this card's own height (38%) centers
+	   the card on that midpoint. */
+	top: 22%;
 	left: 0;
 	width: 52%;
 	height: 38%;
 	padding: 10%;
 	background: var(--white);
 	border-radius: var(--radius-sm);
-	box-shadow: var(--shadow-sm);
+	box-shadow: var(--shadow-md);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.ds-mission-block:hover .ds-mission-block__logo {
+	transform: translateY(-8px);
+	box-shadow: var(--shadow-lg);
 }
 .ds-mission-block__logo img {
 	width: 100%;
