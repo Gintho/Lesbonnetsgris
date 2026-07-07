@@ -3,11 +3,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$tone  = $args['tone'] ?? 'nude';
-$quote = $args['quote'] ?? '';
-$name  = $args['name'] ?? '';
-$role  = $args['role'] ?? '';
-$video = $args['video'] ?? '';
+$tone      = $args['tone'] ?? 'nude';
+$quote     = $args['quote'] ?? '';
+$name      = $args['name'] ?? '';
+$role      = $args['role'] ?? '';
+$video     = $args['video'] ?? '';
+$cta_label = $args['cta_label'] ?? '';
+$cta_url   = $args['cta_url'] ?? '#';
 ?>
 <section class="ds-section ds-section--cream">
 	<div class="ds-section__inner">
@@ -32,6 +34,11 @@ $video = $args['video'] ?? '';
 					<div class="ds-testimonial-card__name"><?php echo esc_html( $name ); ?></div>
 					<div class="ds-testimonial-card__role"><?php echo esc_html( $role ); ?></div>
 				</div>
+				<?php if ( $cta_label ) : ?>
+					<a class="ds-button ds-button--outline ds-reel-testimonial__cta" href="<?php echo esc_url( $cta_url ); ?>">
+						<?php echo esc_html( $cta_label ); ?>
+					</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

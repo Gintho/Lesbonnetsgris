@@ -1784,6 +1784,9 @@
 .ds-reel-testimonial__quote {
 	margin: 12px 0 20px;
 }
+.ds-reel-testimonial__cta {
+	margin-top: 20px;
+}
 @media (max-width: 720px) {
 	.ds-reel-testimonial {
 		flex-direction: column;
