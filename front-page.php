@@ -4,7 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
+?>
 
+<div class="ds-page-title">
+	<h1 class="ds-h1"><?php esc_html_e( 'Les Bonnets Gris', 'bonnets-gris' ); ?></h1>
+</div>
+
+<?php
 get_template_part(
 	'template-parts/marketing/manifesto',
 	null,
