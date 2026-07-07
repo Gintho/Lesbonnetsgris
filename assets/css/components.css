@@ -1409,40 +1409,25 @@
 	color: var(--text-secondary);
 }
 
-/* ---- Manifesto (full-width editorial statement, with parallax) ---- */
+/* ---- Manifesto (full-width editorial statement, with background parallax) ----
+   Classic depth effect: a faint background texture sits behind the text and is
+   translated at a fraction of the scroll speed via JS (assets/js/parallax.js),
+   so it visibly lags behind the foreground content as the page scrolls. */
 .ds-manifesto-section {
 	position: relative;
 	overflow: hidden;
 }
-.ds-manifesto-section__parallax {
+.ds-manifesto-section__bg {
 	position: absolute;
-	inset: 0;
-	pointer-events: none;
-}
-.ds-manifesto-section__blob {
-	position: absolute;
-	border-radius: var(--radius-circle);
-	filter: blur(70px);
-	opacity: 0.4;
-	will-change: transform;
-}
-.ds-manifesto-section__blob--1 {
-	top: -10%;
-	left: -8%;
-	width: 42vw;
-	height: 42vw;
-	max-width: 480px;
-	max-height: 480px;
-	background: var(--orange-pop);
-}
-.ds-manifesto-section__blob--2 {
-	bottom: -18%;
+	top: -25%;
+	left: -10%;
 	right: -10%;
-	width: 36vw;
-	height: 36vw;
-	max-width: 420px;
-	max-height: 420px;
-	background: var(--blue-electric);
+	bottom: -25%;
+	background-image: radial-gradient(var(--gray-500) 1.5px, transparent 1.5px);
+	background-size: 28px 28px;
+	opacity: 0.08;
+	pointer-events: none;
+	will-change: transform;
 }
 .ds-manifesto {
 	position: relative;
@@ -1452,11 +1437,9 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 28px;
-	will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) {
-	.ds-manifesto-section__blob,
-	.ds-manifesto {
+	.ds-manifesto-section__bg {
 		transform: none !important;
 	}
 }
