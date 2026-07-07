@@ -27,12 +27,12 @@ function bonnets_gris_scripts() {
 		wp_get_theme()->get( 'Version' )
 	);
 
-	$parallax_path = get_theme_file_path( 'assets/js/parallax.js' );
+	$manifesto_reveal_path = get_theme_file_path( 'assets/js/manifesto-reveal.js' );
 	wp_enqueue_script(
-		'bonnets-gris-parallax',
-		get_theme_file_uri( 'assets/js/parallax.js' ),
+		'bonnets-gris-manifesto-reveal',
+		get_theme_file_uri( 'assets/js/manifesto-reveal.js' ),
 		array(),
-		file_exists( $parallax_path ) ? filemtime( $parallax_path ) : false,
+		file_exists( $manifesto_reveal_path ) ? filemtime( $manifesto_reveal_path ) : false,
 		true
 	);
 }
