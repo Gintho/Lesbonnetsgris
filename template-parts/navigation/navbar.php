@@ -23,6 +23,11 @@ function bonnets_gris_navbar_link_attributes( $atts ) {
 		);
 		remove_filter( 'nav_menu_link_attributes', 'bonnets_gris_navbar_link_attributes' );
 		?>
-		<a class="ds-button ds-button--primary ds-button--sm" href="#don"><?php esc_html_e( 'Faire un don', 'bonnets-gris' ); ?></a>
+		<a class="ds-button ds-button--outline ds-button--sm" href="https://loirparis.fr/" target="_blank" rel="noopener">
+			<?php esc_html_e( 'Boutique', 'bonnets-gris' ); ?>
+		</a>
+		<a class="ds-button ds-button--primary ds-button--sm" href="https://institutducerveau.org/faire-don-ponctuel" target="_blank" rel="noopener">
+			<?php esc_html_e( 'Don', 'bonnets-gris' ); ?>
+		</a>
 	</div>
 </nav>
