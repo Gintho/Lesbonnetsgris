@@ -1460,12 +1460,26 @@
 	margin: 0;
 	color: var(--gray-500);
 }
-.ds-brand-loop__gif {
+.ds-brand-loop__gif-wrap {
 	flex: 0 0 auto;
-	width: 220px;
-	height: 220px;
+	width: 320px;
+	height: 320px;
+	background: var(--white);
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-md);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ds-brand-loop__gif {
+	width: 200px;
+	height: 200px;
+}
+@media (max-width: 400px) {
+	.ds-brand-loop__gif-wrap {
+		width: 260px;
+		height: 260px;
+	}
 }
 @media (max-width: 720px) {
 	.ds-brand-loop {

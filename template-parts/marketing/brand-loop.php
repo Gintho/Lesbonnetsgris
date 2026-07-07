@@ -14,14 +14,16 @@ $text    = $args['text'] ?? '';
 			<h1 class="ds-display-xxl ds-brand-loop__text"><?php echo esc_html( $text ); ?></h1>
 		<?php endif; ?>
 		<?php if ( $gif ) : ?>
-			<img
-				class="ds-brand-loop__gif"
-				src="<?php echo esc_url( $gif ); ?>"
-				alt="<?php echo esc_attr( $gif_alt ); ?>"
-				width="220"
-				height="220"
-				loading="lazy"
-			/>
+			<div class="ds-brand-loop__gif-wrap">
+				<img
+					class="ds-brand-loop__gif"
+					src="<?php echo esc_url( $gif ); ?>"
+					alt="<?php echo esc_attr( $gif_alt ); ?>"
+					width="200"
+					height="200"
+					loading="lazy"
+				/>
+			</div>
 		<?php endif; ?>
 	</div>
 </section>
