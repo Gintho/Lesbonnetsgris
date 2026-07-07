@@ -6,26 +6,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 
 get_template_part(
-	'template-parts/marketing/hero',
+	'template-parts/marketing/manifesto',
 	null,
 	array(
-		'tone'            => 'secondary',
-		'eyebrow'         => __( 'Ensemble contre les tumeurs cérébrales', 'bonnets-gris' ),
-		'title'           => __( 'Le bonnet gris est un symbole.', 'bonnets-gris' ),
-		'subtitle'        => __( 'On le porte pour ceux qui se battent. Rejoignez le mouvement, pas juste une cause.', 'bonnets-gris' ),
-		'primary_label'   => __( 'Faire un don', 'bonnets-gris' ),
-		'primary_url'     => '#don',
-		'secondary_label' => __( 'Devenir Bonnet Gris', 'bonnets-gris' ),
-		'secondary_url'   => '#mouvement',
+		'tone'        => 'cream',
+		'eyebrow'     => __( 'Notre manifeste', 'bonnets-gris' ),
+		'text_before' => __( "Le bonnet gris n'est pas un signe de tristesse. C'est un signe de présence. On le porte pour dire qu'on est là, ", 'bonnets-gris' ),
+		'highlight'   => __( "et qu'ensemble, on fait reculer la maladie.", 'bonnets-gris' ),
+		'cta_label'   => __( 'Découvrir nos missions', 'bonnets-gris' ),
+		'cta_url'     => home_url( '/missions/' ),
 	)
 );
 
-get_template_part( 'template-parts/home/menu-highlights' );
-
-get_template_part( 'template-parts/home/news-teaser' );
-
-get_template_part( 'template-parts/home/mission' );
-get_template_part( 'template-parts/home/missions' );
+get_template_part(
+	'template-parts/marketing/photo-mosaic-banner',
+	null,
+	array(
+		'eyebrow' => __( 'La communauté', 'bonnets-gris' ),
+		'title'   => __( 'Un mouvement, des visages', 'bonnets-gris' ),
+		'people'  => array( 'Léa', 'Tom', 'Ana', 'Yanis', 'Chloé', 'Nael', 'Sofia', 'Hugo', 'Zoé', 'Adam', 'Mila', 'Léo' ),
+	)
+);
 
 get_template_part(
 	'template-parts/marketing/stats',
@@ -49,11 +50,46 @@ get_template_part(
 	)
 );
 
-get_template_part( 'template-parts/home/events' );
-get_template_part( 'template-parts/home/testimonials' );
-get_template_part( 'template-parts/home/community' );
-get_template_part( 'template-parts/home/partners' );
-get_template_part( 'template-parts/home/faq' );
+get_template_part( 'template-parts/home/news-teaser' );
+
+get_template_part(
+	'template-parts/marketing/horizontal-push',
+	null,
+	array(
+		'tone'        => 'sky',
+		'eyebrow'     => __( "S'engager", 'bonnets-gris' ),
+		'title'       => __( 'Rejoignez le mouvement', 'bonnets-gris' ),
+		'description' => __( 'Courir, collecter, donner de son temps ou devenir partenaire : il existe mille façons de porter le bonnet gris avec nous.', 'bonnets-gris' ),
+		'cta_label'   => __( 'Découvrir comment nous rejoindre', 'bonnets-gris' ),
+		'cta_url'     => home_url( '/rejoignez-nous/' ),
+	)
+);
+
+get_template_part(
+	'template-parts/marketing/photo-band-cta',
+	null,
+	array(
+		'tone'        => 'terracotta',
+		'eyebrow'     => __( 'Le symbole', 'bonnets-gris' ),
+		'title'       => __( 'Portez le bonnet gris', 'bonnets-gris' ),
+		'description' => __( "Un bonnet, c'est plus qu'un accessoire : c'est une façon de dire qu'on est solidaires. Retrouvez-le sur notre boutique solidaire.", 'bonnets-gris' ),
+		'cta_label'   => __( 'Découvrir la boutique', 'bonnets-gris' ),
+		'cta_url'     => 'https://loirparis.fr/',
+		'cta_target'  => '_blank',
+	)
+);
+
+get_template_part(
+	'template-parts/marketing/reel-testimonial',
+	null,
+	array(
+		'tone'  => 'nude',
+		'quote' => __( 'Je porte le bonnet gris pour tous ceux qu\'on ne voit pas assez. Un post, un partage, ça compte aussi.', 'bonnets-gris' ),
+		'name'  => 'Lina',
+		'role'  => __( 'Créatrice de contenu, ambassadrice des Bonnets Gris', 'bonnets-gris' ),
+	)
+);
+
 get_template_part( 'template-parts/home/support-ways' );
 get_template_part( 'template-parts/marketing/newsletter' );
 
