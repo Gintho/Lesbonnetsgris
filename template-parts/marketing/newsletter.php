@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * point this form's action/method at it.
  */
 ?>
-<div class="ds-newsletter">
+<div class="ds-newsletter" id="newsletter">
 	<h2 class="ds-h2 ds-newsletter__title"><?php esc_html_e( 'Rejoignez la communauté des Bonnets Gris', 'bonnets-gris' ); ?></h2>
 	<form class="ds-newsletter__form" method="post" action="">
 		<label class="screen-reader-text" for="bonnets-gris-newsletter-email"><?php esc_html_e( 'Adresse email', 'bonnets-gris' ); ?></label>
