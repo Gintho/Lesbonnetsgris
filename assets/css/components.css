@@ -396,6 +396,26 @@
 	min-width: 140px;
 	text-align: center;
 }
+.ds-stats__item--card {
+	padding: 28px 20px;
+	border-radius: var(--radius-md);
+	color: var(--gray-500);
+}
+.ds-stats__item--nude {
+	background: var(--nude-salmon);
+}
+.ds-stats__item--sky {
+	background: var(--blue-sky);
+}
+.ds-stats__item--cream {
+	background: var(--cream);
+}
+.ds-stats__item--nude-deep {
+	background: var(--nude-salmon-600);
+}
+.ds-stats__item--sky-deep {
+	background: var(--blue-sky-600);
+}
 .ds-stats__value {
 	font-family: var(--font-display);
 	font-weight: 800;
