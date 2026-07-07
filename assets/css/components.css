@@ -348,10 +348,28 @@
 /* ---- Stats ---- */
 .ds-stats {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 24px;
+	flex-direction: column;
+	gap: 32px;
 	padding: 56px 32px;
 	font-family: var(--font-body);
+}
+.ds-stats__items {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+.ds-stats__footer {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+	padding-top: 24px;
+	border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+.ds-stats__source {
+	margin-left: auto;
+	font-size: 13px;
+	opacity: 0.75;
 }
 .ds-stats--primary {
 	background: var(--brand-primary);

@@ -43,21 +43,32 @@ get_template_part(
 	'template-parts/marketing/stats',
 	null,
 	array(
-		'tone'  => 'primary',
-		'items' => array(
+		'tone'      => 'primary',
+		'items'     => array(
 			array(
-				'value' => '2,4M€',
-				'label' => __( 'Collectés depuis 2019', 'bonnets-gris' ),
+				'value' => '6 000',
+				'label' => __( 'Nouveaux cas par an', 'bonnets-gris' ),
 			),
 			array(
-				'value' => '312',
-				'label' => __( 'Familles accompagnées', 'bonnets-gris' ),
+				'value' => '4 000',
+				'label' => __( 'Décès par an', 'bonnets-gris' ),
 			),
 			array(
-				'value' => '9',
-				'label' => __( 'Programmes de recherche financés', 'bonnets-gris' ),
+				'value' => '1ère',
+				'label' => __( 'Cause de mortalité chez les moins de 35 ans', 'bonnets-gris' ),
+			),
+			array(
+				'value' => '12 mois',
+				'label' => __( 'De survie médiane', 'bonnets-gris' ),
+			),
+			array(
+				'value' => '0',
+				'label' => __( 'Progrès thérapeutique en 30 ans', 'bonnets-gris' ),
 			),
 		),
+		'source'    => __( 'Sources : ARS - INCa - ICM', 'bonnets-gris' ),
+		'cta_label' => __( 'En savoir plus', 'bonnets-gris' ),
+		'cta_url'   => home_url( '/la-maladie/' ),
 	)
 );
 
