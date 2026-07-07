@@ -11,6 +11,11 @@ $image       = $args['image'] ?? '';
 $image_alt   = $args['image_alt'] ?? '';
 $cta_label   = $args['cta_label'] ?? '';
 $cta_url     = $args['cta_url'] ?? '#';
+
+$heading_tag = $args['heading_tag'] ?? 'h1';
+if ( ! in_array( $heading_tag, array( 'h1', 'h2', 'h3' ), true ) ) {
+	$heading_tag = 'h1';
+}
 ?>
 <section class="ds-news-hero">
 	<div class="ds-news-hero__blocks" aria-hidden="true">
@@ -28,7 +33,7 @@ $cta_url     = $args['cta_url'] ?? '#';
 		<?php if ( $eyebrow ) : ?>
 			<span class="ds-badge ds-badge--secondary"><?php echo esc_html( $eyebrow ); ?></span>
 		<?php endif; ?>
-		<h1 class="ds-h1 ds-news-hero__title"><?php echo esc_html( $title ); ?></h1>
+		<?php printf( '<%1$s class="ds-h1 ds-news-hero__title">%2$s</%1$s>', esc_html( $heading_tag ), esc_html( $title ) ); ?>
 		<?php if ( $subtitle ) : ?>
 			<p class="ds-news-hero__subtitle"><?php echo esc_html( $subtitle ); ?></p>
 		<?php endif; ?>
