@@ -6,17 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 
 get_template_part(
-	'template-parts/marketing/brand-loop',
-	null,
-	array(
-		'tone'    => 'cream',
-		'gif'     => get_theme_file_uri( 'assets/media/coeurs-en-boucle.gif' ),
-		'gif_alt' => __( 'Le cœur du symbole des Bonnets Gris qui change de couleur en boucle', 'bonnets-gris' ),
-		'text'    => __( "Rendre visible, l'invisible", 'bonnets-gris' ),
-	)
-);
-
-get_template_part(
 	'template-parts/marketing/manifesto',
 	null,
 	array(
@@ -26,6 +15,15 @@ get_template_part(
 		'highlight'   => __( "avec de l'énergie, de la lumière et de l'audace.", 'bonnets-gris' ),
 		'cta_label'   => __( 'Découvrir nos missions', 'bonnets-gris' ),
 		'cta_url'     => home_url( '/missions/' ),
+	)
+);
+
+get_template_part(
+	'template-parts/marketing/quote-band',
+	null,
+	array(
+		'tone' => 'dark',
+		'text' => __( "Rendre visible l'invisible", 'bonnets-gris' ),
 	)
 );
 

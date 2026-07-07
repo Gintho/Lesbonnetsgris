@@ -1447,50 +1447,6 @@
 	color: var(--text-secondary);
 }
 
-/* ---- Brand loop (homepage opener, before the manifesto) ---- */
-.ds-brand-loop {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 48px;
-}
-.ds-brand-loop__text {
-	flex: 1 1 480px;
-	max-width: 640px;
-	margin: 0;
-	color: var(--gray-500);
-}
-.ds-brand-loop__gif-wrap {
-	flex: 0 0 auto;
-	width: 320px;
-	height: 320px;
-	background: var(--white);
-	border-radius: var(--radius-lg);
-	box-shadow: var(--shadow-md);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.ds-brand-loop__gif {
-	width: 200px;
-	height: 200px;
-}
-@media (max-width: 400px) {
-	.ds-brand-loop__gif-wrap {
-		width: 260px;
-		height: 260px;
-	}
-}
-@media (max-width: 720px) {
-	.ds-brand-loop {
-		flex-direction: column;
-		text-align: center;
-	}
-	.ds-brand-loop__text {
-		max-width: 100%;
-	}
-}
-
 /* ---- Manifesto (scroll-pinned word reveal, curtain transition) ----
    The track is taller than the viewport; the section pins (position: sticky)
    while assets/js/manifesto-reveal.js brightens each word in turn based on
