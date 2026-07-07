@@ -1269,3 +1269,15 @@
 	color: var(--text-secondary);
 	line-height: var(--leading-relaxed);
 }
+
+/* ---- Simple centered closing block (e.g. Rejoignez-nous "why us") ---- */
+.ds-closing-block {
+	text-align: center;
+}
+.ds-closing-block__logo {
+	width: 96px;
+	margin: 0 auto 20px;
+}
+.ds-closing-block .ds-button {
+	margin-top: 16px;
+}
