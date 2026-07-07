@@ -24,17 +24,8 @@ get_template_part(
 				'highlight' => true,
 			),
 		),
-		'cta_label' => __( 'Découvrir nos missions', 'bonnets-gris' ),
+		'cta_label' => __( "Rendre visible l'invisible", 'bonnets-gris' ),
 		'cta_url'   => home_url( '/missions/' ),
-	)
-);
-
-get_template_part(
-	'template-parts/marketing/quote-band',
-	null,
-	array(
-		'tone' => 'dark',
-		'text' => __( "Rendre visible l'invisible", 'bonnets-gris' ),
 	)
 );
 
