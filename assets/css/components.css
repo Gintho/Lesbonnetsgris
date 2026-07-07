@@ -1281,3 +1281,130 @@
 .ds-closing-block .ds-button {
 	margin-top: 16px;
 }
+
+/* ---- Origin story (Qui sommes-nous page: founding story + quote) ---- */
+.ds-origin-story {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 48px;
+}
+.ds-origin-story__visual {
+	flex: 1 1 340px;
+	aspect-ratio: 4 / 3;
+	border-radius: var(--radius-md);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: var(--shadow-md);
+}
+.ds-origin-story__visual img {
+	width: 40%;
+}
+.ds-origin-story__visual--cream {
+	background: var(--cream);
+}
+.ds-origin-story__visual--nude {
+	background: var(--nude-salmon);
+}
+.ds-origin-story__visual--sky {
+	background: var(--blue-sky);
+}
+.ds-origin-story__content {
+	flex: 1 1 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+}
+.ds-origin-story__description {
+	font-size: var(--text-body-xl);
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+}
+.ds-origin-story__quote {
+	margin: 8px 0 0;
+	padding-left: 20px;
+	border-left: 3px solid var(--orange-pop);
+}
+.ds-origin-story__quote p {
+	font-family: var(--font-display);
+	font-size: 22px;
+	font-style: italic;
+	color: var(--gray-500);
+	line-height: var(--leading-snug);
+}
+.ds-origin-story__quote cite {
+	display: block;
+	margin-top: 8px;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	color: var(--text-secondary);
+}
+
+/* ---- Team grid (Qui sommes-nous page: board + staff) ---- */
+.ds-team-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 32px;
+}
+@media (max-width: 900px) {
+	.ds-team-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 560px) {
+	.ds-team-grid {
+		grid-template-columns: 1fr;
+	}
+}
+.ds-team-card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+.ds-team-card__photo {
+	aspect-ratio: 1 / 1;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ds-team-card__photo.is-placeholder {
+	background: var(--white);
+	border: 1px solid var(--border-default);
+}
+.ds-team-card__photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.ds-team-card__initials {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 28px;
+}
+.ds-team-card__photo--nude .ds-team-card__initials {
+	color: var(--nude-salmon-700);
+}
+.ds-team-card__photo--sky .ds-team-card__initials {
+	color: var(--blue-electric);
+}
+.ds-team-card__photo--orange .ds-team-card__initials {
+	color: var(--orange-pop-700);
+}
+.ds-team-card__photo--terracotta .ds-team-card__initials {
+	color: var(--terracotta);
+}
+.ds-team-card__name {
+	font-size: 17px;
+	font-weight: 700;
+	color: var(--gray-500);
+}
+.ds-team-card__role {
+	font-size: 14px;
+	color: var(--text-secondary);
+}
