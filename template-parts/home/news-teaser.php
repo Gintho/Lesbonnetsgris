@@ -14,7 +14,31 @@ $featured_query = new WP_Query(
 	)
 );
 
-$featured_id = 0;
+$featured_id        = 0;
+$featured_title     = '';
+$featured_date      = '';
+$featured_excerpt   = '';
+$featured_permalink = '#';
+
+if ( $featured_query->have_posts() ) {
+	$featured_query->the_post();
+	$featured_id        = get_the_ID();
+	$featured_title     = get_the_title();
+	$featured_date      = get_the_date();
+	$featured_excerpt   = wp_trim_words( get_the_excerpt(), 30 );
+	$featured_permalink = get_permalink();
+	wp_reset_postdata();
+}
+
+$rest_query = new WP_Query(
+	array(
+		'post_type'           => 'post',
+		'post_status'         => 'publish',
+		'posts_per_page'      => 8,
+		'post__not_in'        => $featured_id ? array( $featured_id ) : array(),
+		'ignore_sticky_posts' => true,
+	)
+);
 ?>
 <section class="ds-section ds-section--white">
 	<div class="ds-section__inner">
@@ -25,43 +49,28 @@ $featured_id = 0;
 			</a>
 		</div>
 
-		<?php
-		if ( $featured_query->have_posts() ) :
-			$featured_query->the_post();
-			$featured_id = get_the_ID();
-			get_template_part(
-				'template-parts/marketing/news-hero',
-				null,
-				array(
-					'heading_tag' => 'h3',
-					'eyebrow'     => __( 'À la une', 'bonnets-gris' ),
-					'title'       => get_the_title(),
-					'subtitle'    => get_the_date(),
-					'description' => wp_trim_words( get_the_excerpt(), 30 ),
-					'image'       => get_the_post_thumbnail_url( $featured_id, 'large' ),
-					'image_alt'   => get_the_title(),
-					'cta_label'   => __( "Lire l'article", 'bonnets-gris' ),
-					'cta_url'     => get_permalink(),
-				)
-			);
-			wp_reset_postdata();
-		endif;
-		?>
-
-		<?php
-		$rest_query = new WP_Query(
-			array(
-				'post_type'           => 'post',
-				'post_status'         => 'publish',
-				'posts_per_page'      => 8,
-				'post__not_in'        => $featured_id ? array( $featured_id ) : array(),
-				'ignore_sticky_posts' => true,
-			)
-		);
-		if ( $rest_query->have_posts() ) :
-			?>
+		<?php if ( $featured_id || $rest_query->have_posts() ) : ?>
 			<div class="ds-news-carousel">
 				<div class="ds-news-carousel__track">
+					<?php if ( $featured_id ) : ?>
+						<div class="ds-news-carousel__item">
+							<?php
+							get_template_part(
+								'template-parts/cards/featured-news-card',
+								null,
+								array(
+									'badge_label' => __( 'À la une', 'bonnets-gris' ),
+									'title'       => $featured_title,
+									'date'        => $featured_date,
+									'description' => $featured_excerpt,
+									'cta_label'   => __( "Lire l'article", 'bonnets-gris' ),
+									'cta_url'     => $featured_permalink,
+								)
+							);
+							?>
+						</div>
+					<?php endif; ?>
+
 					<?php
 					$index = 0;
 					while ( $rest_query->have_posts() ) :
@@ -96,12 +105,8 @@ $featured_id = 0;
 					</button>
 				</div>
 			</div>
-			<?php
-		else :
-			?>
+		<?php else : ?>
 			<p><?php esc_html_e( 'Les actualités arrivent bientôt.', 'bonnets-gris' ); ?></p>
-			<?php
-		endif;
-		?>
+		<?php endif; ?>
 	</div>
 </section>
