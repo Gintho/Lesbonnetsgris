@@ -1450,20 +1450,31 @@
 /* ---- Brand loop (homepage opener, before the manifesto) ---- */
 .ds-brand-loop {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	text-align: center;
-	gap: 32px;
+	justify-content: space-between;
+	gap: 48px;
+}
+.ds-brand-loop__text {
+	flex: 1 1 480px;
+	max-width: 640px;
+	margin: 0;
+	color: var(--gray-500);
 }
 .ds-brand-loop__gif {
-	width: 200px;
-	height: 200px;
+	flex: 0 0 auto;
+	width: 220px;
+	height: 220px;
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-md);
 }
-.ds-brand-loop__text {
-	max-width: 780px;
-	color: var(--gray-500);
+@media (max-width: 720px) {
+	.ds-brand-loop {
+		flex-direction: column;
+		text-align: center;
+	}
+	.ds-brand-loop__text {
+		max-width: 100%;
+	}
 }
 
 /* ---- Manifesto (scroll-pinned word reveal, curtain transition) ----
