@@ -56,7 +56,7 @@ get_template_part(
 			),
 			array(
 				'value' => '1ère',
-				'label' => __( 'Cause de mortalité chez les moins de 35 ans', 'bonnets-gris' ),
+				'label' => __( 'Cause de mortalité chez les moins de 25 ans', 'bonnets-gris' ),
 			),
 			array(
 				'value' => '12',
@@ -64,7 +64,7 @@ get_template_part(
 			),
 			array(
 				'value' => '0',
-				'label' => __( 'Progrès thérapeutique en 30 ans', 'bonnets-gris' ),
+				'label' => __( 'Progrès thérapeutique', 'bonnets-gris' ),
 			),
 		),
 		'source'     => __( 'Sources : ARS - INCa - ICM', 'bonnets-gris' ),
