@@ -1409,14 +1409,56 @@
 	color: var(--text-secondary);
 }
 
-/* ---- Manifesto (Accueil 2: full-width editorial statement) ---- */
+/* ---- Manifesto (full-width editorial statement, with parallax) ---- */
+.ds-manifesto-section {
+	position: relative;
+	overflow: hidden;
+}
+.ds-manifesto-section__parallax {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+.ds-manifesto-section__blob {
+	position: absolute;
+	border-radius: var(--radius-circle);
+	filter: blur(70px);
+	opacity: 0.4;
+	will-change: transform;
+}
+.ds-manifesto-section__blob--1 {
+	top: -10%;
+	left: -8%;
+	width: 42vw;
+	height: 42vw;
+	max-width: 480px;
+	max-height: 480px;
+	background: var(--orange-pop);
+}
+.ds-manifesto-section__blob--2 {
+	bottom: -18%;
+	right: -10%;
+	width: 36vw;
+	height: 36vw;
+	max-width: 420px;
+	max-height: 420px;
+	background: var(--blue-electric);
+}
 .ds-manifesto {
+	position: relative;
 	max-width: 900px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 28px;
+	will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+	.ds-manifesto-section__blob,
+	.ds-manifesto {
+		transform: none !important;
+	}
 }
 .ds-manifesto__eyebrow {
 	color: var(--text-secondary);

@@ -11,8 +11,8 @@ get_template_part(
 	array(
 		'tone'        => 'cream',
 		'eyebrow'     => __( 'Notre manifeste', 'bonnets-gris' ),
-		'text_before' => __( "Le bonnet gris n'est pas un signe de tristesse. C'est un signe de présence. On le porte pour dire qu'on est là, ", 'bonnets-gris' ),
-		'highlight'   => __( "et qu'ensemble, on fait reculer la maladie.", 'bonnets-gris' ),
+		'text_before' => __( "Les Bonnets Gris est une association loi 1901 fondée par des femmes touchées personnellement par les tumeurs cérébrales - épouses et sœurs de malades. Née d'un refus du silence, l'association a pour conviction que l'on peut se battre autrement : ", 'bonnets-gris' ),
+		'highlight'   => __( "avec de l'énergie, de la lumière et de l'audace.", 'bonnets-gris' ),
 		'cta_label'   => __( 'Découvrir nos missions', 'bonnets-gris' ),
 		'cta_url'     => home_url( '/missions/' ),
 	)

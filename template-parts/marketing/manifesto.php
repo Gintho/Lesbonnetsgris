@@ -11,8 +11,12 @@ $text_after  = $args['text_after'] ?? '';
 $cta_label   = $args['cta_label'] ?? '';
 $cta_url     = $args['cta_url'] ?? '#';
 ?>
-<section class="ds-section ds-section--<?php echo esc_attr( $tone ); ?>">
-	<div class="ds-section__inner ds-manifesto">
+<section class="ds-section ds-section--<?php echo esc_attr( $tone ); ?> ds-manifesto-section">
+	<div class="ds-manifesto-section__parallax" aria-hidden="true">
+		<span class="ds-manifesto-section__blob ds-manifesto-section__blob--1" data-parallax-speed="0.12"></span>
+		<span class="ds-manifesto-section__blob ds-manifesto-section__blob--2" data-parallax-speed="-0.16"></span>
+	</div>
+	<div class="ds-section__inner ds-manifesto" data-parallax-speed="0.05">
 		<?php if ( $eyebrow ) : ?>
 			<span class="ds-eyebrow ds-manifesto__eyebrow"><?php echo esc_html( $eyebrow ); ?></span>
 		<?php endif; ?>
