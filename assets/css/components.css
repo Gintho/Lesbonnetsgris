@@ -1480,9 +1480,6 @@
 	align-items: center;
 	gap: 28px;
 }
-.ds-manifesto__eyebrow {
-	color: var(--text-secondary);
-}
 .ds-manifesto__title {
 	font-family: var(--font-display);
 	font-weight: var(--weight-display);

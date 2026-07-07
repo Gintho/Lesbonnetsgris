@@ -30,7 +30,7 @@ $word_index = 0;
 	<section class="ds-section ds-section--<?php echo esc_attr( $tone ); ?> ds-manifesto-section">
 		<div class="ds-section__inner ds-manifesto">
 			<?php if ( $eyebrow ) : ?>
-				<span class="ds-eyebrow ds-manifesto__eyebrow"><?php echo esc_html( $eyebrow ); ?></span>
+				<span class="ds-badge ds-badge--secondary ds-manifesto__eyebrow"><?php echo esc_html( $eyebrow ); ?></span>
 			<?php endif; ?>
 
 			<h1 class="ds-manifesto__title">
