@@ -98,6 +98,10 @@ $organization_schema = array(
 	</div>
 	<div class="ds-footer__bottom">
 		&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>
+		&middot;
+		<a class="ds-footer__link" href="<?php echo esc_url( home_url( '/mentions-legales/' ) ); ?>">
+			<?php esc_html_e( 'Mentions légales', 'bonnets-gris' ); ?>
+		</a>
 	</div>
 	<script type="application/ld+json"><?php echo wp_json_encode( $organization_schema ); ?></script>
 </footer>
