@@ -1447,6 +1447,25 @@
 	color: var(--text-secondary);
 }
 
+/* ---- Brand loop (homepage opener, before the manifesto) ---- */
+.ds-brand-loop {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 32px;
+}
+.ds-brand-loop__gif {
+	width: 200px;
+	height: 200px;
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-md);
+}
+.ds-brand-loop__text {
+	max-width: 780px;
+	color: var(--gray-500);
+}
+
 /* ---- Manifesto (scroll-pinned word reveal, curtain transition) ----
    The track is taller than the viewport; the section pins (position: sticky)
    while assets/js/manifesto-reveal.js brightens each word in turn based on
