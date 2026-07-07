@@ -106,10 +106,20 @@ get_template_part(
 	'template-parts/marketing/reel-testimonial',
 	null,
 	array(
-		'tone'      => 'nude',
-		'quote'     => __( 'Je porte le bonnet gris pour tous ceux qu\'on ne voit pas assez. Un post, un partage, ça compte aussi.', 'bonnets-gris' ),
-		'name'      => 'Lina',
-		'role'      => __( 'Créatrice de contenu, ambassadrice des Bonnets Gris', 'bonnets-gris' ),
+		'items'     => array(
+			array(
+				'tone'  => 'nude',
+				'quote' => __( 'Je porte le bonnet gris pour tous ceux qu\'on ne voit pas assez. Un post, un partage, ça compte aussi.', 'bonnets-gris' ),
+				'name'  => 'Lina',
+				'role'  => __( 'Créatrice de contenu, ambassadrice des Bonnets Gris', 'bonnets-gris' ),
+			),
+			array(
+				'tone'  => 'sky',
+				'quote' => __( "Je filme mes entraînements pour montrer que courir pour la recherche, c'est accessible à tous.", 'bonnets-gris' ),
+				'name'  => 'Maëlle',
+				'role'  => __( 'Coureuse et créatrice de contenu', 'bonnets-gris' ),
+			),
+		),
 		'cta_label' => __( 'Voir les témoignages', 'bonnets-gris' ),
 		'cta_url'   => home_url( '/actualites/' ),
 	)

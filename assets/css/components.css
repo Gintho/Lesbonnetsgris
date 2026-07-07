@@ -1784,8 +1784,24 @@
 .ds-reel-testimonial__quote {
 	margin: 12px 0 20px;
 }
-.ds-reel-testimonial__cta {
-	margin-top: 20px;
+.ds-reel-testimonial-grid--multi {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 48px;
+}
+.ds-reel-testimonial-grid--multi .ds-reel-testimonial {
+	flex: 1 1 420px;
+	gap: 32px;
+}
+.ds-reel-testimonial-grid--multi .ds-reel-testimonial__video {
+	flex-basis: 180px;
+}
+.ds-reel-testimonial-grid--multi .ds-reel-testimonial__quote {
+	font-size: var(--text-h3);
+}
+.ds-reel-testimonial__cta-wrap {
+	text-align: center;
+	margin-top: 40px;
 }
 @media (max-width: 720px) {
 	.ds-reel-testimonial {
