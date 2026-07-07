@@ -23,6 +23,8 @@ function bonnets_gris_navbar_link_attributes( $atts ) {
 		);
 		remove_filter( 'nav_menu_link_attributes', 'bonnets_gris_navbar_link_attributes' );
 		?>
+	</div>
+	<div class="ds-navbar__ctas">
 		<a class="ds-button ds-button--outline ds-button--sm" href="https://loirparis.fr/" target="_blank" rel="noopener">
 			<?php esc_html_e( 'Boutique', 'bonnets-gris' ); ?>
 		</a>
