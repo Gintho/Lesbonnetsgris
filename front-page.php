@@ -4,23 +4,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-?>
 
-<div class="ds-page-title">
-	<h1 class="ds-h1"><?php esc_html_e( 'Les Bonnets Gris', 'bonnets-gris' ); ?></h1>
-</div>
-
-<?php
 get_template_part(
 	'template-parts/marketing/manifesto',
 	null,
 	array(
-		'tone'        => 'cream',
-		'eyebrow'     => __( 'Notre manifeste', 'bonnets-gris' ),
-		'text_before' => __( "Les Bonnets Gris est une association loi 1901 fondée par des femmes touchées personnellement par les tumeurs cérébrales - épouses et sœurs de malades. Née d'un refus du silence, l'association a pour conviction que l'on peut se battre autrement : ", 'bonnets-gris' ),
-		'highlight'   => __( "avec de l'énergie, de la lumière et de l'audace.", 'bonnets-gris' ),
-		'cta_label'   => __( 'Découvrir nos missions', 'bonnets-gris' ),
-		'cta_url'     => home_url( '/missions/' ),
+		'tone'      => 'cream',
+		'eyebrow'   => __( 'Notre manifeste', 'bonnets-gris' ),
+		'title'     => __( 'Les Bonnets Gris', 'bonnets-gris' ),
+		'lines'     => array(
+			array(
+				'text' => __( 'Est une association loi 1901 fondée par des femmes touchées personnellement par les tumeurs cérébrales.', 'bonnets-gris' ),
+			),
+			array(
+				'text' => __( "Née d'un refus du silence, l'association a pour conviction que l'on peut se battre autrement :", 'bonnets-gris' ),
+			),
+			array(
+				'text'      => __( "Avec de l'énergie, de la lumière et de l'audace.", 'bonnets-gris' ),
+				'highlight' => true,
+			),
+		),
+		'cta_label' => __( 'Découvrir nos missions', 'bonnets-gris' ),
+		'cta_url'   => home_url( '/missions/' ),
 	)
 );
 

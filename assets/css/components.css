@@ -1483,12 +1483,20 @@
 .ds-manifesto__eyebrow {
 	color: var(--text-secondary);
 }
-.ds-manifesto__text {
+.ds-manifesto__title {
 	font-family: var(--font-display);
 	font-weight: var(--weight-display);
 	letter-spacing: var(--tracking-tight);
 	line-height: var(--leading-tight);
-	font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+	font-size: clamp(2.25rem, 5vw, 4rem);
+	margin: 0;
+}
+.ds-manifesto__line {
+	font-family: var(--font-display);
+	font-weight: var(--weight-display);
+	letter-spacing: var(--tracking-tight);
+	line-height: var(--leading-tight);
+	font-size: clamp(1.25rem, 2.6vw, 2rem);
 	margin: 0;
 }
 .ds-manifesto__word {

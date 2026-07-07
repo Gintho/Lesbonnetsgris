@@ -3,38 +3,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$tone        = $args['tone'] ?? 'cream';
-$eyebrow     = $args['eyebrow'] ?? '';
-$text_before = $args['text_before'] ?? '';
-$highlight   = $args['highlight'] ?? '';
-$text_after  = $args['text_after'] ?? '';
-$cta_label   = $args['cta_label'] ?? '';
-$cta_url     = $args['cta_url'] ?? '#';
+$tone      = $args['tone'] ?? 'cream';
+$eyebrow   = $args['eyebrow'] ?? '';
+$title     = $args['title'] ?? '';
+$lines     = $args['lines'] ?? array();
+$cta_label = $args['cta_label'] ?? '';
+$cta_url   = $args['cta_url'] ?? '#';
 
 /**
  * Split a chunk of text into individual words for the scroll-driven reveal.
- * Each word keeps track of whether it belongs to the highlighted phrase.
  */
-$bonnets_gris_manifesto_words = static function ( $text, $is_highlight ) {
+$bonnets_gris_manifesto_words = static function ( $text ) {
 	$words = preg_split( '/\s+/', trim( $text ) );
 	$out   = array();
 	foreach ( $words as $word ) {
-		if ( '' === $word ) {
-			continue;
+		if ( '' !== $word ) {
+			$out[] = $word;
 		}
-		$out[] = array(
-			'text'      => $word,
-			'highlight' => $is_highlight,
-		);
 	}
 	return $out;
 };
 
-$words = array_merge(
-	$bonnets_gris_manifesto_words( $text_before, false ),
-	$bonnets_gris_manifesto_words( $highlight, true ),
-	$bonnets_gris_manifesto_words( $text_after, false )
-);
+$word_index = 0;
 ?>
 <div class="ds-manifesto-track">
 	<section class="ds-section ds-section--<?php echo esc_attr( $tone ); ?> ds-manifesto-section">
@@ -42,22 +32,37 @@ $words = array_merge(
 			<?php if ( $eyebrow ) : ?>
 				<span class="ds-eyebrow ds-manifesto__eyebrow"><?php echo esc_html( $eyebrow ); ?></span>
 			<?php endif; ?>
-			<p class="ds-manifesto__text">
+
+			<h1 class="ds-manifesto__title">
 				<?php
-				foreach ( $words as $index => $word ) :
-					$classes = 'ds-manifesto__word';
-					if ( $word['highlight'] ) {
-						$classes .= ' ds-manifesto__word--highlight';
-					}
-					?><span class="<?php echo esc_attr( $classes ); ?>" data-word-index="<?php echo (int) $index; ?>"><?php echo esc_html( $word['text'] ); ?></span> <?php
+				foreach ( $bonnets_gris_manifesto_words( $title ) as $word ) :
+					?><span class="ds-manifesto__word" data-word-index="<?php echo (int) $word_index; ?>"><?php echo esc_html( $word ); ?></span> <?php
+					++$word_index;
 				endforeach;
 				?>
-			</p>
+			</h1>
+
+			<?php foreach ( $lines as $line ) : ?>
+				<?php
+				$line_text      = $line['text'] ?? '';
+				$line_highlight = ! empty( $line['highlight'] );
+				$word_class     = 'ds-manifesto__word' . ( $line_highlight ? ' ds-manifesto__word--highlight' : '' );
+				?>
+				<p class="ds-manifesto__line">
+					<?php
+					foreach ( $bonnets_gris_manifesto_words( $line_text ) as $word ) :
+						?><span class="<?php echo esc_attr( $word_class ); ?>" data-word-index="<?php echo (int) $word_index; ?>"><?php echo esc_html( $word ); ?></span> <?php
+						++$word_index;
+					endforeach;
+					?>
+				</p>
+			<?php endforeach; ?>
+
 			<?php if ( $cta_label ) : ?>
 				<a
 					class="ds-button ds-button--outline"
 					href="<?php echo esc_url( $cta_url ); ?>"
-					data-word-index="<?php echo (int) count( $words ); ?>"
+					data-word-index="<?php echo (int) $word_index; ?>"
 				>
 					<?php echo esc_html( $cta_label ); ?>
 				</a>
