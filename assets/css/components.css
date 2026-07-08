@@ -1505,6 +1505,12 @@
 }
 
 /* ---- Team grid (Qui sommes-nous page: board + staff) ---- */
+.ds-team-grid__group-title {
+	margin-bottom: 24px;
+}
+.ds-team-grid--group {
+	margin-bottom: 56px;
+}
 .ds-team-grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -1568,6 +1574,116 @@
 .ds-team-card__role {
 	font-size: 14px;
 	color: var(--text-secondary);
+}
+
+/* ---- About intro (Qui sommes-nous page: two-column mission statement) ---- */
+.ds-about-intro {
+	display: grid;
+	grid-template-columns: minmax(0, 320px) 1fr;
+	gap: 48px;
+}
+.ds-about-intro__label {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+}
+.ds-about-intro__body {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	font-size: var(--text-body-xl);
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+}
+@media (max-width: 780px) {
+	.ds-about-intro {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
+
+/* ---- Origin story kicker (large rotated decorative section label) ---- */
+.ds-origin-story__kicker {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: clamp(48px, 8vw, 128px);
+	line-height: 0.9;
+	color: var(--gray-300);
+	transform: rotate(-4deg);
+	transform-origin: left center;
+	margin: 0 0 24px;
+	user-select: none;
+}
+
+/* ---- Founder spotlight (Qui sommes-nous page: single-person bio) ---- */
+.ds-founder-spotlight {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 48px;
+}
+.ds-founder-spotlight__visual {
+	flex: 1 1 320px;
+	aspect-ratio: 3 / 4;
+	max-width: 380px;
+	border-radius: var(--radius-md);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: var(--shadow-md);
+}
+.ds-founder-spotlight__visual.is-placeholder {
+	background: var(--white);
+	border: 1px solid var(--border-default);
+	box-shadow: none;
+}
+.ds-founder-spotlight__visual--nude {
+	background: var(--nude-salmon);
+}
+.ds-founder-spotlight__visual--sky {
+	background: var(--blue-sky);
+}
+.ds-founder-spotlight__visual img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: var(--radius-md);
+}
+.ds-founder-spotlight__initials {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 40px;
+	color: var(--gray-500);
+}
+.ds-founder-spotlight__content {
+	flex: 1 1 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 12px;
+}
+.ds-founder-spotlight__role {
+	font-size: var(--text-body);
+	font-weight: 700;
+	color: var(--text-secondary);
+}
+.ds-founder-spotlight__bio {
+	font-size: var(--text-body-xl);
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+}
+.ds-founder-spotlight__quote {
+	margin: 8px 0 0;
+	padding-left: 20px;
+	border-left: 3px solid var(--orange-pop);
+}
+.ds-founder-spotlight__quote p {
+	font-family: var(--font-display);
+	font-size: 22px;
+	font-style: italic;
+	color: var(--gray-500);
+	line-height: var(--leading-snug);
 }
 
 /* ---- Manifesto (scroll-pinned word reveal, curtain transition) ----

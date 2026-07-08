@@ -5,12 +5,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $tone        = $args['tone'] ?? 'cream';
 $logo        = $args['logo'] ?? get_theme_file_uri( 'assets/logo/mark-on-white-duo-orange-blue.png' );
+$kicker      = $args['kicker'] ?? '';
 $eyebrow     = $args['eyebrow'] ?? '';
 $title       = $args['title'] ?? '';
 $description = $args['description'] ?? '';
 $quote       = $args['quote'] ?? '';
 $quote_name  = $args['quote_name'] ?? '';
 ?>
+<?php if ( $kicker ) : ?>
+	<div class="ds-origin-story__kicker" aria-hidden="true"><?php echo esc_html( $kicker ); ?></div>
+<?php endif; ?>
 <div class="ds-origin-story">
 	<div class="ds-origin-story__visual ds-origin-story__visual--<?php echo esc_attr( $tone ); ?>">
 		<img src="<?php echo esc_url( $logo ); ?>" alt="" />
