@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $tone        = $args['tone'] ?? 'nude';
 $reverse     = ! empty( $args['reverse'] );
+$image       = $args['image'] ?? '';
 $eyebrow     = $args['eyebrow'] ?? '';
 $title       = $args['title'] ?? '';
 $description = $args['description'] ?? '';
@@ -12,7 +13,11 @@ $cta_label   = $args['cta_label'] ?? '';
 $cta_url     = $args['cta_url'] ?? '#';
 ?>
 <div class="ds-horizontal-push<?php echo $reverse ? ' ds-horizontal-push--reverse' : ''; ?>">
-	<div class="ds-horizontal-push__visual ds-horizontal-push__visual--<?php echo esc_attr( $tone ); ?>" aria-hidden="true"></div>
+	<div class="ds-horizontal-push__visual ds-horizontal-push__visual--<?php echo esc_attr( $tone ); ?>" aria-hidden="true">
+		<?php if ( $image ) : ?>
+			<img src="<?php echo esc_url( $image ); ?>" alt="" />
+		<?php endif; ?>
+	</div>
 	<div class="ds-horizontal-push__content">
 		<?php if ( $eyebrow ) : ?>
 			<span class="ds-badge ds-badge--neutral ds-horizontal-push__eyebrow"><?php echo esc_html( $eyebrow ); ?></span>
