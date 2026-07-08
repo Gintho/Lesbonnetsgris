@@ -97,7 +97,7 @@ get_template_part(
 		'title'       => __( 'Portez le bonnet gris', 'bonnets-gris' ),
 		'description' => __( "Un bonnet, c'est plus qu'un accessoire : c'est une façon de dire qu'on est solidaires. Retrouvez-le sur notre boutique solidaire.", 'bonnets-gris' ),
 		'cta_label'   => __( 'Découvrir la boutique', 'bonnets-gris' ),
-		'cta_url'     => 'https://loirparis.fr/',
+		'cta_url'     => bonnets_gris_link( 'boutique' ),
 		'cta_target'  => '_blank',
 	)
 );

@@ -18,24 +18,24 @@ $footer_secondary_columns = array(
 		),
 		array(
 			'label'    => __( 'Faire un don', 'bonnets-gris' ),
-			'url'      => 'https://institutducerveau.org/faire-don-ponctuel',
+			'url'      => bonnets_gris_link( 'don' ),
 			'external' => true,
 		),
 		array(
 			'label'    => __( 'Boutique', 'bonnets-gris' ),
-			'url'      => 'https://loirparis.fr/',
+			'url'      => bonnets_gris_link( 'boutique' ),
 			'external' => true,
 		),
 	),
 	__( 'Suivre', 'bonnets-gris' )         => array(
 		array(
 			'label'    => 'Instagram',
-			'url'      => 'https://www.instagram.com/',
+			'url'      => bonnets_gris_link( 'instagram' ),
 			'external' => true,
 		),
 		array(
 			'label'    => 'Facebook',
-			'url'      => 'https://www.facebook.com/',
+			'url'      => bonnets_gris_link( 'facebook' ),
 			'external' => true,
 		),
 		array(

@@ -37,7 +37,7 @@ get_template_part(
 		'title'       => __( 'Faire un don', 'bonnets-gris' ),
 		'description' => __( 'En faisant un don, vous soutenez concrètement la recherche pour que les enfants soient mieux soignés.', 'bonnets-gris' ),
 		'cta_label'   => __( 'Faire un don', 'bonnets-gris' ),
-		'cta_url'     => 'https://institutducerveau.org/faire-don-ponctuel',
+		'cta_url'     => bonnets_gris_link( 'don' ),
 		'cta_target'  => '_blank',
 	)
 );
