@@ -12,7 +12,7 @@ get_header();
 
 <div class="ds-page-title">
 	<span class="ds-badge ds-badge--neutral"><?php esc_html_e( 'Qui sommes-nous ?', 'bonnets-gris' ); ?></span>
-	<h1 class="ds-h1"><?php esc_html_e( 'Une communauté qui refuse de regarder ailleurs.', 'bonnets-gris' ); ?></h1>
+	<h1 class="ds-h1"><?php esc_html_e( 'Un mouvement qui donne envie.', 'bonnets-gris' ); ?></h1>
 	<p class="ds-page-title__intro">
 		<?php esc_html_e( 'Les Bonnets Gris est une association loi 1901, portée par des familles, des chercheurs et des bénévoles réunis autour d\'un même symbole.', 'bonnets-gris' ); ?>
 	</p>
@@ -26,7 +26,7 @@ get_header();
 			null,
 			array(
 				'eyebrow'     => __( 'Notre mission', 'bonnets-gris' ),
-				'title'       => __( 'Se battre autrement, ensemble', 'bonnets-gris' ),
+				'title'       => __( 'Rendre visible, l\'invisible', 'bonnets-gris' ),
 				'paragraphs'  => array(
 					__( 'Les Bonnets Gris est entièrement portée par des bénévoles. Notre objectif : financer la recherche contre les tumeurs cérébrales pédiatriques et accompagner les familles concernées, partout en France.', 'bonnets-gris' ),
 					__( 'On avance avec de l\'énergie, de la lumière et de l\'audace — jamais seuls, jamais dans le silence.', 'bonnets-gris' ),
@@ -46,10 +46,19 @@ get_header();
 			array(
 				'tone'        => 'nude',
 				'kicker'      => __( 'Notre histoire', 'bonnets-gris' ),
-				'title'       => __( 'Un bonnet, un symbole, un mouvement', 'bonnets-gris' ),
-				'description' => __( 'Tout commence en 2019, autour d\'un bonnet tricoté à la main pour tenir chaud à un enfant pendant ses traitements. Ce geste simple devient un symbole : celui de la chaleur qu\'on peut s\'offrir quand la vie se complique. Des familles, des soignants et des bénévoles s\'en emparent, et Les Bonnets Gris voit le jour.', 'bonnets-gris' ),
-				'quote'       => __( 'On voulait que chaque enfant sente qu\'on pense à lui, même dans les moments difficiles.', 'bonnets-gris' ),
-				'quote_name'  => __( 'Nora, cofondatrice des Bonnets Gris', 'bonnets-gris' ),
+				'title'       => __( 'Les Bonnets Gris', 'bonnets-gris' ),
+				'description' => array(
+					array(
+						'text' => __( 'Pour rendre plus visible cette maladie dans l\'ombre, Les Bonnets Gris n\'est pas une association de plus. C\'est un mouvement qui donne envie au service d\'une cause trop longtemps invisible.', 'bonnets-gris' ),
+					),
+					array(
+						'text' => __( 'Association loi 1901 fondée par des femmes touchées personnellement par les tumeurs cérébrales — épouses et sœurs de malades. Née d\'un refus du silence, l\'association a pour conviction que l\'on peut se battre autrement :', 'bonnets-gris' ),
+					),
+					array(
+						'text'      => __( 'Avec de l\'énergie, de la lumière et de l\'audace.', 'bonnets-gris' ),
+						'highlight' => true,
+					),
+				),
 			)
 		);
 		?>

@@ -1483,6 +1483,13 @@
 	color: var(--text-secondary);
 	line-height: var(--leading-relaxed);
 }
+.ds-origin-story__description--highlight {
+	font-family: var(--font-display);
+	font-weight: var(--weight-display);
+	font-size: var(--text-h3);
+	color: var(--orange-pop-700);
+	line-height: var(--leading-snug);
+}
 .ds-origin-story__quote {
 	margin: 8px 0 0;
 	padding-left: 20px;

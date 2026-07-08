@@ -11,6 +11,17 @@ $title       = $args['title'] ?? '';
 $description = $args['description'] ?? '';
 $quote       = $args['quote'] ?? '';
 $quote_name  = $args['quote_name'] ?? '';
+
+// $description can be a plain string (single paragraph) or an array of
+// paragraphs, each optionally ['text' => ..., 'highlight' => true].
+$paragraphs = array();
+if ( is_array( $description ) ) {
+	foreach ( $description as $paragraph ) {
+		$paragraphs[] = is_array( $paragraph ) ? $paragraph : array( 'text' => $paragraph );
+	}
+} elseif ( '' !== $description ) {
+	$paragraphs[] = array( 'text' => $description );
+}
 ?>
 <?php if ( $kicker ) : ?>
 	<div class="ds-origin-story__kicker" aria-hidden="true"><?php echo esc_html( $kicker ); ?></div>
@@ -24,9 +35,15 @@ $quote_name  = $args['quote_name'] ?? '';
 			<span class="ds-badge ds-badge--neutral"><?php echo esc_html( $eyebrow ); ?></span>
 		<?php endif; ?>
 		<h2 class="ds-h1"><?php echo esc_html( $title ); ?></h2>
-		<?php if ( $description ) : ?>
-			<p class="ds-origin-story__description"><?php echo esc_html( $description ); ?></p>
-		<?php endif; ?>
+		<?php foreach ( $paragraphs as $paragraph ) : ?>
+			<?php
+			$paragraph_class = 'ds-origin-story__description';
+			if ( ! empty( $paragraph['highlight'] ) ) {
+				$paragraph_class .= ' ds-origin-story__description--highlight';
+			}
+			?>
+			<p class="<?php echo esc_attr( $paragraph_class ); ?>"><?php echo esc_html( $paragraph['text'] ?? '' ); ?></p>
+		<?php endforeach; ?>
 		<?php if ( $quote ) : ?>
 			<blockquote class="ds-origin-story__quote">
 				<p>&laquo;&nbsp;<?php echo esc_html( $quote ); ?>&nbsp;&raquo;</p>
