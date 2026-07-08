@@ -24,7 +24,7 @@ if ( is_array( $description ) ) {
 }
 ?>
 <?php if ( $kicker ) : ?>
-	<div class="ds-origin-story__kicker" aria-hidden="true"><?php echo esc_html( $kicker ); ?></div>
+	<div class="ds-section-kicker" aria-hidden="true"><?php echo esc_html( $kicker ); ?></div>
 <?php endif; ?>
 <div class="ds-origin-story">
 	<div class="ds-origin-story__visual ds-origin-story__visual--<?php echo esc_attr( $tone ); ?>">

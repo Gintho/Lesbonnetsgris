@@ -1623,8 +1623,8 @@
 	}
 }
 
-/* ---- Origin story kicker (large rotated decorative section label) ---- */
-.ds-origin-story__kicker {
+/* ---- Section kicker (large rotated decorative section label) ---- */
+.ds-section-kicker {
 	font-family: var(--font-display);
 	font-weight: 800;
 	font-size: clamp(48px, 8vw, 128px);
@@ -1663,6 +1663,9 @@
 }
 .ds-founder-spotlight__visual--sky {
 	background: var(--blue-sky);
+}
+.ds-founder-spotlight__visual--terracotta {
+	background: var(--terracotta);
 }
 .ds-founder-spotlight__visual img {
 	width: 100%;
@@ -1704,6 +1707,112 @@
 	font-style: italic;
 	color: var(--gray-500);
 	line-height: var(--leading-snug);
+}
+
+/* ---- Founder carousel (Qui sommes-nous page: scroll/arrow through
+   multiple founder portraits; single item renders with no chrome) ---- */
+.ds-founder-carousel {
+	position: relative;
+}
+.ds-founder-carousel__track {
+	display: flex;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.ds-founder-carousel__track::-webkit-scrollbar {
+	display: none;
+}
+.ds-founder-carousel__item {
+	flex: 0 0 100%;
+	scroll-snap-align: start;
+}
+.ds-founder-carousel__nav {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 24px;
+}
+.ds-founder-carousel__arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border: 1px solid var(--border-default);
+	border-radius: var(--radius-pill);
+	background: var(--white);
+	color: var(--gray-500);
+	cursor: pointer;
+}
+.ds-founder-carousel__arrow:hover {
+	background: var(--cream);
+}
+.ds-founder-carousel__arrow:disabled {
+	opacity: 0.35;
+	cursor: default;
+	pointer-events: none;
+}
+@media (max-width: 640px) {
+	.ds-founder-carousel__nav {
+		display: none;
+	}
+}
+
+/* ---- Timeline (Qui sommes-nous page: founding milestones) ---- */
+.ds-timeline {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	max-width: 720px;
+}
+.ds-timeline__item {
+	position: relative;
+	display: grid;
+	grid-template-columns: 16px 1fr;
+	gap: 24px;
+	padding-bottom: 40px;
+}
+.ds-timeline__item:last-child {
+	padding-bottom: 0;
+}
+.ds-timeline__item::before {
+	content: '';
+	position: absolute;
+	left: 7px;
+	top: 20px;
+	bottom: -20px;
+	width: 2px;
+	background: var(--border-default);
+}
+.ds-timeline__item:last-child::before {
+	display: none;
+}
+.ds-timeline__marker {
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: var(--orange-pop);
+	margin-top: 4px;
+	position: relative;
+	z-index: 1;
+}
+.ds-timeline__year {
+	font-family: var(--font-display);
+	font-weight: var(--weight-display);
+	font-size: var(--text-h3);
+	color: var(--orange-pop-700);
+	margin-bottom: 4px;
+}
+.ds-timeline__title {
+	margin-bottom: 8px;
+}
+.ds-timeline__description {
+	color: var(--text-secondary);
+	line-height: var(--leading-relaxed);
+	margin: 0;
 }
 
 /* ---- Manifesto (scroll-pinned word reveal, curtain transition) ----

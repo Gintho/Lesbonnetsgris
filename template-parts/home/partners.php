@@ -3,10 +3,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$partners = array( 'Fondation ABC', 'Groupe Meridia', 'CHU Saint-Loup', 'Banque Nova', 'Studio Linéa', 'Aéro Partners' );
-$tones    = array( 'rose', 'sky', 'orange', 'terracotta' );
+$partners     = array( 'Fondation ABC', 'Groupe Meridia', 'CHU Saint-Loup', 'Banque Nova', 'Studio Linéa', 'Aéro Partners' );
+$tones        = array( 'rose', 'sky', 'orange', 'terracotta' );
+$section_tone = $args['tone'] ?? 'white';
 ?>
-<section class="ds-section ds-section--white">
+<section class="ds-section ds-section--<?php echo esc_attr( $section_tone ); ?>">
 	<div class="ds-section__inner">
 		<h2 class="ds-h1 ds-section__title"><?php esc_html_e( 'Nos partenaires', 'bonnets-gris' ); ?></h2>
 		<div class="ds-partners-grid">

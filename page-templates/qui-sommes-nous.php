@@ -45,6 +45,42 @@ get_header();
 	</div>
 </section>
 
+<section class="ds-section ds-section--sky">
+	<div class="ds-section__inner">
+		<div class="ds-section-kicker" aria-hidden="true"><?php esc_html_e( 'Notre histoire', 'bonnets-gris' ); ?></div>
+		<?php
+		get_template_part(
+			'template-parts/marketing/timeline',
+			null,
+			array(
+				'items' => array(
+					array(
+						'year'        => '2021',
+						'title'       => __( 'Naissance du mouvement', 'bonnets-gris' ),
+						'description' => __( 'Trois femmes, touchées personnellement par la maladie, décident de sortir du silence et de se réunir.', 'bonnets-gris' ),
+					),
+					array(
+						'year'        => '2022',
+						'title'       => __( 'Officialisation de l\'association', 'bonnets-gris' ),
+						'description' => __( 'Les Bonnets Gris devient une association loi 1901, avec ses premiers statuts et son premier bureau.', 'bonnets-gris' ),
+					),
+					array(
+						'year'        => '2023',
+						'title'       => __( 'Premier temps fort de terrain', 'bonnets-gris' ),
+						'description' => __( 'Première collecte publique et premiers partenariats avec des équipes soignantes.', 'bonnets-gris' ),
+					),
+					array(
+						'year'        => '2024',
+						'title'       => __( 'Premier soutien à la recherche', 'bonnets-gris' ),
+						'description' => __( 'Les premiers fonds collectés sont reversés à un programme de recherche sur les tumeurs cérébrales pédiatriques.', 'bonnets-gris' ),
+					),
+				),
+			)
+		);
+		?>
+	</div>
+</section>
+
 <section class="ds-section ds-section--cream">
 	<div class="ds-section__inner">
 		<h2 class="ds-h1 ds-section__title"><?php esc_html_e( 'Notre équipe', 'bonnets-gris' ); ?></h2>
@@ -120,17 +156,37 @@ get_header();
 			'template-parts/marketing/founder-spotlight',
 			null,
 			array(
-				'tone'    => 'nude',
 				'eyebrow' => __( 'Portrait', 'bonnets-gris' ),
-				'name'    => 'Nora Lefèvre',
-				'role'    => __( 'Cofondatrice et présidente', 'bonnets-gris' ),
-				'bio'     => __( 'Nora a cofondé Les Bonnets Gris après avoir accompagné une personne de son entourage à travers la maladie. Depuis, elle porte le mouvement au quotidien : elle structure l\'association, va à la rencontre des familles et des chercheurs, et veille à ce que chaque euro collecté serve directement la cause.', 'bonnets-gris' ),
-				'quote'   => __( 'Ce qui me pousse chaque jour, c\'est de savoir qu\'on n\'est plus seuls face à la maladie.', 'bonnets-gris' ),
+				'items'   => array(
+					array(
+						'tone'  => 'nude',
+						'name'  => 'Nora Lefèvre',
+						'role'  => __( 'Cofondatrice et présidente', 'bonnets-gris' ),
+						'bio'   => __( 'Nora a cofondé Les Bonnets Gris après avoir accompagné une personne de son entourage à travers la maladie. Depuis, elle porte le mouvement au quotidien : elle structure l\'association, va à la rencontre des familles et des chercheurs, et veille à ce que chaque euro collecté serve directement la cause.', 'bonnets-gris' ),
+						'quote' => __( 'Ce qui me pousse chaque jour, c\'est de savoir qu\'on n\'est plus seuls face à la maladie.', 'bonnets-gris' ),
+					),
+					array(
+						'tone'  => 'sky',
+						'name'  => 'Manon Roussel',
+						'role'  => __( 'Cofondatrice', 'bonnets-gris' ),
+						'bio'   => __( 'Manon a vu son frère traverser la maladie. Elle a rejoint Nora dès les premiers mois pour donner une structure au mouvement : statuts, premiers partenaires, premières collectes. Aujourd\'hui elle pilote les relations avec les familles accompagnées.', 'bonnets-gris' ),
+						'quote' => __( 'On ne voulait plus que les familles se sentent seules face à l\'annonce.', 'bonnets-gris' ),
+					),
+					array(
+						'tone'  => 'terracotta',
+						'name'  => 'Sarah Bianchi',
+						'role'  => __( 'Cofondatrice', 'bonnets-gris' ),
+						'bio'   => __( 'Sarah a accompagné son mari pendant son traitement. Elle porte aujourd\'hui la voix des proches aidants au sein de l\'association et anime le lien avec les équipes soignantes partenaires.', 'bonnets-gris' ),
+						'quote' => __( 'Être aidante, c\'est aussi se battre. Notre mouvement leur donne une place.', 'bonnets-gris' ),
+					),
+				),
 			)
 		);
 		?>
 	</div>
 </section>
+
+<?php get_template_part( 'template-parts/home/partners', null, array( 'tone' => 'cream' ) ); ?>
 
 <section class="ds-section ds-section--white">
 	<div class="ds-section__inner ds-section__inner--narrow ds-closing-block">
