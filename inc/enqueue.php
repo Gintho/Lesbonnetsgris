@@ -36,21 +36,12 @@ function bonnets_gris_scripts() {
 		true
 	);
 
-	$news_carousel_path = get_theme_file_path( 'assets/js/news-carousel.js' );
+	$carousel_path = get_theme_file_path( 'assets/js/carousel.js' );
 	wp_enqueue_script(
-		'bonnets-gris-news-carousel',
-		get_theme_file_uri( 'assets/js/news-carousel.js' ),
+		'bonnets-gris-carousel',
+		get_theme_file_uri( 'assets/js/carousel.js' ),
 		array(),
-		file_exists( $news_carousel_path ) ? filemtime( $news_carousel_path ) : false,
-		true
-	);
-
-	$founder_carousel_path = get_theme_file_path( 'assets/js/founder-carousel.js' );
-	wp_enqueue_script(
-		'bonnets-gris-founder-carousel',
-		get_theme_file_uri( 'assets/js/founder-carousel.js' ),
-		array(),
-		file_exists( $founder_carousel_path ) ? filemtime( $founder_carousel_path ) : false,
+		file_exists( $carousel_path ) ? filemtime( $carousel_path ) : false,
 		true
 	);
 

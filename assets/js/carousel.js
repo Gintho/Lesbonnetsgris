@@ -1,20 +1,20 @@
 ( function () {
 	'use strict';
 
-	var carousels = document.querySelectorAll( '.ds-news-carousel' );
+	var carousels = document.querySelectorAll( '[data-carousel]' );
 
 	carousels.forEach( function ( carousel ) {
-		var track = carousel.querySelector( '.ds-news-carousel__track' );
-		var prevBtn = carousel.querySelector( '.ds-news-carousel__arrow--prev' );
-		var nextBtn = carousel.querySelector( '.ds-news-carousel__arrow--next' );
+		var track = carousel.querySelector( '[data-carousel-track]' );
+		var prevBtn = carousel.querySelector( '[data-carousel-prev]' );
+		var nextBtn = carousel.querySelector( '[data-carousel-next]' );
 
 		if ( ! track ) {
 			return;
 		}
 
 		function scrollByAmount( direction ) {
-			var item = track.querySelector( '.ds-news-carousel__item' );
-			var gap = 20;
+			var item = track.querySelector( '[data-carousel-item]' );
+			var gap = parseFloat( getComputedStyle( track ).columnGap ) || 0;
 			var amount = item ? item.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
 			track.scrollBy( { left: direction * amount, behavior: 'smooth' } );
 		}

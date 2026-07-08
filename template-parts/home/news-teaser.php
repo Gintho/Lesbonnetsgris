@@ -50,10 +50,10 @@ $rest_query = new WP_Query(
 		</div>
 
 		<?php if ( $featured_id || $rest_query->have_posts() ) : ?>
-			<div class="ds-news-carousel">
-				<div class="ds-news-carousel__track">
+			<div class="ds-news-carousel" data-carousel>
+				<div class="ds-news-carousel__track" data-carousel-track>
 					<?php if ( $featured_id ) : ?>
-						<div class="ds-news-carousel__item">
+						<div class="ds-news-carousel__item" data-carousel-item>
 							<?php
 							get_template_part(
 								'template-parts/cards/featured-news-card',
@@ -76,7 +76,7 @@ $rest_query = new WP_Query(
 					while ( $rest_query->have_posts() ) :
 						$rest_query->the_post();
 						?>
-						<div class="ds-news-carousel__item">
+						<div class="ds-news-carousel__item" data-carousel-item>
 							<?php
 							get_template_part(
 								'template-parts/cards/news-teaser-card',
@@ -97,10 +97,10 @@ $rest_query = new WP_Query(
 					?>
 				</div>
 				<div class="ds-news-carousel__nav">
-					<button type="button" class="ds-news-carousel__arrow ds-news-carousel__arrow--prev" aria-label="<?php esc_attr_e( 'Actualités précédentes', 'bonnets-gris' ); ?>">
+					<button type="button" class="ds-news-carousel__arrow ds-news-carousel__arrow--prev" aria-label="<?php esc_attr_e( 'Actualités précédentes', 'bonnets-gris' ); ?>" data-carousel-prev>
 						<?php get_template_part( 'template-parts/icons/chevron', null, array( 'direction' => 'prev' ) ); ?>
 					</button>
-					<button type="button" class="ds-news-carousel__arrow ds-news-carousel__arrow--next" aria-label="<?php esc_attr_e( 'Actualités suivantes', 'bonnets-gris' ); ?>">
+					<button type="button" class="ds-news-carousel__arrow ds-news-carousel__arrow--next" aria-label="<?php esc_attr_e( 'Actualités suivantes', 'bonnets-gris' ); ?>" data-carousel-next>
 						<?php get_template_part( 'template-parts/icons/chevron', null, array( 'direction' => 'next' ) ); ?>
 					</button>
 				</div>
