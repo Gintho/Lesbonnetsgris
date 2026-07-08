@@ -3,18 +3,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$tone             = $args['tone'] ?? 'pop-blue';
-$eyebrow          = $args['eyebrow'] ?? '';
-$title            = $args['title'] ?? '';
-$subtitle         = $args['subtitle'] ?? '';
-$primary_label    = $args['primary_label'] ?? '';
-$primary_url      = $args['primary_url'] ?? '#';
-$secondary_label  = $args['secondary_label'] ?? '';
-$secondary_url    = $args['secondary_url'] ?? '#';
+$tone            = $args['tone'] ?? 'pop-blue';
+$eyebrow         = $args['eyebrow'] ?? '';
+$title           = $args['title'] ?? '';
+$subtitle        = $args['subtitle'] ?? '';
+$primary_label   = $args['primary_label'] ?? '';
+$primary_url     = $args['primary_url'] ?? '#';
+$secondary_label = $args['secondary_label'] ?? '';
+$secondary_url   = $args['secondary_url'] ?? '#';
 
-$is_light_bg        = 'secondary' === $tone;
-$eyebrow_badge_mod  = $is_light_bg ? 'ds-badge--on-light-hero' : 'ds-badge--on-dark-hero';
-$secondary_variant  = $is_light_bg ? 'outline' : 'outline-inverse';
+$is_light_bg       = 'secondary' === $tone;
+$eyebrow_badge_mod = $is_light_bg ? 'ds-badge--on-light-hero' : 'ds-badge--on-dark-hero';
+$secondary_variant = $is_light_bg ? 'outline' : 'outline-inverse';
 ?>
 <section class="ds-hero ds-hero--<?php echo esc_attr( $tone ); ?>">
 	<?php if ( $eyebrow ) : ?>

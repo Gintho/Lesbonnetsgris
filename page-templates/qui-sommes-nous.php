@@ -25,9 +25,9 @@ get_header();
 			'template-parts/marketing/about-intro',
 			null,
 			array(
-				'eyebrow'     => __( 'Notre mission', 'bonnets-gris' ),
-				'title'       => __( 'Rendre visible, l\'invisible', 'bonnets-gris' ),
-				'paragraphs'  => array(
+				'eyebrow'    => __( 'Notre mission', 'bonnets-gris' ),
+				'title'      => __( 'Rendre visible, l\'invisible', 'bonnets-gris' ),
+				'paragraphs' => array(
 					array(
 						'text' => __( 'Pour rendre plus visible cette maladie dans l\'ombre, Les Bonnets Gris n\'est pas une association de plus. C\'est un mouvement qui donne envie au service d\'une cause trop longtemps invisible.', 'bonnets-gris' ),
 					),

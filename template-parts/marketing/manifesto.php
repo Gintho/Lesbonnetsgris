@@ -36,7 +36,9 @@ $word_index = 0;
 			<h1 class="ds-manifesto__title">
 				<?php
 				foreach ( $bonnets_gris_manifesto_words( $title ) as $word ) :
-					?><span class="ds-manifesto__word" data-word-index="<?php echo (int) $word_index; ?>"><?php echo esc_html( $word ); ?></span> <?php
+					?>
+					<span class="ds-manifesto__word" data-word-index="<?php echo (int) $word_index; ?>"><?php echo esc_html( $word ); ?></span> 
+					<?php
 					++$word_index;
 				endforeach;
 				?>
@@ -51,7 +53,9 @@ $word_index = 0;
 				<p class="ds-manifesto__line">
 					<?php
 					foreach ( $bonnets_gris_manifesto_words( $line_text ) as $word ) :
-						?><span class="<?php echo esc_attr( $word_class ); ?>" data-word-index="<?php echo (int) $word_index; ?>"><?php echo esc_html( $word ); ?></span> <?php
+						?>
+						<span class="<?php echo esc_attr( $word_class ); ?>" data-word-index="<?php echo (int) $word_index; ?>"><?php echo esc_html( $word ); ?></span> 
+						<?php
 						++$word_index;
 					endforeach;
 					?>
