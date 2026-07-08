@@ -9,3 +9,4 @@ require get_theme_file_path( 'inc/settings-links.php' );
 require get_theme_file_path( 'inc/settings-association.php' );
 require get_theme_file_path( 'inc/page-meta.php' );
 require get_theme_file_path( 'inc/blocks.php' );
+require get_theme_file_path( 'inc/widget-areas.php' );
