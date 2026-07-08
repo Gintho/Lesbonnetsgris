@@ -196,22 +196,19 @@ get_header();
 
 <?php get_template_part( 'template-parts/home/partners', null, array( 'tone' => 'cream' ) ); ?>
 
-<section class="ds-section ds-section--white">
-	<div class="ds-section__inner ds-section__inner--narrow ds-closing-block">
-		<img
-			class="ds-closing-block__logo"
-			src="<?php echo esc_url( get_theme_file_uri( 'assets/logo/mark-on-white-duo-orange-blue.png' ) ); ?>"
-			alt="<?php esc_attr_e( 'Symbole des Bonnets Gris', 'bonnets-gris' ); ?>"
-		/>
-		<h2 class="ds-h1"><?php esc_html_e( 'Rejoignez le mouvement', 'bonnets-gris' ); ?></h2>
-		<p class="ds-horizontal-push__description">
-			<?php esc_html_e( 'Don, course, bénévolat, partenariat : il existe mille façons de porter le bonnet gris avec nous.', 'bonnets-gris' ); ?>
-		</p>
-		<a class="ds-button ds-button--pop-orange" href="<?php echo esc_url( home_url( '/rejoignez-nous/' ) ); ?>">
-			<?php esc_html_e( 'Rejoignez-nous', 'bonnets-gris' ); ?>
-		</a>
-	</div>
-</section>
+<?php
+get_template_part(
+	'template-parts/marketing/closing-cta',
+	null,
+	array(
+		'tone'        => 'white',
+		'title'       => __( 'Rejoignez le mouvement', 'bonnets-gris' ),
+		'description' => __( 'Don, course, bénévolat, partenariat : il existe mille façons de porter le bonnet gris avec nous.', 'bonnets-gris' ),
+		'cta_label'   => __( 'Rejoignez-nous', 'bonnets-gris' ),
+		'cta_url'     => home_url( '/rejoignez-nous/' ),
+	)
+);
+?>
 
 <section class="ds-section ds-section--cream">
 	<div class="ds-section__inner ds-section__inner--narrow">

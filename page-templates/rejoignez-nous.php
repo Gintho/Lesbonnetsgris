@@ -95,24 +95,19 @@ get_template_part(
 		'cta_url'     => '#partenaire',
 	)
 );
-?>
 
-<section class="ds-section ds-section--cream">
-	<div class="ds-section__inner ds-section__inner--narrow ds-closing-block">
-		<img
-			class="ds-closing-block__logo"
-			src="<?php echo esc_url( get_theme_file_uri( 'assets/logo/mark-on-white-duo-orange-blue.png' ) ); ?>"
-			alt="<?php esc_attr_e( 'Symbole des Bonnets Gris', 'bonnets-gris' ); ?>"
-		/>
-		<h2 class="ds-h1"><?php esc_html_e( 'Pourquoi les Bonnets Gris ?', 'bonnets-gris' ); ?></h2>
-		<p class="ds-horizontal-push__description">
-			<?php esc_html_e( 'Les Bonnets Gris financent la recherche contre les tumeurs cérébrales pédiatriques et rassemblent une communauté de familles, chercheurs et bénévoles partout en France.', 'bonnets-gris' ); ?>
-		</p>
-		<a class="ds-button ds-button--pop-orange" href="<?php echo esc_url( home_url( '/missions/' ) ); ?>">
-			<?php esc_html_e( 'En savoir plus', 'bonnets-gris' ); ?>
-		</a>
-	</div>
-</section>
+get_template_part(
+	'template-parts/marketing/closing-cta',
+	null,
+	array(
+		'tone'        => 'cream',
+		'title'       => __( 'Pourquoi les Bonnets Gris ?', 'bonnets-gris' ),
+		'description' => __( 'Les Bonnets Gris financent la recherche contre les tumeurs cérébrales pédiatriques et rassemblent une communauté de familles, chercheurs et bénévoles partout en France.', 'bonnets-gris' ),
+		'cta_label'   => __( 'En savoir plus', 'bonnets-gris' ),
+		'cta_url'     => home_url( '/missions/' ),
+	)
+);
+?>
 
 <?php
 get_footer();
