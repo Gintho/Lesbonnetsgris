@@ -98,10 +98,10 @@ $rest_query = new WP_Query(
 				</div>
 				<div class="ds-news-carousel__nav">
 					<button type="button" class="ds-news-carousel__arrow ds-news-carousel__arrow--prev" aria-label="<?php esc_attr_e( 'Actualités précédentes', 'bonnets-gris' ); ?>">
-						<svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M9 1 2 8l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						<?php get_template_part( 'template-parts/icons/chevron', null, array( 'direction' => 'prev' ) ); ?>
 					</button>
 					<button type="button" class="ds-news-carousel__arrow ds-news-carousel__arrow--next" aria-label="<?php esc_attr_e( 'Actualités suivantes', 'bonnets-gris' ); ?>">
-						<svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="m1 1 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+						<?php get_template_part( 'template-parts/icons/chevron', null, array( 'direction' => 'next' ) ); ?>
 					</button>
 				</div>
 			</div>

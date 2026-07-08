@@ -74,10 +74,10 @@ $is_multi = count( $items ) > 1;
 	<?php if ( $is_multi ) : ?>
 		<div class="ds-founder-carousel__nav">
 			<button type="button" class="ds-founder-carousel__arrow ds-founder-carousel__arrow--prev" aria-label="<?php esc_attr_e( 'Portrait précédent', 'bonnets-gris' ); ?>">
-				<svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="M9 1 2 8l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				<?php get_template_part( 'template-parts/icons/chevron', null, array( 'direction' => 'prev' ) ); ?>
 			</button>
 			<button type="button" class="ds-founder-carousel__arrow ds-founder-carousel__arrow--next" aria-label="<?php esc_attr_e( 'Portrait suivant', 'bonnets-gris' ); ?>">
-				<svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="m1 1 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				<?php get_template_part( 'template-parts/icons/chevron', null, array( 'direction' => 'next' ) ); ?>
 			</button>
 		</div>
 	<?php endif; ?>
