@@ -54,16 +54,16 @@ get_template_part(
 		'tone'  => 'primary',
 		'items' => array(
 			array(
-				'value' => '1/2000',
-				'label' => __( 'Enfant touché avant 15 ans', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'la-maladie.php', 'stat_1_value' ),
+				'label' => bonnets_gris_page_meta( 'la-maladie.php', 'stat_1_label' ),
 			),
 			array(
-				'value' => '~450',
-				'label' => __( 'Nouveaux cas par an en France', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'la-maladie.php', 'stat_2_value' ),
+				'label' => bonnets_gris_page_meta( 'la-maladie.php', 'stat_2_label' ),
 			),
 			array(
-				'value' => '9',
-				'label' => __( 'Programmes de recherche financés', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'la-maladie.php', 'stat_3_value' ),
+				'label' => bonnets_gris_page_meta( 'la-maladie.php', 'stat_3_label' ),
 			),
 		),
 	)

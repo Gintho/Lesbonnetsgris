@@ -10,21 +10,21 @@ get_template_part(
 	null,
 	array(
 		'tone'      => 'cream',
-		'eyebrow'   => __( 'Notre manifeste', 'bonnets-gris' ),
-		'title'     => __( 'Les Bonnets Gris', 'bonnets-gris' ),
+		'eyebrow'   => bonnets_gris_page_meta( 'front-page', 'manifesto_eyebrow' ),
+		'title'     => bonnets_gris_page_meta( 'front-page', 'manifesto_title' ),
 		'lines'     => array(
 			array(
-				'text' => __( 'Est une association loi 1901 fondée par des femmes touchées personnellement par les tumeurs cérébrales.', 'bonnets-gris' ),
+				'text' => bonnets_gris_page_meta( 'front-page', 'manifesto_line_1' ),
 			),
 			array(
-				'text' => __( "Née d'un refus du silence, l'association a pour conviction que l'on peut se battre autrement :", 'bonnets-gris' ),
+				'text' => bonnets_gris_page_meta( 'front-page', 'manifesto_line_2' ),
 			),
 			array(
-				'text'      => __( "Avec de l'énergie, de la lumière et de l'audace.", 'bonnets-gris' ),
+				'text'      => bonnets_gris_page_meta( 'front-page', 'manifesto_line_3' ),
 				'highlight' => true,
 			),
 		),
-		'cta_label' => __( "Rendre visible l'invisible", 'bonnets-gris' ),
+		'cta_label' => bonnets_gris_page_meta( 'front-page', 'manifesto_cta' ),
 		'cta_url'   => home_url( '/missions/' ),
 	)
 );
@@ -47,24 +47,24 @@ get_template_part(
 		'pale_cards' => true,
 		'items'      => array(
 			array(
-				'value' => '6 000',
-				'label' => __( 'Nouveaux cas par an', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'front-page', 'stat_1_value' ),
+				'label' => bonnets_gris_page_meta( 'front-page', 'stat_1_label' ),
 			),
 			array(
-				'value' => '4 000',
-				'label' => __( 'Décès par an', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'front-page', 'stat_2_value' ),
+				'label' => bonnets_gris_page_meta( 'front-page', 'stat_2_label' ),
 			),
 			array(
-				'value' => '1ère',
-				'label' => __( 'Cause de mortalité chez les moins de 25 ans', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'front-page', 'stat_3_value' ),
+				'label' => bonnets_gris_page_meta( 'front-page', 'stat_3_label' ),
 			),
 			array(
-				'value' => '12',
-				'label' => __( 'Mois de survie médiane', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'front-page', 'stat_4_value' ),
+				'label' => bonnets_gris_page_meta( 'front-page', 'stat_4_label' ),
 			),
 			array(
-				'value' => '0',
-				'label' => __( 'Progrès thérapeutique', 'bonnets-gris' ),
+				'value' => bonnets_gris_page_meta( 'front-page', 'stat_5_value' ),
+				'label' => bonnets_gris_page_meta( 'front-page', 'stat_5_label' ),
 			),
 		),
 		'source'     => __( 'Sources : ARS - INCa - ICM', 'bonnets-gris' ),

@@ -12,9 +12,9 @@ get_header();
 
 <div class="ds-page-title ds-page-title--pop-orange">
 	<span class="ds-badge ds-badge--on-dark-hero"><?php esc_html_e( 'Rejoignez-nous', 'bonnets-gris' ); ?></span>
-	<h1 class="ds-h1"><?php esc_html_e( 'Mille façons de nous rejoindre.', 'bonnets-gris' ); ?></h1>
+	<h1 class="ds-h1"><?php echo esc_html( bonnets_gris_page_meta( 'rejoignez-nous.php', 'hero_title' ) ); ?></h1>
 	<p class="ds-page-title__intro">
-		<?php esc_html_e( 'Don, course, bénévolat, partenariat : chaque geste fait avancer la recherche contre les tumeurs cérébrales pédiatriques.', 'bonnets-gris' ); ?>
+		<?php echo esc_html( bonnets_gris_page_meta( 'rejoignez-nous.php', 'hero_intro' ) ); ?>
 	</p>
 </div>
 

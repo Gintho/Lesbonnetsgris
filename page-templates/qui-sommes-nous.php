@@ -12,9 +12,9 @@ get_header();
 
 <div class="ds-page-title ds-page-title--pop-orange">
 	<span class="ds-badge ds-badge--on-dark-hero"><?php esc_html_e( 'Qui sommes-nous ?', 'bonnets-gris' ); ?></span>
-	<h1 class="ds-h1"><?php esc_html_e( 'Un mouvement qui donne envie.', 'bonnets-gris' ); ?></h1>
+	<h1 class="ds-h1"><?php echo esc_html( bonnets_gris_page_meta( 'qui-sommes-nous.php', 'hero_title' ) ); ?></h1>
 	<p class="ds-page-title__intro">
-		<?php esc_html_e( 'Les Bonnets Gris est une association loi 1901, portée par des familles, des chercheurs et des bénévoles réunis autour d\'un même symbole.', 'bonnets-gris' ); ?>
+		<?php echo esc_html( bonnets_gris_page_meta( 'qui-sommes-nous.php', 'hero_intro' ) ); ?>
 	</p>
 </div>
 
@@ -26,16 +26,16 @@ get_header();
 			null,
 			array(
 				'eyebrow'    => __( 'Notre mission', 'bonnets-gris' ),
-				'title'      => __( 'Rendre visible, l\'invisible', 'bonnets-gris' ),
+				'title'      => bonnets_gris_page_meta( 'qui-sommes-nous.php', 'mission_title' ),
 				'paragraphs' => array(
 					array(
-						'text' => __( 'Pour rendre plus visible cette maladie dans l\'ombre, Les Bonnets Gris n\'est pas une association de plus. C\'est un mouvement qui donne envie au service d\'une cause trop longtemps invisible.', 'bonnets-gris' ),
+						'text' => bonnets_gris_page_meta( 'qui-sommes-nous.php', 'mission_paragraph_1' ),
 					),
 					array(
-						'text' => __( 'Association loi 1901 fondée par des femmes touchées personnellement par les tumeurs cérébrales — épouses et sœurs de malades. Née d\'un refus du silence, l\'association a pour conviction que l\'on peut se battre autrement :', 'bonnets-gris' ),
+						'text' => bonnets_gris_page_meta( 'qui-sommes-nous.php', 'mission_paragraph_2' ),
 					),
 					array(
-						'text'      => __( 'Avec de l\'énergie, de la lumière et de l\'audace.', 'bonnets-gris' ),
+						'text'      => bonnets_gris_page_meta( 'qui-sommes-nous.php', 'mission_paragraph_3' ),
 						'highlight' => true,
 					),
 				),
