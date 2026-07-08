@@ -29,15 +29,16 @@ get_template_part(
 );
 
 get_template_part(
-	'template-parts/cards/support-card',
+	'template-parts/marketing/photo-band-cta',
 	null,
 	array(
-		'tone'        => 'nude',
+		'tone'        => 'orange',
+		'eyebrow'     => __( 'Un geste qui compte', 'bonnets-gris' ),
 		'title'       => __( 'Faire un don', 'bonnets-gris' ),
-		'subtitle'    => __( 'Un geste qui compte', 'bonnets-gris' ),
 		'description' => __( 'En faisant un don, vous soutenez concrètement la recherche pour que les enfants soient mieux soignés.', 'bonnets-gris' ),
 		'cta_label'   => __( 'Faire un don', 'bonnets-gris' ),
-		'cta_url'     => '#don',
+		'cta_url'     => 'https://institutducerveau.org/faire-don-ponctuel',
+		'cta_target'  => '_blank',
 	)
 );
 
