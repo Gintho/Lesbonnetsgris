@@ -23,7 +23,7 @@ add_filter( 'block_categories_all', 'bonnets_gris_block_categories' );
  * Registers the theme's custom blocks from their compiled build/ directories.
  */
 function bonnets_gris_register_blocks() {
-	$blocks = array( 'jalon', 'frise', 'membre', 'portraits' );
+	$blocks = array( 'jalon', 'frise', 'membre', 'portraits', 'cta', 'mosaique', 'carte-soutien' );
 
 	foreach ( $blocks as $block ) {
 		$path = get_theme_file_path( "build/{$block}" );
