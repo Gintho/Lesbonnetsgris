@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<div class="ds-page-title">
-	<span class="ds-badge ds-badge--neutral"><?php esc_html_e( 'Qui sommes-nous ?', 'bonnets-gris' ); ?></span>
+<div class="ds-page-title ds-page-title--pop-orange">
+	<span class="ds-badge ds-badge--on-dark-hero"><?php esc_html_e( 'Qui sommes-nous ?', 'bonnets-gris' ); ?></span>
 	<h1 class="ds-h1"><?php esc_html_e( 'Un mouvement qui donne envie.', 'bonnets-gris' ); ?></h1>
 	<p class="ds-page-title__intro">
 		<?php esc_html_e( 'Les Bonnets Gris est une association loi 1901, portée par des familles, des chercheurs et des bénévoles réunis autour d\'un même symbole.', 'bonnets-gris' ); ?>

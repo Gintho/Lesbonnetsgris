@@ -1430,6 +1430,14 @@
 	color: var(--text-secondary);
 	line-height: var(--leading-relaxed);
 }
+.ds-page-title--pop-orange {
+	background: var(--orange-pop);
+	color: var(--white);
+	padding-bottom: 56px;
+}
+.ds-page-title--pop-orange .ds-page-title__intro {
+	color: var(--white);
+}
 
 /* ---- Simple centered closing block (e.g. Rejoignez-nous "why us") ---- */
 .ds-closing-block {
