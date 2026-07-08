@@ -1,0 +1,14 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bonnets-gris/frise",
+	"title": "Frise chronologique",
+	"category": "bonnets-gris",
+	"icon": "list-view",
+	"description": "Une frise chronologique composée de jalons.",
+	"textdomain": "bonnets-gris",
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./index.js"
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bonnets-gris/jalon",
+  "title": "Jalon",
+  "category": "bonnets-gris",
+  "parent": [
+    "bonnets-gris/frise"
+  ],
+  "icon": "marker",
+  "description": "Une étape de la frise chronologique (année, titre, description).",
+  "textdomain": "bonnets-gris",
+  "attributes": {
+    "year": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js"
+}
