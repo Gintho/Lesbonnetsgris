@@ -53,5 +53,14 @@ function bonnets_gris_scripts() {
 		file_exists( $founder_carousel_path ) ? filemtime( $founder_carousel_path ) : false,
 		true
 	);
+
+	$news_filter_path = get_theme_file_path( 'assets/js/news-filter.js' );
+	wp_enqueue_script(
+		'bonnets-gris-news-filter',
+		get_theme_file_uri( 'assets/js/news-filter.js' ),
+		array(),
+		file_exists( $news_filter_path ) ? filemtime( $news_filter_path ) : false,
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'bonnets_gris_scripts' );

@@ -63,6 +63,16 @@ $category_tones = array(
 	'actualites-cat' => 'orange',
 	'evenements-cat' => 'blue',
 	'presse-cat'     => 'terracotta',
+	'media-cat'      => 'dark',
+);
+
+// Filter bar options, in display order. Slugs must match the categories above.
+$mosaic_filters = array(
+	'all'            => __( 'Tout', 'bonnets-gris' ),
+	'actualites-cat' => __( 'Actualités', 'bonnets-gris' ),
+	'evenements-cat' => __( 'Événement', 'bonnets-gris' ),
+	'presse-cat'     => __( 'Presse', 'bonnets-gris' ),
+	'media-cat'      => __( 'Média', 'bonnets-gris' ),
 );
 ?>
 
@@ -82,6 +92,18 @@ $category_tones = array(
 
 		if ( $mosaic_query->have_posts() ) :
 			?>
+			<div class="ds-mosaic-filters" role="group" aria-label="<?php esc_attr_e( 'Filtrer les actualités', 'bonnets-gris' ); ?>">
+				<?php foreach ( $mosaic_filters as $filter_slug => $filter_label ) : ?>
+					<button
+						type="button"
+						class="ds-mosaic-filter<?php echo 'all' === $filter_slug ? ' is-active' : ''; ?>"
+						data-filter="<?php echo esc_attr( $filter_slug ); ?>"
+						aria-pressed="<?php echo 'all' === $filter_slug ? 'true' : 'false'; ?>"
+					>
+						<?php echo esc_html( $filter_label ); ?>
+					</button>
+				<?php endforeach; ?>
+			</div>
 			<div class="ds-mosaic">
 				<?php
 				$index = 0;
@@ -94,13 +116,14 @@ $category_tones = array(
 						'template-parts/cards/mosaic-tile',
 						null,
 						array(
-							'title'    => get_the_title(),
-							'image'    => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
-							'date'     => get_the_date(),
-							'url'      => get_permalink(),
-							'tone'     => $category_tones[ $category_slug ] ?? 'orange',
-							'category' => $category_name,
-							'large'    => 0 === $index % 5,
+							'title'         => get_the_title(),
+							'image'         => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
+							'date'          => get_the_date(),
+							'url'           => get_permalink(),
+							'tone'          => $category_tones[ $category_slug ] ?? 'orange',
+							'category'      => $category_name,
+							'category_slug' => $category_slug,
+							'large'         => 0 === $index % 5,
 						)
 					);
 					++$index;
@@ -119,4 +142,17 @@ $category_tones = array(
 </section>
 
 <?php
+get_template_part(
+	'template-parts/marketing/photo-band-cta',
+	null,
+	array(
+		'tone'        => 'nude',
+		'eyebrow'     => __( 'Presse', 'bonnets-gris' ),
+		'title'       => __( 'Téléchargez notre press kit', 'bonnets-gris' ),
+		'description' => __( 'Logo, visuels, chiffres clés et éléments de langage : tout ce qu\'il faut pour parler des Bonnets Gris dans vos articles.', 'bonnets-gris' ),
+		'cta_label'   => __( 'Télécharger le press kit', 'bonnets-gris' ),
+		'cta_url'     => '#',
+	)
+);
+
 get_footer();
