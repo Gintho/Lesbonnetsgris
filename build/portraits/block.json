@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bonnets-gris/portraits",
+  "title": "Portraits (carrousel)",
+  "category": "bonnets-gris",
+  "icon": "images-alt2",
+  "description": "Un carrousel de portraits détaillés (fondatrices, porte-paroles...). Contient des blocs Membre en mode portrait.",
+  "textdomain": "bonnets-gris",
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}
