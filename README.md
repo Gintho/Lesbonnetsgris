@@ -8,9 +8,8 @@
   - ⚠️ Un autre site `lesbonnetsgris.wpcomstaging.com` existe aussi sur le compte mais n'est plus utilisé comme préprod — ne pas y connecter GitHub Deployments.
 - **Versioning**: GitHub — [Gintho/Lesbonnetsgris](https://github.com/Gintho/Lesbonnetsgris)
 - **Suivi de projet**: [Notion — Les Bonnets Gris Product HQ](https://app.notion.com/p/Les-Bonnets-Gris-Product-HQ-3914b70ec0968114b405cc9ac005fc9c)
-- **Documentation métier**: Google Drive — ⚠️ le lien fourni pointe actuellement vers la page Notion ci-dessus ; à corriger.
 - **Intégration IA**: Claude Code connecté au site WordPress (staging) via MCP
-- **Déploiement**: GitHub Deployments (natif WordPress.com) — push sur `main` déployé automatiquement sur staging
+- **Déploiement**: GitHub Deployments (natif WordPress.com) — actuellement branché sur `main`. Migration prévue vers `staging` une fois cette branche créée (voir [Stratégie de branches](#stratégie-de-branches)) ; ce README sera mis à jour une fois la bascule effective.
 
 ## Connexion Claude Code ↔ WordPress (staging)
 
@@ -55,18 +54,29 @@ Cette connexion s'établit via une autorisation OAuth/GitHub App déclenchée de
 1. Dans l'admin du site de **staging** (`staging-e7b0-lesbonnetsgris.wpcomstaging.com`) : `Hébergement` (Hosting Configuration) → section **Déploiements** (Deployments).
 2. Cliquer sur **Connecter un dépôt** / *Connect repository*, autoriser l'app GitHub de WordPress.com sur `Gintho/Lesbonnetsgris` (installation à approuver côté GitHub).
 3. Choisir :
-   - Branche à suivre : `main`
+   - Branche à suivre : `main` **pour l'instant** — à repointer sur `staging` une fois cette branche créée et le workflow de lint validé (voir [Stratégie de branches](#stratégie-de-branches)). Ce document sera mis à jour au moment de la bascule.
    - **Répertoire de destination : `/wp-content/themes/bonnets-gris`** (⚠️ pas `/wp-content/plugins/...` — notre code est un thème, pas un plugin)
-   - Déploiement automatique : activé, pour que chaque push sur `main` déclenche un déploiement sur le site.
+   - Déploiement automatique : activé, pour que chaque push sur la branche suivie déclenche un déploiement sur le site.
 4. Ne connecter **que ce site de staging** pour l'instant — pas de site de production tant qu'il n'existe pas, et pas l'autre site `lesbonnetsgris.wpcomstaging.com` qui n'est plus la préprod de référence.
-5. Une fois le premier déploiement effectué, le thème custom sera installé mais **pas forcément activé** — le thème actif sur ce site est actuellement *Charity Grove* (un thème du catalogue WordPress.com, installé manuellement). Il faudra l'activer explicitement une fois le contenu du thème custom jugé prêt.
+5. Une fois le premier déploiement effectué, le thème custom sera installé et **doit être activé explicitement** dans `Apparence` → `Thèmes` s'il ne l'est pas déjà (le thème actif sur ce site peut avoir changé entre deux sessions de travail — vérifier plutôt que de supposer).
 
 Référence officielle : [Deploy from GitHub to WordPress.com](https://wordpress.com/support/github-deployments/)
 
-⚠️ Le déploiement automatique ne prendra effet qu'une fois le repository connecté ci-dessus **et** une fois `main` mis à jour avec le code du thème.
+⚠️ Le déploiement automatique ne prendra effet qu'une fois le repository connecté ci-dessus **et** une fois la branche suivie mise à jour avec le code du thème.
+
+## Stratégie de branches
+
+- **`main`** : branche de release. Reflète le code destiné à devenir la production une fois celle-ci créée. Protégée sur GitHub (PR obligatoire, check de lint requis, pas de push direct).
+- **`staging`** : branche de préproduction. C'est elle que le déploiement natif WordPress.com suit (une fois la migration depuis `main` effectuée — voir plus haut). Protégée de la même façon que `main`.
+- **Branches de travail** (`feature/*`, `refactor/*`, `fix/*`) : courtes, une par sujet, fusionnées dans `staging` via Pull Request après revue et passage du check `lint` (`.github/workflows/lint.yml`). `staging` est ensuite fusionnée dans `main` une fois le contenu validé en préproduction.
+
+## Développement local
+
+- **Dépendances PHP** : `composer install` (installe WPCS/PHPCS en dépendance de développement — voir `composer.json`).
+- **Lint** : `composer lint` — exécute PHPCS avec le ruleset `WordPress-Core` (`phpcs.xml`) sur l'ensemble du thème.
+- **Auto-fix** : `composer lint:fix` — exécute PHPCBF pour corriger automatiquement ce qui peut l'être (espacement, formatage). Toujours relire le diff avant de commiter : PHPCBF ne garantit pas l'absence de changement de comportement dans les cas ambigus.
 
 ## Liens
 
 - Dépôt GitHub : https://github.com/Gintho/Lesbonnetsgris
 - Notion (suivi de projet) : https://app.notion.com/p/Les-Bonnets-Gris-Product-HQ-3914b70ec0968114b405cc9ac005fc9c
-- Google Drive (documentation métier) : à fournir (lien actuel = doublon du lien Notion)
