@@ -3,7 +3,9 @@
 /node_modules/
 
 # Build
-/build/
+# /build/ n'est PAS ignoré : les assets compilés des blocs Gutenberg
+# doivent être commités (le déploiement WordPress.com copie le dépôt
+# tel quel, sans étape de build côté serveur).
 /dist/
 
 # Environnement / secrets
