@@ -1,112 +1,116 @@
 # Plan de refonte — administrabilité, factorisation, WPCS, dépendances, conformité dépôt
 
-Basé sur `docs/audit-technique-20260708.md`. **Aucun fichier du thème n'a été modifié pour produire ce plan.** Aucune branche de travail n'a été créée. Rien de ce qui suit n'est exécuté — c'est une proposition à valider point par point.
+Basé sur `docs/audit-technique-20260708.md`. **Aucun fichier du thème n'a été modifié pour produire ce plan.** Aucune branche d'exécution n'a été créée. Toutes les décisions ci-dessous ont été validées en échange direct le 2026-07-08 — **l'exécution proprement dite n'a pas commencé** ; ce document sert de référence de démarrage.
 
-Convention de cases à cocher dans tout le document : `- [ ]` = en attente de votre validation, à cocher item par item avant toute exécution.
+## Décisions validées (2026-07-08)
+
+| # | Sujet | Décision |
+|---|---|---|
+| 1 | Déploiement WordPress.com | **Repointer le natif** : GitHub Deployments de WordPress.com reconfiguré sur le dashboard pour suivre `staging`. Aucun workflow de déploiement custom à écrire. |
+| 2 | Page Accueil | **Une Page réelle existe** derrière `front-page.php` → contenu accueil géré en meta de page, comme les autres pages. |
+| 3 | Verrouillage marque | **Verrouiller les 5 éléments** comme recommandé (baseline, tokens, logos, structure de page, libellés de stats) — confirmé après clarification des implications concrètes. |
+| 4 | Ruleset WPCS | **WordPress-Core**. |
+| 5 | Périmètre contenu (§1.1) | **Tout le tableau proposé**, dans cette même vague. |
+| 6 | Timeline + membres | **Blocs Gutenberg sur-mesure** (pas de CPT) — introduit un chantier npm/`@wordpress/scripts`. |
+| 7 | Composer/WPCS | **Confirmé**, à introduire en premier lot. |
+| 8 | `add_theme_support('woocommerce')` | **Retiré**. |
+| 9 | Composants à extraire (§2) | **Les 3 proposés retenus** : `closing-cta.php`, les 3 icônes SVG, et la fusion des deux JS de carrousel. |
+| 10 | README | **À ajuster** : retirer le lien Google Drive (pas de lien réel disponible) ; contenu détaillé des nouvelles sections à préciser au moment de l'exécution. |
+| 11 | `.gitignore` | **Validé tel quel**, `composer.lock` committé. |
+| 12 | `lint.yml` | **Validé**, PHP 8.2. |
+| 13 | Protection de branches GitHub | **Exécutée par moi**, via l'API GitHub, avec confirmation du réglage exact avant application. |
+| 14 | Séquencement du chantier blocs Gutenberg | **Branche séparée** (`feature/blocs-timeline-membres`) plutôt que sur la branche de refactor principale — voir §6 mis à jour. |
+| 15 | Nom de la branche principale | **Confirmé** : `refactor/administrabilite-20260708`. |
+
+Conséquence directe de la décision #6 sur la décision #14 : le chantier "timeline + membres" change de nature (npm/build JS au lieu de CPT natif) et de branche. Le reste du plan (§1 à §5) n'est pas affecté dans son contenu, seulement dans son découpage en séquencement (§6, revu ci-dessous).
 
 ---
 
-## 0. Hypothèses à valider avant tout
+## 0. Hypothèses — résolues
 
-- [ ] **Mécanisme de déploiement final vers WordPress.com non confirmé.** Le README documente le déploiement natif "GitHub Deployments" de WordPress.com, actuellement branché sur `main`. Je pose l'hypothèse de travail suivante, **à valider explicitement** : ce même mécanisme natif sera re-pointé (via le dashboard WordPress.com, geste manuel hors dépôt) sur la future branche `staging` une fois celle-ci créée, sans qu'un déploiement custom (Action GitHub avec SFTP/rsync) soit nécessaire. Si ce n'est pas possible côté WordPress.com (repointer un déploiement natif sur une branche autre que celle initialement connectée), le plan de la section 5 devra être revu vers un déploiement custom.
-- [ ] **Existence d'un objet Page WordPress pour l'accueil.** Je n'ai pas pu vérifier si une Page réelle est assignée comme "page d'accueil statique" (Réglages → Lecture) derrière `front-page.php`, ou si ce template s'affiche indépendamment de tout objet Page. Cela conditionne le choix entre "meta de page" et "page d'options" pour le contenu de l'accueil (section 1.1). À confirmer avant d'exécuter les items concernés.
-- [ ] **Le tag `build-1-preprod-20260708`** n'existe que localement dans la session d'audit précédente (le push a échoué, 403 sur les refs de tags). La branche de travail unique de ce plan (section 6) doit en partir — si le tag n'est pas accessible au moment de l'exécution, partir directement du commit `5b224ac` (strictement équivalent).
+- [x] **Déploiement WordPress.com** : natif repointé sur `staging` (décision #1). Pas de `deploy-staging.yml` à écrire côté dépôt — item retiré du séquencement.
+- [x] **Page Accueil** : confirmée existante (décision #2). Le contenu de l'accueil (manifeste, stats) suit le même mécanisme "meta de page" que La Maladie/Qui sommes-nous/Rejoignez-nous — pas de page d'options séparée nécessaire pour l'accueil.
+- [ ] **Le tag `build-1-preprod-20260708`** n'existe que localement dans la session d'audit précédente (le push a échoué, 403 sur les refs de tags). La branche `refactor/administrabilite-20260708` doit en partir — si le tag n'est pas accessible au moment de l'exécution, partir directement du commit `5b224ac` (strictement équivalent). *(reste à vérifier au moment de créer la branche, pas une décision à trancher maintenant)*
 
 ---
 
-## 1. Contenu codé en dur → proposition d'administrabilité
+## 1. Contenu codé en dur → administrabilité
 
-### 1.0 Ce qui ne doit **surtout pas** devenir modifiable
+### 1.0 Éléments verrouillés (décision #3 — confirmée)
 
-- [ ] **La baseline de marque** ("Rendre visible l'invisible" / "Rendre visible, l'invisible" selon les usages) reste en dur dans le code (constante PHP ou chaîne directe), **jamais** exposée dans un champ éditable en clair. Une baseline de marque validée ne doit pas pouvoir être réécrite en un clic par un·e éditeur·rice non technique.
-- [ ] **Le système de tokens** (`assets/tokens/*.css` : couleurs, typographie, spacing, radius, shadow) reste exclusivement piloté par du code, revu en PR. Aucun sélecteur de couleur Customizer, aucun réglage `theme.json` connecté à ces valeurs. C'est la garantie que le design system reste cohérent quels que soient les futurs éditeurs de contenu.
-- [ ] **Les fichiers de marque** (`assets/logo/*.png`) restent des assets de thème fixes, jamais remplaçables via un champ "uploadez votre logo" dans la médiathèque — un changement de logo est un changement de marque, pas un changement de contenu.
-- [ ] **La structure des sections de chaque page** (quelles sections existent, dans quel ordre) reste pilotée par les `page-templates/*.php`, **pas** par un éditeur de blocs librement réorganisable. Seul le *contenu* de chaque section (texte, chiffres, liens) devient administrable — la mise en page reste verrouillée. C'est un choix structurant : il exclut l'usage du full site editing / de blocs Gutenberg librement positionnables sur ces pages, au profit de champs structurés qui ne peuvent pas casser la mise en page.
-- [ ] **Le libellé exact des statistiques médicales/impact** (ex. "Cause de mortalité chez les moins de 25 ans") : je propose de rendre la **valeur numérique** éditable mais de garder le **libellé** verrouillé par défaut (ou a minima signalé "à ne modifier qu'après validation du contenu médical/associatif"), pour éviter qu'une reformulation imprécise change le sens d'une statistique de santé publique.
+- [x] **Baseline de marque** ("Rendre visible l'invisible") : reste en dur, jamais exposée en champ éditable.
+- [x] **Tokens de design** (`assets/tokens/*.css`) : restent pilotés par le code, revus en PR, aucun réglage Customizer/`theme.json` connecté.
+- [x] **Fichiers logo** (`assets/logo/*.png`) : restent des assets de thème fixes.
+- [x] **Structure des sections par page** : reste pilotée par `page-templates/*.php`, pas de réorganisation libre en éditeur de blocs.
+- [x] **Libellés exacts des statistiques médicales** : la valeur numérique devient éditable, le libellé reste verrouillé par défaut.
 
-### 1.1 Contenu par mécanisme proposé
+### 1.1 Contenu par mécanisme — périmètre complet retenu (décision #5)
 
-| Contenu | Fichier(s) source actuel | Mécanisme proposé | Justification |
+| Contenu | Fichier(s) source actuel | Mécanisme retenu | Statut |
 |---|---|---|---|
-| Manifeste accueil (eyebrow, titre, 3 lignes + surlignage, CTA) | `front-page.php` L15-67 | **Meta de page** (`register_meta` + panneau meta box dans l'éditeur) sur la Page "Accueil" **si elle existe** (hypothèse §0) ; sinon **page d'options** dédiée "Réglages → Accueil" via `register_setting` | Contenu unique, propre à une seule page, modifié rarement (campagne, refonte de discours) — un panneau dédié dans l'écran d'édition de la page est plus intuitif pour un profil non technique qu'une page de réglages générique, mais nécessite un objet Page réel |
-| Stats accueil (6 000 / 4 000 / 1ère / 12 / 0) | `front-page.php` L48-68 | Idem manifeste : meta de page ou options "Accueil" | Chiffres actualisés occasionnellement (nouvelles données épidémiologiques/impact) — fréquence faible mais impact fort si périmé, doit rester facile à corriger sans déploiement |
-| Stats La Maladie (1/2000, ~450, 9) | `page-templates/la-maladie.php` L48-68 | **Meta de page** sur la Page "La Maladie" (objet Page confirmé existant) | Idem, page cible sans ambiguïté |
-| Texte fondateur, mission, timeline (4 jalons), portraits fondatrices | `page-templates/qui-sommes-nous.php` | Textes courts (mission, hero) → **meta de page** sur "Qui sommes-nous". Timeline et portraits → voir 1.2 (contenu répété) | Textes hero/mission : un seul jeu de valeurs, meta de page suffit. Timeline et portraits sont des **listes** d'items structurés, traités séparément |
-| Hero + intro | `page-templates/rejoignez-nous.php` L13-18 | **Meta de page** sur "Rejoignez-nous" | Idem |
-| Liens externes (boutique, don, Instagram, Facebook) | `template-parts/navigation/{navbar,footer}.php`, `front-page.php`, `rejoignez-nous.php` | **Page d'options** unique "Réglages → Liens de l'association" via `register_setting` (un seul groupe de settings, un seul écran) | Ces liens sont **réutilisés à plusieurs endroits** (jusqu'à 3× pour certains) : un réglage central évite exactement le risque relevé dans l'audit (mise à jour désynchronisée). C'est le cas d'usage type de `register_setting` : une valeur, plusieurs lectures |
-| Identité légale (adresse, n° RNA, directeur de publication, email de contact) | `page-templates/mentions-legales.php` L25-28 | **Page d'options** "Réglages → Association" (identité légale) | Données organisationnelles transverses (pourraient aussi alimenter un futur schema.org `Organization` plus riche dans le footer) — pas propres à une seule page dans l'esprit, même si affichées sur une seule page aujourd'hui |
-| Membres (bureau, équipe, portraits fondatrices) | `page-templates/qui-sommes-nous.php` (tableaux `$board`, `$team`, items du carrousel fondatrices) | **Custom Post Type** `bg_member` (`register_post_type`, sans UI publique, `show_in_rest => true`) + `register_meta` (rôle, bio, citation, tonalité visuelle, photo via featured image) ; les 3 blocs de la page interrogent ce CPT filtré par une taxonomie ou un champ meta "catégorie" (bureau / équipe / fondatrice) | C'est une **liste de fiches** au format identique et au volume variable dans le temps (départs/arrivées, vrais noms à venir en remplacement des placeholders) — le CPT est le mécanisme WordPress natif pour ça, bien plus adapté qu'un champ répétable maison. Effort plus élevé que les autres lignes, mais c'est l'endroit où l'admin apporte le plus de valeur réelle (l'équipe change, contrairement à la baseline) |
-| Timeline "Notre histoire" (4 jalons : année, titre, description) | `page-templates/qui-sommes-nous.php` (bloc `timeline`) | **Custom Post Type** `bg_milestone`, ou — option plus proche de la cible "blocs Gutenberg sur-mesure" — un **bloc Gutenberg conteneur "Frise"** avec bloc enfant répétable "Jalon" (`InnerBlocks`), chaque instance exposant année/titre/description en attributs RichText | Les deux options sont valables ; je recommande le **CPT** en premier temps (plus simple à sécuriser et à faire évoluer sans étape de build JS), et je note le bloc Gutenberg comme évolution possible si l'équipe veut aller au bout de l'architecture "blocs sur-mesure" annoncée dans le brief — **à trancher avec vous**, ça change l'effort d'un facteur ~3 |
-| Newsletter (placeholder email, libellé bouton) | `template-parts/marketing/newsletter.php` | **Non prioritaire** — pas de mécanisme proposé | Micro-copie d'un formulaire aujourd'hui non fonctionnel (audit Étape 5) ; à revoir seulement une fois MailPoet réellement branché, en même temps que le nonce (section 3 sécurité, hors périmètre "administrabilité") |
-
-Chaque ligne du tableau ci-dessus fera l'objet d'un item séquencé séparé (section 6) — vous pourrez valider/refuser chaque contenu indépendamment.
+| Manifeste accueil (eyebrow, titre, 3 lignes + surlignage, CTA) | `front-page.php` L15-67 | **Meta de page** sur la Page "Accueil" (objet Page confirmé — décision #2) | À exécuter |
+| Stats accueil (6 000 / 4 000 / 1ère / 12 / 0) | `front-page.php` L48-68 | **Meta de page** sur la Page "Accueil" | À exécuter |
+| Stats La Maladie (1/2000, ~450, 9) | `page-templates/la-maladie.php` L48-68 | **Meta de page** sur la Page "La Maladie" | À exécuter |
+| Texte fondateur, mission (hors timeline/portraits) | `page-templates/qui-sommes-nous.php` | **Meta de page** sur "Qui sommes-nous" | À exécuter |
+| Hero + intro | `page-templates/rejoignez-nous.php` L13-18 | **Meta de page** sur "Rejoignez-nous" | À exécuter |
+| Liens externes (boutique, don, Instagram, Facebook) | `template-parts/navigation/{navbar,footer}.php`, `front-page.php`, `rejoignez-nous.php` | **Page d'options** "Réglages → Liens de l'association" (`register_setting`) | À exécuter |
+| Identité légale (adresse, n° RNA, directeur de publication, email) | `page-templates/mentions-legales.php` L25-28 | **Page d'options** "Réglages → Association" | À exécuter |
+| Membres (bureau, équipe, portraits fondatrices) | `page-templates/qui-sommes-nous.php` (`$board`, `$team`, carrousel fondatrices) | **Bloc Gutenberg sur-mesure** répétable (décision #6) | À exécuter — branche séparée `feature/blocs-timeline-membres` |
+| Timeline "Notre histoire" (4 jalons) | `page-templates/qui-sommes-nous.php` | **Bloc Gutenberg conteneur "Frise" + bloc enfant "Jalon"** (`InnerBlocks`, décision #6) | À exécuter — branche séparée `feature/blocs-timeline-membres` |
+| Newsletter (placeholder) | `template-parts/marketing/newsletter.php` | Non prioritaire, pas de mécanisme | Hors périmètre de ce plan |
 
 ---
 
-## 2. Composants réutilisables
+## 2. Composants réutilisables — retenus (décision #9)
 
-| Duplication (réf. audit Étape 3) | Composant proposé | Emplacement | Signature | Fichiers appelants après refactor |
+| Duplication | Composant | Emplacement | Signature | Fichiers appelants après refactor |
 |---|---|---|---|---|
-| Bloc "closing CTA" (logo + H2 + paragraphe + bouton) | `closing-cta.php` | `template-parts/marketing/closing-cta.php` | `array( 'logo' (défaut logo dupli-orange-blue existant), 'logo_alt', 'title', 'description', 'cta_label', 'cta_url', 'tone' )` | `page-templates/qui-sommes-nous.php`, `page-templates/rejoignez-nous.php` |
-| Icône flèche prev/next (carrousel) | `chevron.php` | `template-parts/icons/chevron.php` (nouveau dossier `icons/`) | `array( 'direction' => 'prev'\|'next' )` | `template-parts/home/news-teaser.php`, `template-parts/marketing/founder-spotlight.php` |
-| Icône "lecture" (play button) | `play-button.php` | `template-parts/icons/play-button.php` | aucun paramètre (taille fixe actuelle) | `template-parts/marketing/reel-testimonial.php`, `template-parts/marketing/story-spotlight.php` |
-| Icône "marque de citation" | `quote-mark.php` | `template-parts/icons/quote-mark.php` | aucun paramètre | `template-parts/cards/testimonial-card.php`, `template-parts/marketing/reel-testimonial.php` |
-| *(bonus, hors périmètre strict de l'audit mais même nature de problème)* `assets/js/news-carousel.js` et `assets/js/founder-carousel.js` sont deux implémentations quasi identiques du même contrôleur de carrousel à flèches | `carousel.js` générique piloté par attributs `data-*` (ex. `data-carousel`, `data-carousel-track`, `data-carousel-item`) | `assets/js/carousel.js`, suppression des deux fichiers existants | — | Tous les gabarits utilisant `.ds-news-carousel` ou `.ds-founder-carousel` (mise à jour des classes/attributs dans les deux template-parts concernés) |
+| Bloc "closing CTA" | `closing-cta.php` | `template-parts/marketing/closing-cta.php` | `array( 'logo', 'logo_alt', 'title', 'description', 'cta_label', 'cta_url', 'tone' )` | `qui-sommes-nous.php`, `rejoignez-nous.php` |
+| Icône flèche prev/next | `chevron.php` | `template-parts/icons/chevron.php` | `array( 'direction' => 'prev'\|'next' )` | `home/news-teaser.php`, `marketing/founder-spotlight.php` |
+| Icône "lecture" | `play-button.php` | `template-parts/icons/play-button.php` | aucun | `marketing/reel-testimonial.php`, `marketing/story-spotlight.php` |
+| Icône "marque de citation" | `quote-mark.php` | `template-parts/icons/quote-mark.php` | aucun | `cards/testimonial-card.php`, `marketing/reel-testimonial.php` |
+| `news-carousel.js` + `founder-carousel.js` | `carousel.js` générique (attributs `data-*`) | `assets/js/carousel.js` (suppression des deux fichiers existants) | — | Tous les gabarits `.ds-news-carousel`/`.ds-founder-carousel` |
 
-Note : les composants `photo-band-cta.php`, `photo-float-card.php`, `stats.php`, `horizontal-push.php`, `quote-band.php`, `origin-story.php`, `founder-spotlight.php`, `story-spotlight.php` sont **déjà** des composants partagés sans duplication — rien à faire dessus.
-
-- [ ] Valider la liste ci-dessus (5 extractions) avant exécution.
-- [ ] Statuer sur la fusion `news-carousel.js`/`founder-carousel.js` (item bonus, plus risqué fonctionnellement que les extractions PHP pures) : inclure ou reporter ?
+- [x] Les 5 extractions validées.
 
 ---
 
-## 3. Plan de nettoyage WPCS
+## 3. Plan de nettoyage WPCS — ruleset retenu : WordPress-Core (décision #4)
 
-`phpcs` n'étant pas installé (audit Étape 4), je ne peux pas produire un décompte réel de violations à ce stade — ce tableau est une **estimation de revue manuelle**, à confirmer par un run réel une fois WPCS installé (section 4, premier item). Je m'appuie sur la connaissance du code déjà écrit dans cette session (conventions déjà largement respectées, car écrit en visant un style proche de WPCS dès le départ).
+Estimation manuelle (phpcs non encore installé), à remplacer par un run réel dès l'item 3 du séquencement exécuté :
 
-| Catégorie de violation | Fichiers concernés (estimation) | Auto-corrigible (`phpcbf`) | Intervention manuelle |
+| Catégorie | Fichiers concernés (estimation) | Auto-corrigible (`phpcbf`) | Manuel |
 |---|---|---|---|
-| Espacement dans les structures de contrôle (`if(`/`if (`), alignement de tableaux | Probablement mineur/rare — le style `if ( ... )` avec espaces a été suivi systématiquement tout le long du projet | Oui | — |
-| Docblocks de fichier manquants (`@package`) | Probablement **tous** les fichiers PHP (aucun docblock de fichier n'a été ajouté systématiquement) | Non | Oui — ajout manuel, contenu à rédiger (pas juste un template vide) |
-| Docblocks de fonction manquants sur les fonctions nommées (`bonnets_gris_setup`, `bonnets_gris_scripts`, etc.) | `inc/setup.php`, `inc/enqueue.php`, `template-parts/navigation/footer.php` (fonction `bonnets_gris_footer_link_attributes`) | Non | Oui |
-| Préfixage des fonctions/hooks (`bonnets_gris_*`) | Déjà conforme partout où vérifié — à confirmer par le run réel | — | Vérification uniquement |
-| `array()` vs `[]` | Le projet utilise `array()` de façon cohérente — conforme à la convention WPCS classique | — | Vérification uniquement |
-| Yoda conditions (`'x' === $var` plutôt que `$var === 'x'`) | Suivi dans le code récent (ex. `'all' === $filter_slug`), non vérifié systématiquement sur tout l'historique | Oui (partiellement, phpcbf gère une partie des cas) | Vérification manuelle des cas non auto-fixables |
-| Espacement/formatage général (indentation, fins de ligne) | Tout le thème (vérification systématique nécessaire) | Oui | — |
-| Sécurité : échappement de sortie | Néant trouvé en revue manuelle (audit Étape 5) | — | Vérification uniquement par le run réel |
-| `add_theme_support( 'woocommerce' )` vestigial | `inc/setup.php` L9 | Non (suppression de code, pas une règle de style) | Oui — à retirer, ou à confirmer comme volontaire avant suppression |
-
-- [ ] Installer WPCS/PHPCS (section 4) puis lancer un run réel pour remplacer cette estimation par des chiffres exacts, avant toute correction.
-- [ ] Valider le retrait de `add_theme_support( 'woocommerce' )` (ou confirmer qu'il doit rester pour une raison non documentée).
+| Espacement structures de contrôle | Rare, déjà largement conforme | Oui | — |
+| Docblocks de fichier (`@package`) manquants | Tous les fichiers PHP | Non | Oui |
+| Docblocks de fonction manquants | `inc/setup.php`, `inc/enqueue.php`, `template-parts/navigation/footer.php` | Non | Oui |
+| Préfixage fonctions/hooks | Déjà conforme (à confirmer par le run) | — | Vérification |
+| `array()` vs `[]` | Cohérent (`array()` partout) | — | Vérification |
+| Yoda conditions | Majoritairement suivi, non vérifié exhaustivement | Partiel | Vérification des cas restants |
+| Formatage général | Tout le thème | Oui | — |
+| `add_theme_support( 'woocommerce' )` | `inc/setup.php` L9 | Non | **Oui — retrait confirmé (décision #8)** |
 
 ---
 
-## 4. Plan de mise à jour des dépendances
+## 4. Plan de dépendances — Composer/WPCS confirmé (décision #7)
 
-Il n'existe **aucune dépendance existante** à mettre à jour (ni `composer.json`, ni `package.json` — audit Étape 7). Le plan ci-dessous couvre donc l'**introduction initiale**, classée du moins risqué au plus risqué :
-
-1. **[Moins risqué] `composer.json` avec `wp-coding-standards/wpcs` + `squizlabs/php_codesniffer` en `require-dev`.** Dépendance de développement uniquement, ne s'exécute jamais en production, aucun risque runtime. Nécessite PHP local avec Composer disponible pour l'exécuter (à confirmer sur votre poste/CI).
-2. **[Risque modéré] `phpcs.xml` (ruleset `WordPress-Extra` ou `WordPress-Core` selon le niveau de rigueur souhaité, `text_domain` réglé sur `bonnets-gris`).** Pas une dépendance à proprement parler, mais conditionne le comportement de (1) — à valider ensemble (choix du ruleset a un impact direct sur le volume de violations remontées).
-3. **[Risque plus élevé, optionnel] Toolchain `@wordpress/scripts` (npm) — uniquement si la voie "blocs Gutenberg sur-mesure avec build JS" est retenue** pour la timeline/les membres (section 1.1, item timeline) plutôt que des CPT. Introduit un `package.json`, un `node_modules/`, une étape de build avant déploiement — c'est un changement d'infrastructure plus lourd que tout le reste de ce plan, à ne déclencher qu'après une décision explicite sur l'architecture cible (voir hypothèse non tranchée en 1.1).
-
-Aucune mise à jour majeure "cassante" à signaler puisqu'il n'y a rien à mettre à jour — le risque est entièrement dans le point 3 (introduction, pas mise à jour), qui reste optionnel et conditionné à votre arbitrage.
-
-- [ ] Valider l'introduction de WPCS/PHPCS via Composer (items 1-2).
-- [ ] Trancher : CPT (pas de nouvelle dépendance) vs blocs Gutenberg custom (introduit npm/@wordpress/scripts) pour la timeline et les membres.
+1. **[Retenu, moins risqué]** `composer.json` + `wp-coding-standards/wpcs` + `squizlabs/php_codesniffer` en `require-dev`. Dépendance dev uniquement, zéro risque runtime.
+2. **[Retenu]** `phpcs.xml`, ruleset `WordPress-Core` (décision #4), `text_domain` = `bonnets-gris`.
+3. **[Retenu, risque plus élevé, chantier séparé]** Toolchain `@wordpress/scripts` (npm) pour les blocs Gutenberg "Membre" et "Frise/Jalon" (décision #6). `package.json`, `node_modules/`, étape de build. **Sur la branche dédiée `feature/blocs-timeline-membres`**, pas sur `refactor/administrabilite-20260708`, pour ne pas faire dépendre le reste du refactor (déjà conséquent) de ce chantier plus lourd et plus long à stabiliser.
 
 ---
 
 ## 5. Plan de conformité du dépôt
 
-### 5.1 README.md — contenu proposé (corrections + ajouts)
+### 5.1 README.md — à ajuster (décision #10)
 
-- [ ] Corriger la mention obsolète : le thème actif est **Bonnets Gris**, pas Charity Grove (confirmé par le journal d'activité WordPress au 2026-07-08).
-- [ ] Résoudre la note "lien Google Drive = doublon du lien Notion" (soit fournir le vrai lien, soit retirer la ligne).
-- [ ] Ajouter une section **Stratégie de branches** une fois `staging` créée : rôle de `main` (release/production future), `staging` (préproduction, cible du déploiement WordPress.com), branches `feature/*` ou `refactor/*` courtes fusionnées dans `staging` via PR.
-- [ ] Ajouter une section **Développement local** : installation Composer/WPCS, commande de lint (`composer lint` ou équivalent), commande d'auto-fix (`composer lint:fix`).
-- [ ] Ajouter une section **Administration du contenu** une fois les mécanismes de la section 1 en place : où trouver "Réglages → Accueil / Association / Liens de l'association" dans wp-admin, quelles pages ont des champs meta dans leur écran d'édition.
+- [x] Corriger la mention obsolète (thème actif = Bonnets Gris, pas Charity Grove).
+- [x] **Retirer** le lien Google Drive (pas de lien réel disponible actuellement, plutôt que de laisser un doublon pointant vers Notion).
+- [ ] Ajouter section **Stratégie de branches** (`main` / `staging` / `feature`) — contenu à rédiger au moment de l'exécution, sur la base de l'état réel une fois `staging` créée.
+- [ ] Ajouter section **Développement local** (Composer/WPCS, commandes lint) — contenu à préciser au moment de l'exécution une fois les commandes exactes (`composer lint`, etc.) définies dans `composer.json`.
+- [ ] Ajouter section **Administration du contenu** — rédigée en tout dernier, une fois tous les écrans d'options/meta réellement en place, pour documenter les emplacements exacts.
 
-### 5.2 `.gitignore` — contenu proposé
+### 5.2 `.gitignore` — validé tel quel (décision #11)
 
 ```gitignore
 # Dépendances
@@ -132,11 +136,9 @@ Thumbs.db
 *.log
 ```
 
-- [ ] Valider ce contenu (`composer.lock` est délibérément **non ignoré** : il doit être commité pour la reproductibilité des installations WPCS — à confirmer que c'est bien l'intention).
+### 5.3 GitHub Actions — validé (décision #12), déploiement résolu (décision #1)
 
-### 5.3 Workflow GitHub Actions — projet
-
-**`.github/workflows/lint.yml`** (déclenché sur chaque Pull Request) :
+**`.github/workflows/lint.yml`** :
 
 ```yaml
 name: Lint
@@ -154,73 +156,71 @@ jobs:
           php-version: '8.2'
           coverage: none
       - run: composer install --no-progress --prefer-dist
-      - run: composer lint   # exécute phpcs sur le thème
+      - run: composer lint
 ```
 
-**`.github/workflows/deploy-staging.yml`** — **conditionné à l'hypothèse non validée en §0** :
-
-- Si WordPress.com peut repointer son "GitHub Deployments" natif sur `staging` : **aucun workflow de déploiement à écrire**, c'est un réglage dans le dashboard WordPress.com (Hébergement → Déploiements), rien côté dépôt.
-- Si ce n'est pas possible : il faudra un déploiement custom (ex. action `SamKirkland/FTP-Deploy-Action` ou équivalent SFTP), déclenché sur push vers `staging`, avec les identifiants WordPress.com en secrets GitHub — **je ne propose pas ce workflow tant que l'hypothèse n'est pas tranchée**, pour ne pas construire un mécanisme qui ferait doublon ou entrerait en conflit avec le déploiement natif existant.
-
-- [ ] Valider le contenu du `lint.yml` proposé (ruleset, version PHP `8.2` à confirmer selon la version WordPress.com cible).
-- [ ] Trancher l'hypothèse de déploiement (§0) avant que je propose (ou non) un `deploy-staging.yml`.
+**`deploy-staging.yml`** : **non nécessaire** — le déploiement natif WordPress.com sera repointé sur `staging` (décision #1), aucun workflow de déploiement côté dépôt.
 
 ### 5.4 Stratégie de branches et protections
 
 - [ ] Créer la branche `staging` à partir de `main` (poussée sur `origin`).
-- [ ] Repointer le déploiement natif WordPress.com "GitHub Deployments" de `main` vers `staging` (geste manuel dans le dashboard WordPress.com — je ne peux pas le faire à votre place).
-- [ ] Activer la protection de branche GitHub sur `main` **et** `staging` : PR obligatoire, check `lint` obligatoire avant fusion, pas de push direct. (Faisable via l'API GitHub depuis cette session si vous le souhaitez, ou par vos soins dans les réglages du dépôt — à votre préférence.)
+- [ ] Repointer le déploiement natif WordPress.com de `main` vers `staging` (geste manuel dashboard WordPress.com, hors dépôt, à faire de votre côté).
+- [x] Protection de branche GitHub sur `main` et `staging` : **exécutée par moi via l'API GitHub** (décision #13) — PR obligatoire, check `lint` obligatoire, pas de push direct. Le réglage exact sera confirmé avant application au moment de l'exécution.
 
 ---
 
-## 6. Séquencement — commits atomiques
+## 6. Séquencement — deux branches (décision #14)
 
-**Une seule branche de travail pour l'ensemble** : `refactor/administrabilite-20260708`, créée depuis le tag `build-1-preprod-20260708` (ou depuis le commit `5b224ac` si le tag n'est pas disponible au moment de l'exécution — voir §0). Cette branche n'est **pas créée à cette étape** — elle ne le sera qu'après votre validation, au démarrage de l'exécution.
+### Branche A — `refactor/administrabilite-20260708`
 
-| # | Commit | Contenu | Risque visuel | Branche |
-|---|---|---|---|---|
-| 1 | `.gitignore` | Ajout du fichier (section 5.2) | Aucun | `refactor/administrabilite-20260708` |
-| 2 | README.md | Corrections + nouvelles sections (section 5.1, sauf "Administration du contenu" qui viendra après coup) | Aucun | idem |
-| 3 | Composer + WPCS | `composer.json`, `composer.lock`, `phpcs.xml` (section 4.1-4.2) | Aucun (dev-only) | idem |
-| 4 | `phpcbf` — auto-fix formatage | Passage automatique sur tout le thème (section 3, colonne "auto-corrigible") | Aucun, **diff à relire avant commit** pour confirmer qu'aucun changement fonctionnel ne s'est glissé | idem |
-| 5 | WPCS — corrections manuelles | Docblocks, retrait `add_theme_support('woocommerce')`, cas Yoda restants (section 3, colonne "manuel") | Aucun (code non visuel) | idem |
-| 6 | Extraction icônes SVG | `template-parts/icons/{chevron,play-button,quote-mark}.php` + mise à jour des 5 fichiers appelants (section 2) | Aucun (rendu HTML identique) | idem |
-| 7 | Extraction `closing-cta.php` | Nouveau composant + mise à jour `qui-sommes-nous.php`/`rejoignez-nous.php` (section 2) | Faible — **à valider visuellement** (capture d'écran avant/après sur les deux pages) | idem |
-| 8 | *(optionnel, si validé en section 2)* Fusion des deux JS de carrousel en `carousel.js` | Suppression de `news-carousel.js`/`founder-carousel.js`, nouveau `carousel.js`, mise à jour markup + `inc/enqueue.php` | Faible/fonctionnel — **à valider manuellement** (tester les flèches sur les deux carrousels, desktop et mobile) | idem |
-| 9 | `.github/workflows/lint.yml` | Nouveau workflow (section 5.3) | Aucun | idem |
-| 10 | Options "Réglages → Liens de l'association" | `register_setting` + écran d'options + remplacement des URLs codées en dur dans navbar/footer/rejoignez-nous/front-page par des lectures de l'option (valeurs par défaut = valeurs actuelles, donc rendu identique au premier déploiement) | Faible — **à valider** (vérifier que chaque lien pointe toujours au bon endroit après bascule) | idem |
-| 11 | Options "Réglages → Association" | `register_setting` + écran d'options + `mentions-legales.php` lit les champs (repli identique à l'affichage `[à compléter]` actuel si le champ est vide) | Aucun tant que les champs restent vides — **à valider** que le texte de repli est identique à l'existant | idem |
-| 12 | Meta de page — "La Maladie" | `register_meta` + meta box pour les 3 stats ; valeurs par défaut pré-remplies = valeurs actuelles | Faible — **à valider** (comparaison avant/après) | idem |
-| 13 | Meta de page — "Qui sommes-nous" | `register_meta` + meta box pour hero/mission/texte fondateur ; valeurs par défaut pré-remplies | Faible — **à valider** | idem |
-| 14 | Meta de page — "Rejoignez-nous" | `register_meta` + meta box pour hero/intro ; valeurs par défaut pré-remplies | Faible — **à valider** | idem |
-| 15 | Accueil — manifeste + stats | Meta de page **ou** page d'options "Réglages → Accueil" selon l'arbitrage de l'hypothèse §0 | Faible — **à valider** | idem |
-| 16 | CPT `bg_member` | `register_post_type` + `register_meta`, migration des 8 fiches actuelles (bureau, équipe, fondatrices) en entrées réelles, `qui-sommes-nous.php` interroge le CPT au lieu des tableaux PHP | Moyen — **à valider visuellement en détail** (c'est le changement le plus structurant du plan) | idem |
-| 17 | Timeline — CPT `bg_milestone` ou bloc Gutenberg | Selon arbitrage section 1.1/4 ; migration des 4 jalons actuels | Moyen — **à valider visuellement** | idem |
-| 18 | QA visuelle complète | Revue de toutes les pages publiques (Accueil, Qui sommes-nous, La Maladie, Rejoignez-nous, Actualités, Mentions légales) après l'ensemble des items ci-dessus | — (c'est l'étape de validation elle-même) | idem |
-| 19 | Création `staging` + protections de branche | Section 5.4 | Aucun (git/GitHub, pas du code) | depuis `main`, pas depuis la branche de refactor |
+Créée depuis le tag `build-1-preprod-20260708` (ou le commit `5b224ac`).
 
-Notes de séquencement :
-- Les items 1-9 sont indépendants du reste et peuvent être validés/exécutés comme un premier lot sans attendre les arbitrages en suspens (§0).
-- Les items 10-17 dépendent chacun d'un arbitrage spécifique (voir cases à cocher des sections 1, 2 et 4) — je ne les exécuterai que pour les contenus que vous aurez validés, dans l'ordre proposé mais pas nécessairement tous.
-- L'item 19 se fait **après** merge de la branche de refactor (ou en parallèle, elle ne dépend de rien d'autre) — mais **hors** de la branche `refactor/administrabilite-20260708` elle-même.
+| # | Commit | Contenu | Risque visuel |
+|---|---|---|---|
+| 1 | `.gitignore` | Ajout (§5.2) | Aucun |
+| 2 | README.md | Corrections + section Stratégie de branches (§5.1) | Aucun |
+| 3 | Composer + WPCS | `composer.json`, `composer.lock`, `phpcs.xml` — WordPress-Core (§4) | Aucun (dev-only) |
+| 4 | `phpcbf` — auto-fix formatage | Passage automatique (§3) | Aucun, **diff à relire** |
+| 5 | WPCS — corrections manuelles | Docblocks, retrait `add_theme_support('woocommerce')` (§3) | Aucun |
+| 6 | Extraction icônes SVG | `template-parts/icons/{chevron,play-button,quote-mark}.php` + 5 fichiers appelants (§2) | Aucun |
+| 7 | Extraction `closing-cta.php` | Nouveau composant + `qui-sommes-nous.php`/`rejoignez-nous.php` (§2) | Faible — **à valider visuellement** |
+| 8 | Fusion JS carrousel | `carousel.js` générique, suppression des 2 fichiers existants, mise à jour markup + `inc/enqueue.php` (§2) | Faible — **à tester manuellement** (flèches, desktop/mobile) |
+| 9 | `.github/workflows/lint.yml` | Nouveau workflow (§5.3) | Aucun |
+| 10 | Options "Réglages → Liens de l'association" | `register_setting` + écran ; valeurs par défaut = valeurs actuelles | Faible — **à valider** |
+| 11 | Options "Réglages → Association" | `register_setting` + écran ; `mentions-legales.php` lit les champs | Aucun tant que vide — **à valider le texte de repli** |
+| 12 | Meta de page — "La Maladie" | 3 stats, valeurs par défaut = actuelles | Faible — **à valider** |
+| 13 | Meta de page — "Qui sommes-nous" | Hero/mission/texte fondateur | Faible — **à valider** |
+| 14 | Meta de page — "Rejoignez-nous" | Hero/intro | Faible — **à valider** |
+| 15 | Meta de page — "Accueil" | Manifeste + stats accueil | Faible — **à valider** |
+| 16 | QA visuelle branche A | Revue complète des pages publiques hors membres/timeline | — (validation) |
+| 17 | README — section Développement local | Une fois (3) stabilisé | Aucun |
+
+### Branche B — `feature/blocs-timeline-membres`
+
+Créée **depuis `refactor/administrabilite-20260708` une fois la branche A stabilisée et mergée dans `staging`** (pas depuis le tag directement, pour bénéficier des meta de page déjà en place et du nettoyage WPCS).
+
+| # | Commit | Contenu | Risque visuel |
+|---|---|---|---|
+| 18 | Toolchain `@wordpress/scripts` | `package.json`, config de build (§4, item 3) | Aucun (dev-only) |
+| 19 | Bloc Gutenberg "Membre" | `block.json` + `edit.js` + `render.php`, migration des 8 fiches actuelles (bureau, équipe, fondatrices) en blocs réels dans "Qui sommes-nous" | Moyen — **à valider visuellement en détail** |
+| 20 | Bloc Gutenberg "Frise" + "Jalon" | Conteneur + `InnerBlocks` répétables, migration des 4 jalons actuels | Moyen — **à valider visuellement** |
+| 21 | QA visuelle branche B | Revue de "Qui sommes-nous" (membres + timeline) | — (validation) |
+| 22 | README — section Administration du contenu | Rédaction finale, une fois tous les écrans réellement en place | Aucun |
+
+### Hors branches — actions GitHub/WordPress.com directes
+
+| # | Action | Où | Risque |
+|---|---|---|---|
+| 23 | Créer `staging` depuis `main` | git, depuis `main` | Aucun |
+| 24 | Repointer le déploiement natif WordPress.com sur `staging` | Dashboard WordPress.com — **de votre côté** | Aucun (config, pas de code) |
+| 25 | Protection de branche `main` + `staging` | API GitHub — **exécutée par moi**, réglage confirmé avant application | Aucun (config, pas de code) |
+
+Ordre proposé : 23 → (branche A, items 1-17) → merge branche A dans `staging` → 24 → 25 → (branche B, items 18-22) → merge branche B dans `staging`.
 
 ---
 
-## Items en attente de votre validation
+## Prochaine étape
 
-- [ ] §0 — Hypothèse déploiement WordPress.com (natif repointé sur `staging` vs déploiement custom)
-- [ ] §0 — Existence d'un objet Page "Accueil" (conditionne meta de page vs options pour le contenu accueil)
-- [ ] §1.0 — Confirmation de la liste des éléments à **verrouiller** (baseline, tokens, logos, structure de page, libellés de stats)
-- [ ] §1.1 — Mécanisme retenu par contenu (tableau complet — chaque ligne est validable indépendamment)
-- [ ] §1.1 — Timeline : CPT `bg_milestone` vs bloc Gutenberg custom avec `InnerBlocks`
-- [ ] §2 — Liste des 5 extractions de composants (closing-cta + 3 icônes + JS carrousel)
-- [ ] §3 — Ruleset WPCS à utiliser (`WordPress-Core` vs `WordPress-Extra`)
-- [ ] §3 — Retrait de `add_theme_support( 'woocommerce' )`
-- [ ] §4 — Introduction Composer/WPCS
-- [ ] §4 — CPT vs blocs Gutenberg custom (@wordpress/scripts) pour timeline/membres
-- [ ] §5.1 — Contenu README proposé
-- [ ] §5.2 — Contenu `.gitignore` proposé (notamment : `composer.lock` commité, pas ignoré)
-- [ ] §5.3 — Contenu `lint.yml` (version PHP, ruleset)
-- [ ] §5.3 — `deploy-staging.yml` : à écrire seulement une fois l'hypothèse de déploiement tranchée
-- [ ] §5.4 — Création `staging` + protections de branche (et qui l'exécute : moi via l'API GitHub, ou vous)
-- [ ] §6 — Séquencement complet (19 items) et nom de la branche de travail unique `refactor/administrabilite-20260708`
+Toutes les décisions de cadrage sont prises. Il reste, avant toute exécution :
+1. Confirmer que le tag `build-1-preprod-20260708` est accessible (ou utiliser `5b224ac`) au moment de créer la branche A.
+2. Me donner le feu vert explicite pour démarrer l'exécution de la branche A (item 1 du séquencement), puisque jusqu'ici tout ce travail est resté au stade planification.
