@@ -22,10 +22,10 @@ get_header();
 			<?php esc_html_e( 'Le présent site est édité par l\'association Les Bonnets Gris, association loi 1901.', 'bonnets-gris' ); ?>
 		</p>
 		<p>
-			<?php esc_html_e( 'Siège social : [adresse à compléter]', 'bonnets-gris' ); ?><br />
-			<?php esc_html_e( 'Numéro RNA : [à compléter]', 'bonnets-gris' ); ?><br />
-			<?php esc_html_e( 'Directeur·rice de la publication : [nom à compléter]', 'bonnets-gris' ); ?><br />
-			<?php esc_html_e( 'Contact : [adresse email à compléter]', 'bonnets-gris' ); ?>
+			<?php echo esc_html__( 'Siège social :', 'bonnets-gris' ) . ' ' . esc_html( bonnets_gris_association( 'adresse' ) ); ?><br />
+			<?php echo esc_html__( 'Numéro RNA :', 'bonnets-gris' ) . ' ' . esc_html( bonnets_gris_association( 'rna' ) ); ?><br />
+			<?php echo esc_html__( 'Directeur·rice de la publication :', 'bonnets-gris' ) . ' ' . esc_html( bonnets_gris_association( 'directeur' ) ); ?><br />
+			<?php echo esc_html__( 'Contact :', 'bonnets-gris' ) . ' ' . esc_html( bonnets_gris_association( 'email' ) ); ?>
 		</p>
 
 		<h2 class="ds-h3"><?php esc_html_e( 'Hébergement', 'bonnets-gris' ); ?></h2>
