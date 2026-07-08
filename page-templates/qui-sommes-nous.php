@@ -213,17 +213,21 @@ get_header();
 <?php get_template_part( 'template-parts/home/partners', null, array( 'tone' => 'cream' ) ); ?>
 
 <?php
-get_template_part(
-	'template-parts/marketing/closing-cta',
-	null,
-	array(
-		'tone'        => 'white',
-		'title'       => __( 'Rejoignez le mouvement', 'bonnets-gris' ),
-		'description' => __( 'Don, course, bénévolat, partenariat : il existe mille façons de porter le bonnet gris avec nous.', 'bonnets-gris' ),
-		'cta_label'   => __( 'Rejoignez-nous', 'bonnets-gris' ),
-		'cta_url'     => home_url( '/rejoignez-nous/' ),
-	)
-);
+if ( is_active_sidebar( 'qui-sommes-nous-cta-closing' ) ) {
+	dynamic_sidebar( 'qui-sommes-nous-cta-closing' );
+} else {
+	get_template_part(
+		'template-parts/marketing/closing-cta',
+		null,
+		array(
+			'tone'        => 'white',
+			'title'       => __( 'Rejoignez le mouvement', 'bonnets-gris' ),
+			'description' => __( 'Don, course, bénévolat, partenariat : il existe mille façons de porter le bonnet gris avec nous.', 'bonnets-gris' ),
+			'cta_label'   => __( 'Rejoignez-nous', 'bonnets-gris' ),
+			'cta_url'     => home_url( '/rejoignez-nous/' ),
+		)
+	);
+}
 ?>
 
 <section class="ds-section ds-section--cream">
