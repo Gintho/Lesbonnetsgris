@@ -34,9 +34,13 @@ $ways = array(
 	<div class="ds-section__inner">
 		<h2 class="ds-h1 ds-section__title"><?php esc_html_e( 'Nous soutenir', 'bonnets-gris' ); ?></h2>
 		<div class="ds-support-grid">
-			<?php foreach ( $ways as $way ) : ?>
-				<?php get_template_part( 'template-parts/cards/support-card', null, $way ); ?>
-			<?php endforeach; ?>
+			<?php if ( is_active_sidebar( 'accueil-soutien' ) ) : ?>
+				<?php dynamic_sidebar( 'accueil-soutien' ); ?>
+			<?php else : ?>
+				<?php foreach ( $ways as $way ) : ?>
+					<?php get_template_part( 'template-parts/cards/support-card', null, $way ); ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
