@@ -47,37 +47,45 @@ get_header();
 
 <section class="ds-section ds-section--sky">
 	<div class="ds-section__inner">
-		<div class="ds-section-kicker" aria-hidden="true"><?php esc_html_e( 'Notre histoire', 'bonnets-gris' ); ?></div>
-		<?php
-		get_template_part(
-			'template-parts/marketing/timeline',
-			null,
-			array(
-				'items' => array(
+		<div class="ds-section-kicker ds-section-kicker--pop-orange" aria-hidden="true"><?php esc_html_e( 'Notre histoire', 'bonnets-gris' ); ?></div>
+		<div class="ds-history-layout">
+			<div class="ds-history-layout__timeline">
+				<?php
+				get_template_part(
+					'template-parts/marketing/timeline',
+					null,
 					array(
-						'year'        => '2021',
-						'title'       => __( 'Naissance du mouvement', 'bonnets-gris' ),
-						'description' => __( 'Trois femmes, touchées personnellement par la maladie, décident de sortir du silence et de se réunir.', 'bonnets-gris' ),
-					),
-					array(
-						'year'        => '2022',
-						'title'       => __( 'Officialisation de l\'association', 'bonnets-gris' ),
-						'description' => __( 'Les Bonnets Gris devient une association loi 1901, avec ses premiers statuts et son premier bureau.', 'bonnets-gris' ),
-					),
-					array(
-						'year'        => '2023',
-						'title'       => __( 'Premier temps fort de terrain', 'bonnets-gris' ),
-						'description' => __( 'Première collecte publique et premiers partenariats avec des équipes soignantes.', 'bonnets-gris' ),
-					),
-					array(
-						'year'        => '2024',
-						'title'       => __( 'Premier soutien à la recherche', 'bonnets-gris' ),
-						'description' => __( 'Les premiers fonds collectés sont reversés à un programme de recherche sur les tumeurs cérébrales pédiatriques.', 'bonnets-gris' ),
-					),
-				),
-			)
-		);
-		?>
+						'items' => array(
+							array(
+								'year'        => '2021',
+								'title'       => __( 'Naissance du mouvement', 'bonnets-gris' ),
+								'description' => __( 'Trois femmes, touchées personnellement par la maladie, décident de sortir du silence et de se réunir.', 'bonnets-gris' ),
+							),
+							array(
+								'year'        => '2022',
+								'title'       => __( 'Officialisation de l\'association', 'bonnets-gris' ),
+								'description' => __( 'Les Bonnets Gris devient une association loi 1901, avec ses premiers statuts et son premier bureau.', 'bonnets-gris' ),
+							),
+							array(
+								'year'        => '2023',
+								'title'       => __( 'Premier temps fort de terrain', 'bonnets-gris' ),
+								'description' => __( 'Première collecte publique et premiers partenariats avec des équipes soignantes.', 'bonnets-gris' ),
+							),
+							array(
+								'year'        => '2024',
+								'title'       => __( 'Premier soutien à la recherche', 'bonnets-gris' ),
+								'description' => __( 'Les premiers fonds collectés sont reversés à un programme de recherche sur les tumeurs cérébrales pédiatriques.', 'bonnets-gris' ),
+							),
+						),
+					)
+				);
+				?>
+			</div>
+			<div class="ds-history-layout__text">
+				<p><?php esc_html_e( 'Pour rendre plus visible cette maladie dans l\'ombre, Les Bonnets Gris n\'est pas une association de plus. C\'est un mouvement qui donne envie au service d\'une cause trop longtemps invisible.', 'bonnets-gris' ); ?></p>
+				<p><?php esc_html_e( 'Association loi 1901 fondée par des femmes touchées personnellement par les tumeurs cérébrales — épouses et sœurs de malades. Née d\'un refus du silence, l\'association a pour conviction que l\'on peut se battre autrement.', 'bonnets-gris' ); ?></p>
+			</div>
+		</div>
 	</div>
 </section>
 
