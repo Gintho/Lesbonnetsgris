@@ -10,10 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<div class="ds-page-title">
-	<h1 class="ds-h1"><?php esc_html_e( 'La maladie', 'bonnets-gris' ); ?></h1>
+<div class="ds-page-title ds-page-title--pop-orange">
+	<span class="ds-badge ds-badge--on-dark-hero"><?php esc_html_e( 'La maladie', 'bonnets-gris' ); ?></span>
+	<h1 class="ds-h1"><?php esc_html_e( 'Comprendre, c\'est déjà agir.', 'bonnets-gris' ); ?></h1>
 	<p class="ds-page-title__intro">
-		<?php esc_html_e( 'Comprendre les tumeurs cérébrales pédiatriques, c\'est déjà agir. Voici ce que nous savons, et pourquoi la recherche a besoin de nous.', 'bonnets-gris' ); ?>
+		<?php esc_html_e( 'Voici ce que nous savons des tumeurs cérébrales pédiatriques, et pourquoi la recherche a besoin de nous.', 'bonnets-gris' ); ?>
 	</p>
 </div>
 
