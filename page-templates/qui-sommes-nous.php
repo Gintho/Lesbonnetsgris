@@ -28,26 +28,6 @@ get_header();
 				'eyebrow'     => __( 'Notre mission', 'bonnets-gris' ),
 				'title'       => __( 'Rendre visible, l\'invisible', 'bonnets-gris' ),
 				'paragraphs'  => array(
-					__( 'Les Bonnets Gris est entièrement portée par des bénévoles. Notre objectif : financer la recherche contre les tumeurs cérébrales pédiatriques et accompagner les familles concernées, partout en France.', 'bonnets-gris' ),
-					__( 'On avance avec de l\'énergie, de la lumière et de l\'audace — jamais seuls, jamais dans le silence.', 'bonnets-gris' ),
-				),
-			)
-		);
-		?>
-	</div>
-</section>
-
-<section class="ds-section ds-section--cream">
-	<div class="ds-section__inner">
-		<?php
-		get_template_part(
-			'template-parts/marketing/origin-story',
-			null,
-			array(
-				'tone'        => 'nude',
-				'kicker'      => __( 'Notre histoire', 'bonnets-gris' ),
-				'title'       => __( 'Les Bonnets Gris', 'bonnets-gris' ),
-				'description' => array(
 					array(
 						'text' => __( 'Pour rendre plus visible cette maladie dans l\'ombre, Les Bonnets Gris n\'est pas une association de plus. C\'est un mouvement qui donne envie au service d\'une cause trop longtemps invisible.', 'bonnets-gris' ),
 					),
@@ -65,7 +45,7 @@ get_header();
 	</div>
 </section>
 
-<section class="ds-section ds-section--white">
+<section class="ds-section ds-section--cream">
 	<div class="ds-section__inner">
 		<h2 class="ds-h1 ds-section__title"><?php esc_html_e( 'Notre équipe', 'bonnets-gris' ); ?></h2>
 

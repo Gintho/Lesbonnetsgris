@@ -1587,21 +1587,34 @@
 .ds-about-intro {
 	display: grid;
 	grid-template-columns: minmax(0, 320px) 1fr;
+	align-items: start;
 	gap: 48px;
 }
 .ds-about-intro__label {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	justify-content: flex-start;
 	gap: 12px;
 }
 .ds-about-intro__body {
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	gap: 20px;
 	font-size: var(--text-body-xl);
 	color: var(--text-secondary);
 	line-height: var(--leading-relaxed);
+}
+.ds-about-intro__body p {
+	margin: 0;
+}
+.ds-about-intro__paragraph--highlight {
+	font-family: var(--font-display);
+	font-weight: var(--weight-display);
+	font-size: var(--text-h3);
+	color: var(--orange-pop-700);
+	line-height: var(--leading-snug);
 }
 @media (max-width: 780px) {
 	.ds-about-intro {
