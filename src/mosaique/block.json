@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bonnets-gris/mosaique",
+	"title": "Mosaïque",
+	"category": "bonnets-gris",
+	"icon": "grid-view",
+	"description": "Mur de photos de la communauté, composé de blocs Membre en mode compact.",
+	"textdomain": "bonnets-gris",
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

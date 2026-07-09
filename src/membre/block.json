@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bonnets-gris/membre",
+	"title": "Membre",
+	"category": "bonnets-gris",
+	"icon": "admin-users",
+	"description": "Une personne (conseil d'administration, équipe, fondatrice). Renseigner une bio et/ou une citation fait basculer la carte en portrait détaillé.",
+	"textdomain": "bonnets-gris",
+	"attributes": {
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"role": {
+			"type": "string",
+			"default": ""
+		},
+		"tone": {
+			"type": "string",
+			"default": "nude",
+			"enum": [ "nude", "sky", "orange", "terracotta" ]
+		},
+		"photoId": {
+			"type": "number",
+			"default": 0
+		},
+		"photoUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"eyebrow": {
+			"type": "string",
+			"default": ""
+		},
+		"bio": {
+			"type": "string",
+			"default": ""
+		},
+		"quote": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./index.js"
+}

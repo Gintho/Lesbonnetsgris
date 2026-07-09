@@ -107,35 +107,90 @@ function bonnets_gris_page_meta_schema() {
 			'template'  => 'page-templates/la-maladie.php',
 			'box_title' => __( 'Contenu éditorial — La Maladie', 'bonnets-gris' ),
 			'fields'    => array(
-				'stat_1_value' => array(
+				'hero_title'              => array(
+					'label'   => __( 'Titre (H1)', 'bonnets-gris' ),
+					'type'    => 'text',
+					'default' => __( "Comprendre, c'est déjà agir.", 'bonnets-gris' ),
+				),
+				'hero_intro'              => array(
+					'label'   => __( 'Introduction', 'bonnets-gris' ),
+					'type'    => 'textarea',
+					'default' => __( 'Voici ce que nous savons des tumeurs cérébrales pédiatriques, et pourquoi la recherche a besoin de nous.', 'bonnets-gris' ),
+				),
+				'quote_text'              => array(
+					'label'   => __( 'Citation en bandeau', 'bonnets-gris' ),
+					'type'    => 'textarea',
+					'default' => __( "Les tumeurs cérébrales sont l'une des premières causes de décès par maladie chez l'enfant en France.", 'bonnets-gris' ),
+				),
+				'photo_float_description' => array(
+					'label'   => __( 'Encart photo — description', 'bonnets-gris' ),
+					'type'    => 'textarea',
+					'default' => __( 'Il existe de nombreux types de tumeurs cérébrales chez l\'enfant, différentes de celles de l\'adulte et nécessitant des traitements spécifiques. Faute de financements suffisants, la recherche dédiée reste largement insuffisante.', 'bonnets-gris' ),
+				),
+				'stat_1_value'            => array(
 					'label'   => __( 'Statistique 1 — valeur', 'bonnets-gris' ),
 					'type'    => 'text',
 					'default' => '1/2000',
 				),
-				'stat_1_label' => array(
+				'stat_1_label'            => array(
 					'label'   => __( 'Statistique 1 — libellé', 'bonnets-gris' ),
 					'type'    => 'text',
 					'default' => __( 'Enfant touché avant 15 ans', 'bonnets-gris' ),
 				),
-				'stat_2_value' => array(
+				'stat_2_value'            => array(
 					'label'   => __( 'Statistique 2 — valeur', 'bonnets-gris' ),
 					'type'    => 'text',
 					'default' => '~450',
 				),
-				'stat_2_label' => array(
+				'stat_2_label'            => array(
 					'label'   => __( 'Statistique 2 — libellé', 'bonnets-gris' ),
 					'type'    => 'text',
 					'default' => __( 'Nouveaux cas par an en France', 'bonnets-gris' ),
 				),
-				'stat_3_value' => array(
+				'stat_3_value'            => array(
 					'label'   => __( 'Statistique 3 — valeur', 'bonnets-gris' ),
 					'type'    => 'text',
 					'default' => '9',
 				),
-				'stat_3_label' => array(
+				'stat_3_label'            => array(
 					'label'   => __( 'Statistique 3 — libellé', 'bonnets-gris' ),
 					'type'    => 'text',
 					'default' => __( 'Programmes de recherche financés', 'bonnets-gris' ),
+				),
+				'story_title'             => array(
+					'label'   => __( 'Témoignage — titre', 'bonnets-gris' ),
+					'type'    => 'text',
+					'default' => __( "L'histoire de Camille", 'bonnets-gris' ),
+				),
+				'story_paragraph_1'       => array(
+					'label'   => __( 'Témoignage — paragraphe 1', 'bonnets-gris' ),
+					'type'    => 'textarea',
+					'default' => __( "Camille est maman d'un enfant suivi pour une tumeur cérébrale depuis 2022. Elle raconte le diagnostic, les premiers mois de traitement, et la façon dont l'entourage et l'association ont changé le quotidien de la famille.", 'bonnets-gris' ),
+				),
+				'story_paragraph_2'       => array(
+					'label'   => __( 'Témoignage — citation', 'bonnets-gris' ),
+					'type'    => 'textarea',
+					'default' => __( "« On n'a rien vu venir. Et pourtant, depuis, on n'a jamais été aussi entourés. »", 'bonnets-gris' ),
+				),
+				'story_paragraph_3'       => array(
+					'label'   => __( 'Témoignage — attribution', 'bonnets-gris' ),
+					'type'    => 'text',
+					'default' => __( '— Camille, maman, bénévole depuis 2022', 'bonnets-gris' ),
+				),
+				'awareness_text'          => array(
+					'label'   => __( 'Sensibilisation — texte', 'bonnets-gris' ),
+					'type'    => 'textarea',
+					'default' => __( "Chaque année, nous menons des campagnes de sensibilisation pour faire connaître le symbole du bonnet gris et l'urgence de la recherche. Relayées par nos bénévoles et nos partenaires, elles permettent de toucher un public toujours plus large.", 'bonnets-gris' ),
+				),
+				'urgency_title'           => array(
+					'label'   => __( 'Urgence — titre', 'bonnets-gris' ),
+					'type'    => 'text',
+					'default' => __( "L'urgence d'agir", 'bonnets-gris' ),
+				),
+				'urgency_text'            => array(
+					'label'   => __( 'Urgence — texte', 'bonnets-gris' ),
+					'type'    => 'textarea',
+					'default' => __( 'Le manque de financements freine la recherche sur les tumeurs cérébrales pédiatriques. Les chercheurs ont besoin de moyens pour mieux comprendre la maladie et développer des traitements adaptés aux enfants.', 'bonnets-gris' ),
 				),
 			),
 		),

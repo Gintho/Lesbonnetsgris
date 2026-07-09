@@ -1417,6 +1417,12 @@
 	flex: 1 1 400px;
 	aspect-ratio: 4 / 3;
 }
+.ds-horizontal-push__visual img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 .ds-horizontal-push__visual--nude {
 	background: var(--nude-salmon);
 }

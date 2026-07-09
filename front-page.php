@@ -29,15 +29,19 @@ get_template_part(
 	)
 );
 
-get_template_part(
-	'template-parts/marketing/photo-mosaic-banner',
-	null,
-	array(
-		'eyebrow' => __( 'La communauté', 'bonnets-gris' ),
-		'title'   => __( 'Un mouvement, des visages', 'bonnets-gris' ),
-		'people'  => array( 'Léa', 'Tom', 'Ana', 'Yanis', 'Chloé', 'Nael', 'Sofia', 'Hugo', 'Zoé', 'Adam', 'Mila', 'Léo' ),
-	)
-);
+if ( is_active_sidebar( 'accueil-mosaique' ) ) {
+	dynamic_sidebar( 'accueil-mosaique' );
+} else {
+	get_template_part(
+		'template-parts/marketing/photo-mosaic-banner',
+		null,
+		array(
+			'eyebrow' => __( 'La communauté', 'bonnets-gris' ),
+			'title'   => __( 'Un mouvement, des visages', 'bonnets-gris' ),
+			'people'  => array( 'Léa', 'Tom', 'Ana', 'Yanis', 'Chloé', 'Nael', 'Sofia', 'Hugo', 'Zoé', 'Adam', 'Mila', 'Léo' ),
+		)
+	);
+}
 
 get_template_part(
 	'template-parts/marketing/stats',
@@ -75,32 +79,40 @@ get_template_part(
 
 get_template_part( 'template-parts/home/news-teaser' );
 
-get_template_part(
-	'template-parts/marketing/horizontal-push',
-	null,
-	array(
-		'tone'        => 'sky',
-		'eyebrow'     => __( "S'engager", 'bonnets-gris' ),
-		'title'       => __( 'Rejoignez le mouvement', 'bonnets-gris' ),
-		'description' => __( 'Courir, collecter, donner de son temps ou devenir partenaire : il existe mille façons de porter le bonnet gris avec nous.', 'bonnets-gris' ),
-		'cta_label'   => __( 'Découvrir comment nous rejoindre', 'bonnets-gris' ),
-		'cta_url'     => home_url( '/rejoignez-nous/' ),
-	)
-);
+if ( is_active_sidebar( 'accueil-cta-rejoignez-mouvement' ) ) {
+	dynamic_sidebar( 'accueil-cta-rejoignez-mouvement' );
+} else {
+	get_template_part(
+		'template-parts/marketing/horizontal-push',
+		null,
+		array(
+			'tone'        => 'sky',
+			'eyebrow'     => __( "S'engager", 'bonnets-gris' ),
+			'title'       => __( 'Rejoignez le mouvement', 'bonnets-gris' ),
+			'description' => __( 'Courir, collecter, donner de son temps ou devenir partenaire : il existe mille façons de porter le bonnet gris avec nous.', 'bonnets-gris' ),
+			'cta_label'   => __( 'Découvrir comment nous rejoindre', 'bonnets-gris' ),
+			'cta_url'     => home_url( '/rejoignez-nous/' ),
+		)
+	);
+}
 
-get_template_part(
-	'template-parts/marketing/photo-band-cta',
-	null,
-	array(
-		'tone'        => 'terracotta',
-		'eyebrow'     => __( 'Le symbole', 'bonnets-gris' ),
-		'title'       => __( 'Portez le bonnet gris', 'bonnets-gris' ),
-		'description' => __( "Un bonnet, c'est plus qu'un accessoire : c'est une façon de dire qu'on est solidaires. Retrouvez-le sur notre boutique solidaire.", 'bonnets-gris' ),
-		'cta_label'   => __( 'Découvrir la boutique', 'bonnets-gris' ),
-		'cta_url'     => bonnets_gris_link( 'boutique' ),
-		'cta_target'  => '_blank',
-	)
-);
+if ( is_active_sidebar( 'accueil-cta-symbole' ) ) {
+	dynamic_sidebar( 'accueil-cta-symbole' );
+} else {
+	get_template_part(
+		'template-parts/marketing/photo-band-cta',
+		null,
+		array(
+			'tone'        => 'terracotta',
+			'eyebrow'     => __( 'Le symbole', 'bonnets-gris' ),
+			'title'       => __( 'Portez le bonnet gris', 'bonnets-gris' ),
+			'description' => __( "Un bonnet, c'est plus qu'un accessoire : c'est une façon de dire qu'on est solidaires. Retrouvez-le sur notre boutique solidaire.", 'bonnets-gris' ),
+			'cta_label'   => __( 'Découvrir la boutique', 'bonnets-gris' ),
+			'cta_url'     => bonnets_gris_link( 'boutique' ),
+			'cta_target'  => '_blank',
+		)
+	);
+}
 
 get_template_part(
 	'template-parts/marketing/reel-testimonial',
